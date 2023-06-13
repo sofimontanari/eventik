@@ -8,7 +8,7 @@
 
 require "open-uri"
 User.destroy_all
-
+puts "Creando Usuarios"
 user1 = User.create(
   email: 'liopark@gmail.com',
   password: "123456",
@@ -39,8 +39,14 @@ user1.photos.attach(io: file, filename: "JUMPER-segunda-sesion-web_JUMPER-sesion
 file = URI.open("https://jumperpark.cl/wp-content/uploads/2022/06/JUMPER-segunda-sesion-web_JUMPER-sesion2-269-1-600x400-1.png")
 user1.photos.attach(io: file, filename: "JUMPER-segunda-sesion-web_JUMPER-sesion2-269-1-600x400-1.png" , content_type: "image/png")
 
+cumpleaños_infantiles = EventType.new(name: "Cumpleaños Infantiles")
+
+cumpleaños_infantiles.user_id = user1.id
+
+cumpleaños_infantiles.save!
+
 user2 = User.create(
-  email: "sofi@gmail.com" ,
+  email: "sofi@gmail.com",
   password: "123456",
   name: "Sofía",
   user_name: "sofimontanari",
@@ -54,7 +60,7 @@ user3 = User.create(
   user_name: "casa_leon",
   supplier: true,
   business_name: "Casa León Rooftop Cantina",
-  address: "",
+  address: "Humboldt 1968, Buenos Aires",
   description: "Somos el mejor espacio para reuniones de todo CABA, preparate para una experiencia única.",
   service_type: "Espacios",
   capacity: 200,
@@ -62,6 +68,8 @@ user3 = User.create(
   includes: "Cocteles, restaurante, comida y salon de baile.",
   notes: "Sólo apto para mayores de edad"
 )
+
+# user3.event_types = ["Cumpleaños Adultos", "Despedidas", "Casamientos", "Empresariales"]
 
 file = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/1a/a4/19/f5/rio-negro-restaurante.jpg")
 user3.photos.attach(io: file, filename: "rio-negro-restaurante.jpg" , content_type: "image/jpg")
@@ -73,7 +81,7 @@ file = URI.open("https://media-cdn.tripadvisor.com/media/photo-p/1a/a4/1a/03/rio
 user3.photos.attach(io: file, filename: "rio-negro-restaurante.jpg" , content_type: "image/jpg")
 
 file = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/1c/f6/ca/d4/photo0jpg.jpg")
-user3.photos.attach(io: file, filename: "photo0jpg.jpg" , content_type: "image/jpg")
+user3.photos.attach(io: file, filename: "photo0jpg.jpg", content_type: "image/jpg")
 
 user4 = User.create(
   email: "varon@gmail.com" ,
@@ -96,8 +104,10 @@ user5 = User.create(
   service_type: "Fotografía",
   duration: "3 hs tiros y grabación!",
   includes: " fotos con diferentes lentes, grabación 4k y drone",
-  benefits: "Fotoshop para 40 fotos",
+  benefits: "Fotoshop para 40 fotos"
 )
+
+# user5.event_types = ["Cumpleaños Infantiles", "Cumpleaños Adultos", "Despedidas",  "Casamientos", "Bautismos", "Baby Showers", "Empresariales", "15 Años"]
 
 
 file = URI.open("https://static.wixstatic.com/media/f5bc95_8e0a9d88655d4c4c899e48c0f7d2d8e2~mv2.jpg/v1/fill/w_1927,h_1288,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/f5bc95_8e0a9d88655d4c4c899e48c0f7d2d8e2~mv2.jpg")
@@ -134,6 +144,9 @@ user7 = User.create(
   includes: " Proporcionamos una barra móvil totalmente equipada que se adapta a cualquier espacio y decoración, trabajaremos contigo para crear un menú de bebidas personalizado que se ajuste a tus gustos y preferencias.",
   benefits: " Nuestros bartenders también pueden encargarse de la gestión del inventario, la compra de los suministros necesarios y la limpieza de la barra."
 )
+
+# user7.event_types = ["Cumpleaños Adultos", "Despedidas", "Casamientos", "Empresariales"]
+
 file = URI.open("https://housepartybartenders.co.uk/wp-content/uploads/2020/04/bartender-hire.jpg")
 user7.photos.attach(io: file, filename: "bartender-hire.jpg " , content_type: "image/jpg")
 
@@ -151,8 +164,17 @@ User8 = User.create(
   password: "123456",
   name: "Bertín",
   user_name: "bertints",
-  supplier: false )
+  supplier: false)
 
+  puts "Se crearon 8 usuarios"
+
+event1 = Event.create(
+  name: "Cumpleaños Manu",
+  address: "Buenos Aires, Argentina",
+  date: Date.new(2023, 7, 18)
+)
+# event1.event_type = "Cumpleaños Infantiles"
+# event1.user = user1
 # user9 = User.create (
 #   email: "maria@gmail.com",
 #   password: "123456",
@@ -179,4 +201,3 @@ User8 = User.create(
 
 # file = URI.open("")
 # user9.photos.attach(io: file, filename: "" , content_type: "image/jpg")
-puts "seeds creadas"
