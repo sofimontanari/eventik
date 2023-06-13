@@ -3,15 +3,16 @@ class Event < ApplicationRecord
   belongs_to :event_type
   has_many :estimations
   validates_presence_of :name, :address, :date
+  validates :date, presence: true
   validates :status, acceptance: { accept: ['En proceso', 'Cancelado', 'Finalizado'] }
-  before_create :status
+  validate :check_date
+
   private
 
-  def set_status
-    if date > Date.today
-      self.status = 'Finalizado'
-    else
-      self.status = 'En proceso'
+  def check_date
+    if date <= Date.today
+      errors.add(:date, "La fecha de tu evento debe ser superior a la actual")
     end
   end
+
 end
