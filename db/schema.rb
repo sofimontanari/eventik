@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_154914) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_162547) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,49 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_154914) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "estimations", force: :cascade do |t|
+    t.float "price"
+    t.date "delivery_date"
+    t.string "status"
+    t.text "comments"
+    t.bigint "event_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_estimations_on_event_id"
+    t.index ["user_id"], name: "index_estimations_on_user_id"
+  end
+
+  create_table "event_types", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_event_types_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.date "date"
+    t.string "address"
+    t.string "status"
+    t.bigint "user_id", null: false
+    t.bigint "event_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_type_id"], name: "index_events_on_event_type_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "comment"
+    t.float "rating"
+    t.bigint "estimation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["estimation_id"], name: "index_reviews_on_estimation_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -71,4 +114,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_154914) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "estimations", "events"
+  add_foreign_key "estimations", "users"
+  add_foreign_key "event_types", "users"
+  add_foreign_key "events", "event_types"
+  add_foreign_key "events", "users"
+  add_foreign_key "reviews", "estimations"
 end
