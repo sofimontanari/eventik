@@ -17,12 +17,12 @@ class EventsController < ApplicationController
     @event.event_type_id = params[:event][:event_type_id].to_i
 
     if @event.save
-      redirect_to root_path, notice: "Creaste tu evento, ahora podés buscar servicios"
+      redirect_to users_path(event: @event), notice: "Creaste tu evento, ahora podés buscar servicios"
     else
       render :new, status: :unprocessable_entity
     end
-
   end
+
 
   private
 
