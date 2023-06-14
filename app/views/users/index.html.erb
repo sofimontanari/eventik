@@ -1,5 +1,10 @@
-<% @users.each do |supplier| %>
-  <% supplier.photos.each do |photo|  %>
-    <%= cl_image_tag photo.key, height: 300, width: 400%>
+<div class="container">
+  <% @users.each do |supplier| %>
+    <div class="card" style="width: 18rem;">
+        <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+      <div class="card-body">
+        <%= link_to supplier.business_name, user_path(supplier) %>
+      </div>
+    </div>
   <% end %>
-<% end %>
+</div>

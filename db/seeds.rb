@@ -7,10 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require "open-uri"
-User.destroy_all
-EventType.destroy_all
-Event.destroy_all
 Estimation.destroy_all
+Event.destroy_all
+EventType.destroy_all
+User.destroy_all
 puts "Creando Usuarios"
 
 user1 = User.create(
