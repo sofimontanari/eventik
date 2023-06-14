@@ -8,7 +8,11 @@
 
 require "open-uri"
 User.destroy_all
+EventType.destroy_all
+Event.destroy_all
+Estimation.destroy_all
 puts "Creando Usuarios"
+
 user1 = User.create(
   email: 'liopark@gmail.com',
   password: "123456",
@@ -38,12 +42,10 @@ user1.photos.attach(io: file, filename: "JUMPER-segunda-sesion-web_JUMPER-sesion
 
 file = URI.open("https://jumperpark.cl/wp-content/uploads/2022/06/JUMPER-segunda-sesion-web_JUMPER-sesion2-269-1-600x400-1.png")
 user1.photos.attach(io: file, filename: "JUMPER-segunda-sesion-web_JUMPER-sesion2-269-1-600x400-1.png" , content_type: "image/png")
-
-cumpleaños_infantiles = EventType.new(name: "Cumpleaños Infantiles")
-
-cumpleaños_infantiles.user_id = user1.id
-
-cumpleaños_infantiles.save!
+puts "..."
+cumpleanos_infantiles1 = EventType.new(name: "Cumpleaños Infantiles")
+cumpleanos_infantiles1.user_id = user1.id
+cumpleanos_infantiles1.save!
 
 user2 = User.create(
   email: "sofi@gmail.com",
@@ -68,6 +70,23 @@ user3 = User.create(
   includes: "Cocteles, restaurante, comida y salon de baile.",
   notes: "Sólo apto para mayores de edad"
 )
+puts "..."
+cumpleanos_adultos3 = EventType.new(name: "Cumpleaños Adultos")
+cumpleanos_adultos3.user_id = user3.id
+cumpleanos_adultos3.save!
+
+despedidas3 = EventType.new(name: "Despedidas")
+despedidas3.user_id = user3.id
+despedidas3.save!
+
+casamientos3 = EventType.new(name: "Casamientos")
+casamientos3.user_id = user3.id
+casamientos3.save!
+5
+
+empresariales3 = EventType.new(name: "Empresariales")
+empresariales3.user_id = user3.id
+empresariales3.save!
 
 # user3.event_types = ["Cumpleaños Adultos", "Despedidas", "Casamientos", "Empresariales"]
 
@@ -106,6 +125,39 @@ user5 = User.create(
   includes: " fotos con diferentes lentes, grabación 4k y drone",
   benefits: "Fotoshop para 40 fotos"
 )
+puts "..."
+cumpleanos_adultos5 = EventType.new(name: "Cumpleaños Adultos")
+cumpleanos_adultos5.user_id = user5.id
+cumpleanos_adultos5.save!
+
+despedidas5 = EventType.new(name: "Despedidas")
+despedidas5.user_id = user5.id
+despedidas5.save!
+
+casamientos5 = EventType.new(name: "Casamientos")
+casamientos5.user_id = user5.id
+casamientos5.save!
+
+
+empresariales5 = EventType.new(name: "Empresariales")
+empresariales5.user_id = user5.id
+empresariales5.save!
+
+bautismos5 = EventType.new(name: "Bautismos")
+bautismos5.user_id = user5.id
+bautismos5.save!
+
+baby5 = EventType.new(name: "Baby Showers")
+baby5.user_id = user5.id
+baby5.save!
+
+quince5 = EventType.new(name: "15 Años")
+quince5.user_id = user5.id
+quince5.save!
+
+cumpleanos_infantiles5 = EventType.new(name: "Cumpleaños Infantiles")
+cumpleanos_infantiles5.user_id = user5.id
+cumpleanos_infantiles5.save!
 
 # user5.event_types = ["Cumpleaños Infantiles", "Cumpleaños Adultos", "Despedidas",  "Casamientos", "Bautismos", "Baby Showers", "Empresariales", "15 Años"]
 
@@ -144,6 +196,23 @@ user7 = User.create(
   includes: " Proporcionamos una barra móvil totalmente equipada que se adapta a cualquier espacio y decoración, trabajaremos contigo para crear un menú de bebidas personalizado que se ajuste a tus gustos y preferencias.",
   benefits: " Nuestros bartenders también pueden encargarse de la gestión del inventario, la compra de los suministros necesarios y la limpieza de la barra."
 )
+puts "..."
+cumpleanos_adultos7 = EventType.new(name: "Cumpleaños Adultos")
+cumpleanos_adultos7.user_id = user7.id
+cumpleanos_adultos7.save!
+
+despedidas7 = EventType.new(name: "Despedidas")
+despedidas7.user_id = user7.id
+despedidas7.save!
+
+casamientos7 = EventType.new(name: "Casamientos")
+casamientos7.user_id = user7.id
+casamientos7.save!
+
+
+empresariales7 = EventType.new(name: "Empresariales")
+empresariales7.user_id = user7.id
+empresariales7.save!
 
 # user7.event_types = ["Cumpleaños Adultos", "Despedidas", "Casamientos", "Empresariales"]
 
@@ -167,12 +236,34 @@ User8 = User.create(
   supplier: false)
 
   puts "Se crearon 8 usuarios"
-
+  puts "creando evento"
 event1 = Event.create(
   name: "Cumpleaños Manu",
   address: "Buenos Aires, Argentina",
-  date: Date.new(2023, 7, 18)
+  date: Date.new(2023, 7, 18),
+  status: 'En proceso',
+  user_id: user2.id,
+  event_type_id: cumpleanos_infantiles1.id
 )
+puts "creando estimaciones"
+estimation1 = Estimation.create(
+  price: 30.00,
+  delivery_date: Date.new(2023, 7, 18),
+  status: 'En Negociación',
+  comments: 'Quiero negociar el precio',
+  event_id: event1.id,
+  user_id: user1.id
+)
+
+estimation2 = Estimation.create(
+  delivery_date: Date.new(2023, 7, 18),
+  status: 'Pendiente',
+  event_id: event1.id,
+  user_id: user5.id
+)
+
+puts "seed creada"
+
 # event1.event_type = "Cumpleaños Infantiles"
 # event1.user = user1
 # user9 = User.create (
