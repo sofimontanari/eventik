@@ -1,0 +1,19 @@
+<div class="container">
+<h6>Tus Eventos</h6>
+  <% current_user.events.each do |event| %>
+  <div class="card shadow">
+  <%= event.name %>
+  <%= event.date %>
+  <%= event.status %>
+    <div class="d-flex">
+      <%= link_to "Cotizaciones", root_path%>
+      <br>
+      <%= link_to "Plan", root_path%>
+      <br>
+      <%= link_to "Calificaciones", root_path%>
+    </div>
+
+  </div>
+  <% end %>
+
+</div>
