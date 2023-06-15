@@ -1,5 +1,14 @@
-<% @users.each do |supplier| %>
-  <% supplier.photos.each do |photo|  %>
-    <%= cl_image_tag photo.key, height: 300, width: 400%>
+<div class="container">
+  <% @suppliers.each do |supplier| %>
+    <div class="card" style="width: 18rem;">
+        <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+      <div class="card-body">
+      <% if @event %>
+        <%= button_to supplier.business_name, user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-success" %>
+      <% else %>
+        <%= link_to supplier.business_name, user_path(supplier) %>
+      <% end %>
+      </div>
+    </div>
   <% end %>
-<% end %>
+</div>

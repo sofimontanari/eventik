@@ -1,0 +1,22 @@
+<h1><%= @supplier.business_name %></h1>
+
+
+<% if params["event"] %>
+<div class="container shadow mt-3 p-3 w-50">
+    <h5 class="text-center">Mensaje al proveedor</h5> <h6><%= params[:event_type] %></h6>
+  <%= simple_form_for [@event, @estimation] do |f| %>
+    <%= f.input :delivery_date, html5:true, label: "¿Cuál es la fecha de Entrega?"%>
+    <%= f.input :comments, label: "Contale al proveedor lo que necesitás:"  %>
+    <%= f.hidden_field :event, value: @event %>
+    <%= f.hidden_field :user_id, value: params[:id] %>
+         <div class="row d-flex justify-content-center">
+      <div class="col-2">
+        <%= f.submit "Cotizar", class:"btn btn-success"%>
+      </div>
+      <div class="col-2">
+          <%= link_to "Volver", users_path(event: @event), class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<% end %>

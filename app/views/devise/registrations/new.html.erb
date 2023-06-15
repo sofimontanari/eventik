@@ -1,25 +1,69 @@
-<h2>Sign up</h2>
+<div class="container">
+  <h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :name,
+                  required: true,
+                  label: "Nombres"%>
+      <%= f.input :last_name,
+                  required: false,
+                  label: "Apellidos"%>
+      <%= f.input :user_name,
+                  required: true,
+                  label: "Nombre de usuario"%>
+      <%= f.input :birth_date,
+                  required: true,
+                  label: "Fecha de nacimiento"%>
+      <%= f.input :avatar,
+                  as: :file,
+                  required: false,
+                  label: "Foto de perfil"%>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  label: "Contraseñá",
+                  required: true,
+                  hint: ("#{@minimum_password_length} caracteres minimos" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  label: "Confirmar contraseñá",
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :supplier,
+                  label: "¿eres un proveedor?",
+                  required: false,
+                  wrapper_html: { class: "prove" } %>
+      <%= f.input :business_name,
+                  label: "Nombre de la empresa",
+                  required: false,
+                  wrapper_html: { class: "prove" } %>
+      <%= f.input :address,
+                  label: "Direccion",
+                  required: false,
+                  wrapper_html: { class: "prove" } %>
+      <%= f.input :rut,
+                  label: "Registro Unico Tributario",
+                  required: false,
+                  wrapper_html: { class: "prove" } %>
+      <%= f.input :description,
+                  label: "Descripccion de la empresa",
+                  required: false,
+                  wrapper_html: { class: "prove" } %>
+      <%= f.input :description,
+                  label: "Descripccion de la empresa",
+                  required: false,
+                  wrapper_html: { class: "prove" } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
