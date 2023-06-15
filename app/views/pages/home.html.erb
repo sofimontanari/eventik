@@ -1,8 +1,92 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 
-
-<%= link_to "Crear Evento", pages_events_path, class: "btn btn-success" %>
-
-<%= link_to "ver todos nuestros proveedores de servicios", users_path %>
-
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.npr.org/assets/img/2022/11/04/gettyimages-1183414292-1-_slide-edff8c3fe6afcab5c6457e3c7bd011f5c1745161-s1100-c50.jpg);">
+  <div class="container">
+    <h1>Un evento genial, necesita un plan genial </h1>
+    <p>Organizá tu evento de forma simple y rápida.
+      ¡Disfrutá el proceso!</p>
+      <% if current_user == nil || current_user.supplier == false %>
+        <%= link_to "Crear Evento", pages_events_path, class: "btn btn-success" %>
+      <% end %>
+  </div>
+</div>
+<br>
+<div class="mx-5 my-3">
+<h1>¡Es muy sencillo!</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card" >
+        <%= image_tag "calendario.png" %>
+        <div class="card-body">
+          <p class="card-text text-center"><strong>1. Nombra tu evento</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" >
+        <%= image_tag "party_articles.png" %>
+        <div class="card-body">
+          <p class="card-text text-center"><strong>2. Elige que vas a necesitar</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" >
+        <%= image_tag "supplier.png" %>
+        <div class="card-body">
+          <p class="card-text text-center"><strong>3. Escoge a tus proveedores</strong></p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" >
+        <%= image_tag "cotizacion.png" %>
+        <div class="card-body">
+          <p class="card-text text-center"><strong>4. Solicita cotizaciones</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="mx-5 my-3">
+<h1>¡Mira nuestros servicios destacados!</h1>
+</div>
+<div class="flex-container">
+  <div class="row">
+    <div class="col-4">
+      <div class="card-trip">
+        <img src="https://www.lamansiondelasideas.com/wp-content/uploads/2023/04/decoracion-cumpleanos.jpg" />
+        <div class="card-trip-infos">
+          <div>
+            <h2>Deco Center</h2>
+            <p>Realizamos decoracion para cumpleaños</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-trip">
+        <img src="https://www.casahaciendaqueirolo.com/blog/wp-content/uploads/2019/03/eventos.jpg" />
+        <div class="card-trip-infos">
+          <div>
+            <h2>Casa Queirolo</h2>
+            <p>Antiguo viñedo disponible para eventos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card-trip">
+        <img src="https://c8.alamy.com/comp/W3WW9C/barman-show-bartender-pours-alcoholic-cocktails-at-the-bar-W3WW9C.jpg" />
+        <div class="card-trip-infos">
+          <div>
+            <h2>WhisBar</h2>
+            <p>La perfecta opción de barmans</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
