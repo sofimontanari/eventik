@@ -1,0 +1,14 @@
+<div class="container">
+<h6>Tus Cotizaciones: </h6>
+
+  <% @estimations.each do |estimation| %>
+
+  <p>Estado de la cotización: <%= estimation.status %></p>
+  <p>Precio cotizado: <%= estimation.price %></p>
+  <p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
+  <%= link_to "Responder", edit_estimation_path(estimation) %>
+  <% end %>
+
+</div>
+
+<%= link_to "Volver", events_path %>

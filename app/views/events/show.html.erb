@@ -1,0 +1,9 @@
+
+<h6>Tus Cotizaciones para el Evento: <%= @event.name %></h6>
+
+<% @event.estimations.each do |estimation| %>
+<p>Proveedor:<%= User.find(estimation.user_id).business_name %></p>
+<p>Estado de la cotización: <%= estimation.status %></p>
+<p>Precio cotizado: <%= estimation.price %></p>
+<p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
+<% end %>

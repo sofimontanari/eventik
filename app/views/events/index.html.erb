@@ -6,7 +6,8 @@
   <%= event.date %>
   <%= event.status %>
     <div class="d-flex">
-      <%= link_to "Cotizaciones", root_path%>
+
+      <%= link_to "Cotizaciones", event_path(event) %>
       <br>
       <%= link_to "Plan", root_path%>
       <br>
