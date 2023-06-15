@@ -32,6 +32,10 @@
     <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
   <% end %>
 
+  <% if estimation.status== 'Aceptada'  %>
+  <%= link_to "Crear Review", new_estimation_review_path(estimation)  %>
+  <% end %>
+
 <% end %>
 
 <%= link_to "Mis Eventos", events_path(current_user) %>

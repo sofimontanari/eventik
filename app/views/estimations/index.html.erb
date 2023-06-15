@@ -7,7 +7,7 @@
   <p>Precio cotizado: <%= estimation.price %></p>
   <p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
   <p>Estado del servicio:
-    <% if estimation.delivery_date >= Date.today %>
+    <% if estimation.delivery_date <= Date.today %>
       <%= "Entregado" %>
     <% else %>
       <%= "En proceso de entrega" %>
