@@ -22,8 +22,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:event])
-    @estimation = Estimation.new
+    if params[:event]
+      @event = Event.find(params[:event])
+      @estimation = Estimation.new
+    end
   end
 
   private

@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new]
 
   def index
-    @estimations = Estimation.all
+  
   end
 
   def new

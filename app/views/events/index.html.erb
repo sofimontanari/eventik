@@ -1,4 +1,5 @@
 <div class="container">
+<%= link_to "Crear un Evento", pages_events_path %>
 <h6>Tus Eventos</h6>
   <% current_user.events.each do |event| %>
   <div class="card shadow">
@@ -9,9 +10,11 @@
 
       <%= link_to "Cotizaciones", event_path(event) %>
       <br>
-      <%= link_to "Plan", root_path%>
-      <br>
+
       <%= link_to "Calificaciones", root_path%>
+      <% if event.date > Date.today %>
+        <%= link_to "Agregar Servicios", users_path(event: event) %>
+      <% end %>
     </div>
 
   </div>

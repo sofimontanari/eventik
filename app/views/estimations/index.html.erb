@@ -6,7 +6,16 @@
   <p>Estado de la cotización: <%= estimation.status %></p>
   <p>Precio cotizado: <%= estimation.price %></p>
   <p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
-  <%= link_to "Responder", edit_estimation_path(estimation) %>
+  <p>Estado del servicio:
+    <% if estimation.delivery_date >= Date.today %>
+      <%= "Entregado" %>
+    <% else %>
+      <%= "En proceso de entrega" %>
+    <% end %>
+  </p>
+    <% if estimation.status != 'Aceptada' && estimation.status != 'Suspendida' && estimation.status != 'Cotizada por Proveedor' %>
+    <%= link_to "Responder", edit_estimation_path(estimation) %>
+    <% end %>
   <% end %>
 
 </div>
