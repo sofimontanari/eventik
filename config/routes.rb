@@ -11,5 +11,11 @@ Rails.application.routes.draw do
     resources :estimations, only: %i[new create]
   end
   resources :users, only: %i[index show]
-  resources :estimations, except: %i[new create]
+  resources :estimations, except: %i[new create] do
+    resources :reviews, only: %i[new create]
+  end
+  patch "estimations/accept/:id", to: "estimations#accept", as: "accept"
+  patch "estimations/cancel/:id", to: "estimations#cancel", as: "cancel"
+  patch "estimations/negotiate/:id", to: "estimations#negotiate", as: "negotiate"
+
 end
