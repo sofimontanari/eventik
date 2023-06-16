@@ -30,11 +30,13 @@
       <% end %>
     </p>
 
-    <% if estimation.status != 'Pendiente' && estimation.status != 'Aceptada' && estimation.status != 'Suspendida' %>
+  <%#= != 'Pendiente' && estimation.status != 'Aceptada' && estimation.status != 'Suspendida'     %>
+    <% if estimation.status == "Cotizada por Proveedor"%>
       <%= button_to "Aceptar", accept_path(estimation), method: :patch  %>
-      <%= button_to "Negociar una rebaja", negotiate_path(estimation), method: :patch %>
+      <%#= button_to "Negociar una rebaja", negotiate_path(estimation), method: :patch %>
+      <%= link_to "Negociar", edit_estimation_path(estimation) %>
       <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
-    <% elsif estimation.status == 'Pendiente' %>
+    <% elsif estimation.status == 'Pendiente' || estimation.status == "En Negociación" %>
       <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
     <% end %>
 

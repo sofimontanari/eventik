@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   end
   patch "estimations/accept/:id", to: "estimations#accept", as: "accept"
   patch "estimations/cancel/:id", to: "estimations#cancel", as: "cancel"
-  patch "estimations/negotiate/:id", to: "estimations#negotiate", as: "negotiate"
+  #patch "estimations/negotiate/:id", to: "estimations#negotiate", as: "negotiate"
 
 end
