@@ -1,6 +1,9 @@
 <div class="container">
 
+
 <h6>Tus Cotizaciones para el Evento: <%= @event.name %></h6>
+<h6> Tu evento es: <%= EventType.find(@event.event_type_id).name %></h6>
+<hr>
 <% suma = 0 %>
 <% @event.estimations.each do |estimation| %>
   <% if estimation.status == 'Aceptada' %>
@@ -11,38 +14,42 @@
 
 <br>
 
+
 <% @event.estimations.each do |estimation| %>
-<p>Proveedor:<%= User.find(estimation.user_id).business_name %></p>
-<p>Estado de la cotización: <%= estimation.status %></p>
-<p>Precio cotizado: <%= estimation.price %></p>
-<p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
-<p>Estado del servicio:
-    <% if estimation.delivery_date >= Date.today %>
-      <%= "Entregado" %>
-    <% else %>
-      <%= "En proceso de entrega" %>
+<div class="card w-50 mb-5 h-100">
+  <p>Proveedor:<%= User.find(estimation.user_id).business_name %></p>
+  <p>Tipo de servicio:<%= User.find(estimation.user_id).service_type %></p>
+  <p>Estado de la cotización: <%= estimation.status %></p>
+  <p>Precio cotizado: <%= estimation.price %></p>
+  <p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
+  <p>Estado del servicio:
+      <% if estimation.delivery_date >= Date.today %>
+        <%= "Entregado" %>
+      <% else %>
+        <%= "En proceso de entrega" %>
+      <% end %>
+    </p>
+
+    <% if estimation.status != 'Pendiente' && estimation.status != 'Aceptada' && estimation.status != 'Suspendida' %>
+      <%= button_to "Aceptar", accept_path(estimation), method: :patch  %>
+      <%= button_to "Negociar una rebaja", negotiate_path(estimation), method: :patch %>
+      <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
+    <% elsif estimation.status == 'Pendiente' %>
+      <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
     <% end %>
-  </p>
 
-  <% if estimation.status != 'Pendiente' && estimation.status != 'Aceptada' && estimation.status != 'Suspendida' %>
-    <%= button_to "Aceptar", accept_path(estimation), method: :patch  %>
-    <%= button_to "Negociar una rebaja", negotiate_path(estimation), method: :patch %>
-    <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
-  <% elsif estimation.status == 'Pendiente' %>
-    <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
+    <% if estimation.status == 'Aceptada' && !estimation.review %>
+    <%= link_to "Crear Review", new_estimation_review_path(estimation)  %>
+    <% end %>
+
   <% end %>
 
-  <% if estimation.status== 'Aceptada'  %>
-  <%= link_to "Crear Review", new_estimation_review_path(estimation)  %>
-  <% end %>
 
-<% end %>
+
+  <% if @event.date > Date.today %>
+    <%= link_to "Agregar Servicios", users_path(event: @event) %>
+  <% end %>
+</div>
 
 <%= link_to "Mis Eventos", events_path(current_user) %>
-
-<% if @event.date > Date.today %>
-  <%= link_to "Agregar Servicios", users_path(event: @event) %>
-<% end %>
-
-
 </div>

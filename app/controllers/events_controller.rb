@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new]
 
   def index
-  
+
   end
 
   def new
@@ -26,6 +25,21 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
   end
+
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.name = params["event"]["name"]
+    if @event.save
+      redirect_to events_path, notice: "Cambiaste el nombre del evento"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
 
   private
 
