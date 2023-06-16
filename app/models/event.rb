@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
   belongs_to :event_type
-  has_many :estimations
+  has_many :estimations, dependent: :destroy
   validates_presence_of :name, :address, :date
   validates :date, presence: true
   validates :status, acceptance: { accept: ['En proceso', 'Cancelado', 'Finalizado'] }

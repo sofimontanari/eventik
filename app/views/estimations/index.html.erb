@@ -1,10 +1,14 @@
 <div class="container">
 <h6>Tus Cotizaciones: </h6>
 
-  <% @estimations.each do |estimation| %>
 
+  <% @estimations.each do |estimation| %>
+  <p>Evento a cotizar: <%= Event.find(estimation.event_id).name  %></p>
+  <p>nombre del cliente: <%= User.find(Event.find(estimation.event_id).user_id).name %> </p>
+  <p>Consulta del cliente: <%= estimation.comments  %></p>
   <p>Estado de la cotización: <%= estimation.status %></p>
   <p>Precio cotizado: <%= estimation.price %></p>
+  <p>Tu respuesta: <%= estimation.feedback %></p>
   <p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
   <p>Estado del servicio:
     <% if estimation.delivery_date <= Date.today %>

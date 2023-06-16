@@ -24,11 +24,22 @@ class EstimationsController < ApplicationController
   end
 
   def update
-    @estimation.price = params["estimation"]["price"]
-    @estimation.status = 'Cotizada por Proveedor'
+    if current_user.supplier
+      @estimation.price = params["estimation"]["price"]
+      @estimation.status = 'Cotizada por Proveedor'
+      @estimation.feedback = params["estimation"]["feedback"]
+    else
+      @estimation.comments = params["estimation"]["comments"]
+      @estimation.status = 'En Negociación'
+    end
+
 
     if @estimation.save
-      redirect_to estimations_path, notice: "Tu Respuesta fue enviada al Cliente"
+      if current_user.supplier
+        redirect_to estimations_path, notice: "Tu Respuesta fue enviada al Cliente"
+      else
+        redirect_to event_path(@estimation.event), notice: "Tu consulta fue enviada al proveedor"
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -41,11 +52,11 @@ class EstimationsController < ApplicationController
     redirect_to event_path(@estimation.event)
   end
 
-  def negotiate
-    @estimation.status = 'En Negociación'
-    @estimation.save
-    redirect_to event_path(@estimation.event)
-  end
+  # def negotiate
+  #   @estimation.status = 'En Negociación'
+  #   @estimation.save
+  #   redirect_to event_path(@estimation.event)
+  # end
 
   def cancel
     @estimation.status = 'Suspendida'
