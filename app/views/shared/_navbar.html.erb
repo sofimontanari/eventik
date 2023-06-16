@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "logo.png", style: "width: 150px; height: auto;"%>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,9 +14,9 @@
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.supplier == true %>
-                <%= image_tag "no_image.png", class: "avatar" %>
+                <%= image_tag "no_image.png", class: "avatar", style: "width: 60px; height: auto; border: 2px solid rgb(255, 59, 184);" %>
               <% else  %>
-                <%= image_tag "https://kitt.lewagon.com/placeholder/users/#{current_user.user_name}", class: "avatar", alt: "dropdown menu" %>
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/#{current_user.user_name}", class: "avatar", style: "width: 60px; height: auto; border: 2px solid rgb(255, 59, 184);" %>
               <% end  %>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -29,7 +29,10 @@
         <% else %>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa-solid fa-bars" style="color: #000000;"></i>
+              <span class="fa-stack fa-lg">
+              <i class="fas fa-circle fa-stack-2x" style="color: rgb(255, 59, 184)"></i>
+              <i class="fas fa-bars fa-stack-1x fa-inverse"></i>
+              </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Iniciar sesion", new_user_session_path, class: "nav-link" %>
