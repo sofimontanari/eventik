@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     if params[:event]
       @event = Event.find(params[:event])
       @estimation = Estimation.new
+
     end
   end
 
