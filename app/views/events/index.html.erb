@@ -9,9 +9,12 @@
   <%= event.status %>
     <div class="d-flex">
 
-      <%= link_to "Cotizaciones", event_path(event) %>
-      <%= link_to "Editar tu evento", edit_event_path(event) %>
-      <br>
+      <%= link_to "Cotizaciones", event_path(event), class:"p-2" %>
+
+      <%= link_to "Editar tu evento", edit_event_path(event), class:"p-2" %>
+
+      <%= link_to "Delete", event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"p-2" %>
+
 
       <% if event.date > Date.today %>
         <%= link_to "Agregar Servicios", users_path(event: event) %>

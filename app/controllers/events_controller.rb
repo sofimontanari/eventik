@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-
+  before_action :set_event, only: %i[show edit update destroy]
   def index
 
   end
@@ -23,15 +23,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
     @event.name = params["event"]["name"]
     if @event.save
       redirect_to events_path, notice: "Cambiaste el nombre del evento"
@@ -40,8 +37,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event.destroy
+    redirect_to events_path, status: :see_other
+  end
+
 
   private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def set_event_params
     params.require(:event).permit(:name, :date, :address)
