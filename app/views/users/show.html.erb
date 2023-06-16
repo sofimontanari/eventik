@@ -6,7 +6,7 @@
 <div class="container shadow mt-3 p-3 w-50">
     <h5 class="text-center">Mensaje al proveedor</h5> <h6><%= params[:event_type] %></h6>
   <%= simple_form_for [@event, @estimation] do |f| %>
-    <%= f.input :delivery_date, html5:true, label: "¿Cuál es la fecha de Entrega?"%>
+    <%= f.input :delivery_date, input_html:{min: Date.today, max: @event.date} ,html5:true, label: "¿Cuál es la fecha de Entrega?"%>
     <%= f.input :comments, label: "Contale al proveedor lo que necesitás:"  %>
     <%= f.hidden_field :event, value: @event %>
     <%= f.hidden_field :user_id, value: params[:id] %>

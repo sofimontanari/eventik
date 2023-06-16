@@ -1,25 +1,26 @@
 <div class="container">
 <h6>Tus Cotizaciones: </h6>
 
-
   <% @estimations.each do |estimation| %>
-  <p>Evento a cotizar: <%= Event.find(estimation.event_id).name  %></p>
-  <p>nombre del cliente: <%= User.find(Event.find(estimation.event_id).user_id).name %> </p>
-  <p>Consulta del cliente: <%= estimation.comments  %></p>
-  <p>Estado de la cotización: <%= estimation.status %></p>
-  <p>Precio cotizado: <%= estimation.price %></p>
-  <p>Tu respuesta: <%= estimation.feedback %></p>
-  <p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
-  <p>Estado del servicio:
-    <% if estimation.delivery_date <= Date.today %>
-      <%= "Entregado" %>
-    <% else %>
-      <%= "En proceso de entrega" %>
-    <% end %>
-  </p>
-    <% if estimation.status != 'Aceptada' && estimation.status != 'Suspendida' && estimation.status != 'Cotizada por Proveedor' %>
-    <%= link_to "Responder", edit_estimation_path(estimation) %>
-    <% end %>
+    <div class="border">
+      <p>Evento a cotizar: <%= Event.find(estimation.event_id).name  %></p>
+      <p>nombre del cliente: <%= User.find(Event.find(estimation.event_id).user_id).name %> </p>
+      <p>Consulta del cliente: <%= estimation.comments  %></p>
+      <p>Estado de la cotización: <%= estimation.status %></p>
+      <p>Precio cotizado: <%= estimation.price %></p>
+      <p>Tu respuesta: <%= estimation.feedback %></p>
+      <p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
+      <p>Estado del servicio:
+        <% if estimation.delivery_date <= Date.today %>
+          <%= "Entregado" %>
+        <% else %>
+          <%= "En proceso de entrega" %>
+        <% end %>
+      </p>
+      <% if estimation.status != 'Aceptada' && estimation.status != 'Suspendida' && estimation.status != 'Cotizada por Proveedor' %>
+        <%= link_to "Responder", edit_estimation_path(estimation) %>
+      <% end %>
+    </div>
   <% end %>
 
 </div>
