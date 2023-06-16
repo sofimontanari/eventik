@@ -1,5 +1,6 @@
 <h1><%= @supplier.business_name %></h1>
 
+<%= @supplier.description %>
 
 <% if params["event"] %>
 <div class="container shadow mt-3 p-3 w-50">
@@ -20,3 +21,6 @@
   <% end %>
 </div>
 <% end %>
+
+<%= link_to "Volver", root_path %>
+<%= link_to "Crear Evento", pages_events_path  %>

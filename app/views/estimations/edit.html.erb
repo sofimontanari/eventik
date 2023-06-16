@@ -1,0 +1,17 @@
+<div class="container shadow mt-3 p-3 w-50">
+    <h5 class="text-center">Cotización</h5>
+
+  <%= simple_form_for @estimation do |f| %>
+    <%= f.label :delivery_date, label: "Fecha de Entrega: #{@estimation.delivery_date}" %>
+    <%= f.label :comments, label: "Comentarios del Cliente: #{@estimation.comments}"  %>
+    <%= f.input :price, label: "Precio cotizado:" %>
+    <div class="row d-flex justify-content-center">
+      <div class="col-2">
+        <%= f.submit "Responder", class:"btn btn-success"%>
+      </div>
+      <div class="col-2">
+          <%= link_to "Volver", estimations_path, class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

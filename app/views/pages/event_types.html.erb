@@ -1,4 +1,4 @@
-
+<%= link_to "Volver", root_path %>
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><%= button_to "Cumpleaños Infantiles", new_event_path, :method => :get, params: {event_type: "Cumpleaños Infantiles"} %></h5>
@@ -9,7 +9,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Cumpleaños Adultos</h5>
+    <h5 class="card-title"><%= button_to "Cumpleaños Adultos", new_event_path, :method => :get, params: {event_type: "Cumpleaños Adultos"} %></h5>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="card-link">Card link</a>
@@ -18,7 +18,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Despedidas</h5>
+    <h5 class="card-title"><%= button_to "Despedidas", new_event_path, :method => :get, params: {event_type: "Despedidas"} %></h5>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="card-link">Card link</a>
@@ -27,7 +27,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Casamientos</h5>
+    <h5 class="card-title"><%= button_to "Casamientos", new_event_path, :method => :get, params: {event_type: "Casamientos"} %></h5>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="card-link">Card link</a>
@@ -36,7 +36,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Bautismos</h5>
+    <h5 class="card-title"><%= button_to "Bautismos", new_event_path, :method => :get, params: {event_type: "Bautismos"} %></h5>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="card-link">Card link</a>
@@ -45,7 +45,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Baby Showers</h5>
+    <h5 class="card-title"><%= button_to "Baby Showers", new_event_path, :method => :get, params: {event_type: "Baby Showers"} %></h5>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="card-link">Card link</a>
@@ -54,7 +54,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Empresariales</h5>
+    <h5 class="card-title"><%= button_to "Empresariales", new_event_path, :method => :get, params: {event_type: "Empresariales"} %></h5>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="card-link">Card link</a>
@@ -63,16 +63,7 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">15 años</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-  </div>
-</div>
-
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Personalizados</h5>
+    <h5 class="card-title"><%= button_to "15 Años", new_event_path, :method => :get, params: {event_type: "15 Años"} %></h5>
     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="card-link">Card link</a>
