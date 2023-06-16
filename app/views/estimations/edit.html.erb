@@ -4,6 +4,7 @@
   <%= simple_form_for @estimation do |f| %>
     <%= f.label :delivery_date, label: "Fecha de Entrega: #{@estimation.delivery_date}" %>
     <%= f.label :comments, label: "Comentarios del Cliente: #{@estimation.comments}"  %>
+    <%= f.input :feedback, label: "Dale tu respuesta al cliente" %>
     <%= f.input :price, label: "Precio cotizado:" %>
     <div class="row d-flex justify-content-center">
       <div class="col-2">
