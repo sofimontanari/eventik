@@ -294,3 +294,185 @@ puts "seed creada"
 
 # file = URI.open("")
 # user9.photos.attach(io: file, filename: "" , content_type: "image/jpg")
+user8 = User.create(
+  email: "musica@gmail.com",
+  password: "123456",
+  name: "Diego Dicharri",
+  user_name: "Rocker",
+  supplier: true,
+  business_name: "Profes Rockers",
+  address: "Palermo, Buenos Aires",
+  description: "Somos un explosivo grupo de rock que te hará vibrar! Con nuestra música enérgica y potente, convertimos cada evento en una experiencia inolvidable. ¡Prepárate para dejarte llevar por el poder del rock! ¡Somos tu opción perfecta para un entretenimiento inigualable!. ",
+  service_type: "Entretenimiento",
+  duration: " Según el requerimiento del creador del evento, se evalúa el número de horas para realizar la cotización",
+)
+
+file = URI.open("http://agenciacomunica.soc.unicen.edu.ar/images/rock4.jpg")
+user8.photos.attach(io: file, filename: "rock4.jpg", content_type: "image/jpg")
+
+file = URI.open("http://agenciacomunica.soc.unicen.edu.ar/images/rock5.jpg")
+user8.photos.attach(io: file, filename: "rock5.jpg" , content_type: "image/jpg")
+
+file = URI.open("http://agenciacomunica.soc.unicen.edu.ar/images/rock1.jpeg")
+user8.photos.attach(io: file, filename: "rock1.jpeg" , content_type: "image/jpeg")
+
+file = URI.open("http://agenciacomunica.soc.unicen.edu.ar/images/rock2.jpeg")
+user8.photos.attach(io: file, filename: "rock2.jpeg" , content_type: "image/jpeg")
+
+cumpleanos_adultos8 = EventType.new(name: "Cumpleaños Adultos")
+cumpleanos_adultos8.user_id = user8.id
+cumpleanos_adultos8.save!
+
+despedidas8 = EventType.new(name: "Despedidas")
+despedidas8.user_id = user8.id
+despedidas8.save!
+
+user9 = User.create(
+  email: "globo-fiesta@gmail.com",
+  password: "123456",
+  name: "glbo",
+  user_name: "g-fiesta",
+  supplier: true,
+  business_name: "Globo Fiesta",
+  address: "Palermo, Buenos Aires",
+  description: "Servicios de decoración de fiestas para todos tus eventos. En Globofiesta dispones de dos formas para disfrutar de nuestros servicios de decoración para fiestas y eventos, consúltanos para un presupuesto a medida y totalmente personalizado.",
+  service_type: "Invitaciones & Decoración",
+  duration: " Según el requerimiento del creador del evento, se evalúa el número de horas para realizar la cotización",
+)
+
+file = URI.open("https://globofiesta.com/wp-content/uploads/2019/12/Centro-cumple-unicornio-768x1024.jpg")
+user9.photos.attach(io: file, filename: "Centro-cumple-unicornio-768x1024.jpg", content_type: "image/jpg")
+
+file = URI.open("https://globofiesta.com/wp-content/uploads/2019/12/centro-34-a%C3%B1os-detalle-768x1024.jpg")
+user9.photos.attach(io: file, filename: "centro-34-a%C3%B1os-detalle-768x1024.jpg" , content_type: "image/jpg")
+
+file = URI.open("https://globofiesta.com/wp-content/uploads/2019/12/Columna-feliz-a%C3%B1o-526x1024.jpg")
+user9.photos.attach(io: file, filename: "Columna-feliz-a%C3%B1o-526x1024.jpg" , content_type: "image/jpeg")
+
+file = URI.open("https://globofiesta.com/wp-content/uploads/2019/12/Comunion-Jorge-789x1024.jpg")
+user9.photos.attach(io: file, filename: "Comunion-Jorge-789x1024.jpg" , content_type: "image/jpeg")
+
+cumpleanos_adultos9 = EventType.new(name: "Cumpleaños Adultos")
+cumpleanos_adultos9.user_id = user9.id
+cumpleanos_adultos9.save!
+
+despedidas9 = EventType.new(name: "Despedidas")
+despedidas9.user_id = user9.id
+despedidas9.save!
+
+casamientos9 = EventType.new(name: "Casamientos")
+casamientos9.user_id = user9.id
+casamientos9.save!
+
+
+empresariales9 = EventType.new(name: "Empresariales")
+empresariales9.user_id = user9.id
+empresariales9.save!
+
+bautismos9 = EventType.new(name: "Bautismos")
+bautismos9.user_id = user9.id
+bautismos9.save!
+
+baby9 = EventType.new(name: "Baby Showers")
+baby9.user_id = user9.id
+baby9.save!
+
+quince9 = EventType.new(name: "15 Años")
+quince9.user_id = user9.id
+quince9.save!
+
+cumpleanos_infantiles9 = EventType.new(name: "Cumpleaños Infantiles")
+cumpleanos_infantiles9.user_id = user9.id
+cumpleanos_infantiles9.save!
+
+user10 = User.create(
+  email: "disfraz@gmail.com",
+  password: "123456",
+  name: "disfraz",
+  user_name: "todo-disfraz",
+  supplier: true,
+  business_name: "todo disfraz",
+  address: "San telmo, Buenos Aires",
+  description: "Todo Disfraz es marca registrada de TD Eventos SRL y desde el año 2002, trabajamos desarrollando un nuevo concepto en servicios de alquiler de trajes y disfraces",
+  service_type: "Disfraces & Accesorios",
+  duration: "se prestan los disfracez por dias, pregunta para cotizar tus disfraces",
+  includes: "Te ofrecemos una interesante variedad de trajes para eventos privados e institucionales, vestuario de cine, teatro y televisión, etc."
+)
+
+file = URI.open("https://www.tododisfraz.com.ar/wp-content/uploads/2016/12/Todo-Disfraz-Arlequ%C3%ADn-Siniestro-2621-300x450.jpg")
+user10.photos.attach(io: file, filename: "Todo-Disfraz-Arlequ%C3%ADn-Siniestro-2621-300x450.jpg", content_type: "image/jpg")
+
+file = URI.open("https://www.tododisfraz.com.ar/wp-content/uploads/2018/03/Todo-Disfraz-Atracador-La-Casa-de-Papel-2676.jpg")
+user10.photos.attach(io: file, filename: "Todo-Disfraz-Atracador-La-Casa-de-Papel-2676.jpg" , content_type: "image/jpg")
+
+file = URI.open("https://www.tododisfraz.com.ar/wp-content/uploads/2022/10/Todo-Disfraz-Crash-Test-Dummy-2779-300x450.jpg")
+user10.photos.attach(io: file, filename: "Todo-Disfraz-Crash-Test-Dummy-2779-300x450.jpg" , content_type: "image/jpeg")
+
+file = URI.open("https://www.tododisfraz.com.ar/wp-content/uploads/2016/07/Todo-Disfraz-P%C3%A1jaro-Loco-2567-300x450.jpg")
+user10.photos.attach(io: file, filename: "Todo-Disfraz-P%C3%A1jaro-Loco-2567-300x450.jpg" , content_type: "image/jpeg")
+
+empresariales10 = EventType.new(name: "Empresariales")
+empresariales10.user_id = user10.id
+empresariales10.save!
+
+cumpleanos_infantiles10 = EventType.new(name: "Cumpleaños Infantiles")
+cumpleanos_infantiles10.user_id = user10.id
+cumpleanos_infantiles10.save!
+
+user11 = User.create(
+  email: "chef@gmail.com",
+  password: "123456",
+  name: "chef-privado",
+  user_name: "takeachef",
+  supplier: true,
+  business_name: "Takeachef",
+  address: "Palermo, Buenos Aires",
+  description: "¿Queres disfrutar de un servicio de restaurante único y personalizado sin moverte de casa? Elige un Chef Privado.",
+  service_type: "Catering",
+  duration: " Según el requerimiento del creador del evento, se evalúa el número de horas para realizar la cotización",
+  includes: "Incluye experiencia personalizada, alimentos de la mas alta calidad y servicio completo de limpieza",
+)
+
+file = URI.open("https://img.freepik.com/vector-premium/chef-logo-diseno-vector-plantilla-restaurante-logo-silueta-chef-vector-cocina-logo_625890-149.jpg")
+user11.photos.attach(io: file, filename: "hef-logo-diseno-vector-plantilla-restaurante-logo-silueta-chef-vector-cocina-logo_625890-149.jpg" , content_type: "image/jpeg")
+
+file = URI.open("https://287524.fs1.hubspotusercontent-na1.net/hubfs/287524/Imported_Blog_Media/estaciones-de-trabajo-cocina-profesional-2-Dec-17-2022-07-23-41-8269-PM.jpg")
+user11.photos.attach(io: file, filename: "estaciones-de-trabajo-cocina-profesional-2-Dec-17-2022-07-23-41-8269-PM.jpg", content_type: "image/jpg")
+
+file = URI.open("https://revistaedu.co/wp-content/uploads/2020/04/chef-una-profesion-revista-edu-co-1024x573.jpg")
+user11.photos.attach(io: file, filename: "chef-una-profesion-revista-edu-co-1024x573.jpg" , content_type: "image/jpg")
+
+cumpleanos_adultos11 = EventType.new(name: "Cumpleaños Adultos")
+cumpleanos_adultos11.user_id = user11.id
+cumpleanos_adultos11.save!
+
+despedidas11 = EventType.new(name: "Despedidas")
+despedidas11.user_id = user11.id
+despedidas11.save!
+
+casamientos11 = EventType.new(name: "Casamientos")
+casamientos11.user_id = user11.id
+casamientos11.save!
+
+
+empresariales11 = EventType.new(name: "Empresariales")
+empresariales11.user_id = user11.id
+empresariales11.save!
+
+bautismos11 = EventType.new(name: "Bautismos")
+bautismos11.user_id = user11.id
+bautismos11.save!
+
+baby11 = EventType.new(name: "Baby Showers")
+baby11.user_id = user11.id
+baby11.save!
+
+quince11 = EventType.new(name: "15 Años")
+quince11.user_id = user11.id
+quince11.save!
+
+cumpleanos_infantiles11 = EventType.new(name: "Cumpleaños Infantiles")
+cumpleanos_infantiles11.user_id = user11.id
+cumpleanos_infantiles11.save!
+
+puts "Seed finalizada"

@@ -17,7 +17,11 @@ class UsersController < ApplicationController
       end
 
     else
-      @suppliers = User.where(supplier: true)
+      if params[:query].present?
+        @suppliers = User.where("business_name ILIKE :query AND supplier = :supplier", query: "%#{params[:query]}%", supplier: true)
+      else
+        @suppliers = User.where(supplier: true)
+      end
     end
   end
 

@@ -11,3 +11,35 @@
 @import "components/index";
 @import "pages/index";
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 50px;
+  margin-right: 0;
+}
+
+.aside ul .service::before,
+.aside ul .service::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.aside ul li.filter {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 7px;
+}
+.aside ul li.filter:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+
+}
+.aside ul li.filter:active {
+  background-color: rgba(0, 0, 0, 0.3);
+}
