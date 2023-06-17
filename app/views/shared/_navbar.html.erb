@@ -23,6 +23,8 @@
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               <% if current_user.supplier == true %>
                 <%= link_to "Cotizaciones", estimations_path, class: "nav-link nav-item active" %>
+              <% else %>
+                <%= link_to "Mis eventos", events_path, class: "nav-link nav-item active" %>
               <% end %>
             </div>
           </li>

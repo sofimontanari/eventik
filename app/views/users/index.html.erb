@@ -1,10 +1,10 @@
-<div class="d-flex">
+<div class="user-service d-flex">
   <div class="aside p-4" style="background-color: rgb(255, 255, 255); height: calc(100vh - 130px)">
       <%= form_with url: users_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
             params[:query],
             class: "form-control rounded-pill",
-            placeholder: "Busca por el nombre"
+            placeholder: "Nombre"
         %>
       <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
     <% end %>
@@ -21,7 +21,7 @@
     <%= link_to "Pagina principal", root_path, class:"btn btn-success" %>
   </div>
   <div class="container">
-  <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap">
       <% @suppliers.each do |supplier| %>
         <div class="card" style="width: 18rem;" data-service-type="<%= supplier.service_type %>">
           <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
@@ -29,7 +29,7 @@
             <% if @event %>
               <%= button_to supplier.business_name, user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-success" %>
             <% else %>
-              <%= link_to supplier.business_name, user_path(supplier) %>
+              <%= link_to supplier.business_name, user_path(supplier), class:"btn btn-success"  %>
             <% end %>
             <%= supplier.service_type %>
           </div>
