@@ -1,16 +1,16 @@
-<div class="container">
-  <h2>Sign up</h2>
+<div class="container p-5 w-50 bg-light shadow rounded my-2">
+  <h2 class= "text-center mb-3">Bienvenido a Eventik <i class="fa-solid fa-face-smile" style="color: #FF3BB8;"></i></h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
+    <div class="form-inputs lh-lg">
       <%= f.input :name,
                   required: true,
-                  label: "Nombres"%>
+                  label: "Nombre"%>
       <%= f.input :last_name,
                   required: false,
-                  label: "Apellidos"%>
+                  label: "Apellido"%>
       <%= f.input :user_name,
                   required: true,
                   label: "Nombre de usuario"%>
@@ -26,42 +26,50 @@
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
       <%= f.input :password,
-                  label: "Contraseñá",
+                  label: "Contraseña",
                   required: true,
                   hint: ("#{@minimum_password_length} caracteres minimos" if @minimum_password_length),
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :password_confirmation,
-                  label: "Confirmar contraseñá",
+                  label: "Confirmá tu contraseña",
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :supplier,
-                  label: "¿eres un proveedor?",
+                  label: "¿Querés ofrecer un Servicio?",
                   required: false,
                   wrapper_html: { class: "prove" } %>
       <%= f.input :business_name,
-                  label: "Nombre de la empresa",
-                  required: false,
+                  label: "Nombre de tu Empresa",
+                  required: true,
                   wrapper_html: { class: "prove" } %>
       <%= f.input :address,
-                  label: "Direccion",
-                  required: false,
+                  label: "Dirección",
+                  required: true,
                   wrapper_html: { class: "prove" } %>
       <%= f.input :rut,
-                  label: "Registro Unico Tributario",
+                  label: "Registro Único Tributario",
                   required: false,
+                  wrapper_html: { class: "prove" } %>
+      <%= f.input :service_type,
+                  :collection => ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"],
+                  label: "Elegí la categoría que representa tu servicio",
+                  required: true,
                   wrapper_html: { class: "prove" } %>
       <%= f.input :description,
                   label: "Descripccion de la empresa",
-                  required: false,
+                  required: true,
                   wrapper_html: { class: "prove" } %>
-      <%= f.input :description,
-                  label: "Descripccion de la empresa",
+      <%= f.input :event_types,
+                  as: :check_boxes,
+                  input_html: {multiple: true} ,
+                  :collection => ["Cumpleaños Infantiles", "Cumpleaños Adultos", "Despedidas", "Casamientos", "Bautismos", "Baby Showers", "Empresariales", "15 Años", "Personalizados" ],
+                  label: "Seleccioná el/los tipo/s de Evento/s en el/los que prestás servicio",
                   required: false,
                   wrapper_html: { class: "prove" } %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+    <div class="form-actions d-flex mb-3">
+      <%= f.button :submit, "Sign up", class: "btn btn-success text-light flex-grow-1" %>
     </div>
   <% end %>
 
