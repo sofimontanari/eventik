@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  SERVICES = ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios" ]
+  SERVICES = ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"]
   has_many_attached :photos
   has_many :event_types
   has_many :events
