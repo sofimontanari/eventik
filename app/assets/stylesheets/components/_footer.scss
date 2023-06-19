@@ -1,0 +1,46 @@
+.footer {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  color: rgba(0,0,0,0.3);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  box-shadow: -14px 4px 10px 1px rgba(0, 0, 0, 0.5);
+}
+.footer ul {
+  margin: 0px 0px 0px 50px;
+  list-style: none;
+  padding: 0;
+  color: rgb(255, 59, 184,);
+}
+.footer .copyright li {
+  margin-right: 10px; /* Opcional: para agregar un espacio entre los elementos de la lista */
+}
+
+.footer .copyright li a {
+  text-decoration: none;
+  color: rgb(255, 59, 184);
+}
+
+.footer .copyright li a:hover {
+  text-decoration: underline;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+.footer-links a {
+  color: rgb(255, 59, 184);
+  opacity: 0.5;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+}

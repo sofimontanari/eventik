@@ -1,10 +1,10 @@
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.05)), url(https://res.cloudinary.com/dqwouraji/image/upload/v1687000269/Dise%C3%B1o_sin_t%C3%ADtulo_jg1e3v.png);">
   <div class="container">
     <h1>Un evento genial, </h1>
     <h1>necesita un plan genial! </h1>
     <p class= "mt-3 mb-5"> Organizá tu evento de forma simple y rápida.
     <br> ¡Disfrutá el proceso!</p>
+
       <% if current_user == nil || current_user.supplier == false %>
         <%= link_to "Crear mi Evento", pages_events_path, class: "btn btn-success text-light" %>
       <% end %>
@@ -114,7 +114,11 @@
   <div class= "d-flex justify-content-start align-items-center pt-4 mb-4 pb-5">
     <% @reviews.take(3).each do |review| %>
       <div class="card border-0 my-2" style="width: 18rem;">
-        <%= image_tag "no_image", class:"img-fluid rounded-start ms-0" %>
+        <% if review.estimation.event.user.avatar.attached? %>
+          <%= cl_image_tag review.estimation.event.user.avatar.key, height: 180, width: 180, crop: :fill, class:"img-fluid rounded-start ms-0" %>
+        <% else %>
+          <%= image_tag "no_image", class:"img-fluid rounded-start ms-0" %>
+        <% end %>
         <div class="card-body ms-1">
         <h5 class="card-title pb-1"><%= review.estimation.event.user.name %></h5>
         <d-flex>
