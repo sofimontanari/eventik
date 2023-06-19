@@ -43,37 +43,35 @@
   </div>
 
 <div class="container mt-5">
-  <table class="table table-hover">
-    <thead class="table-light">
+  <table class="table table-hover table-responsive">
+    <thead class="table-light table align-middle">
       <tr>
         <th scope="col" class="ps-3">Nº</th>
+        <th scope="col">Solicitante</th>
         <th scope="col">Evento</th>
-        <th scope="col">Nombre del usuario</th>
+        <th scope="col">Fecha del evento</th>
+        <th scope="col">Consulta del cliente</th>
         <th scope="col">Estado de la cotizacion</th>
-        <th scope="col">Estado del servicio</th>
+        <th scope="col"></th>
       </tr>
     </thead>
-    <tbody class="table-light">
-      <% current_user.events.order(date: :asc).each_with_index do |event, index| %>
+    <tbody class="table-light table align-middle">
+      <% @estimations.each_with_index do |estimation, index| %>
         <tr class="text-start ms-1">
           <th scope="row", class="ps-3"><%= index + 1 %></th>
-            <td> <%= event.name %></td>
-            <td><%= EventType.find(event.event_type_id).name %></td>
-            <td><%= "#{event.date.day}/#{event.date.month}/#{event.date.year}" %></td>
-            <td><%= event.estimations.count%>
-            <%= link_to "", event_path(event), class:"fa-regular fa-eye text-decoration-none text-muted ms-1", data: {toggle:'tooltip' }, title:"Ver Cotizaciones" %> </td>
-            <td> <% if event.status == 'En proceso'%>
-              <span><%= event.status%><i class="fa-solid fa-circle ms-3 border border-dark-subtle rounded-circle border border-2" style="color: #F2FF4B"></i><span>
-            <% else %>
-              <span><%= event.status%><i class="fa-solid fa-circle ms-3 border border-dark-subtle rounded-circle border border-2" style="color: #2EFF94"></i><span>
-            <% end %>
-            </td>
+            <td><%= User.find(Event.find(estimation.event_id).user_id).name %></td>
+            <td><%= Event.find(estimation.event_id).name %></td>
+            <td><%= estimation.delivery_date %></td>
+            <td><%= estimation.comments %></td>
+            <td><%= estimation.status %></td>
             <td>
-              <%= link_to "", edit_event_path(event), class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Editar Evento"%>
-              <%= link_to "", event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"fa-regular fa-trash-can mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Eliminar Evento" %>
-              <% if event.date > Date.today %>
-              <%= link_to "", users_path(event: event), class:"fa-regular fa-square-plus text-decoration-none mx-2 text-muted", data: {toggle:'tooltip' }, title:"Agregar servicios" %>
-              <% end %>
+            <% if estimation.status == "Cotizada por Proveedor" %>
+              Esperando respuesta
+            <% elsif estimation.status == "Pendiente" || estimation.status == "En Negociación" %>
+              <%= link_to "Responder", edit_estimation_path(estimation) %>
+            <% else %>
+              Cerrado
+            <% end %>
             </td>
         </tr>
       <% end %>
