@@ -5,8 +5,8 @@
     <h1><%= @supplier.business_name %></h1>
 
     <p style="font-size: 15px; margin-top:-11px; margin-bottom:-11px" ></i> <strong>Total de reseñas</strong> <%= @total_reviews %> <strong> Evaluación promedio</strong> <%= @promedio%>
-     <% if @promedio != "Este proveedor aún no tiene comentarios"   %>
-       <% @promedio.times do  %>
+      <% if @promedio != "Este proveedor aún no tiene comentarios"   %>
+        <% @promedio.times do  %>
                 <i class="fa-sharp fa-solid fa-star pb-1" style="color: #FF3BB8;"></i>
       <% end %>
     <% end %>

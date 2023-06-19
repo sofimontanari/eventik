@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_supplier, only: %i[show]
+  before_action :set_supplier, only: %i[show ]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-
     if params[:event]
       @event = Event.find(params[:event])
       @name = @event.event_type.name
@@ -23,6 +22,7 @@ class UsersController < ApplicationController
         @suppliers = User.where(supplier: true)
       end
     end
+
   end
 
   def show
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     if @total_reviews != 0
       @promedio = (@suma_rating / @total_reviews).ceil
       else
-       @promedio = "Este proveedor aún no tiene comentarios"
+      @promedio = "Este proveedor aún no tiene comentarios"
     end
 
 

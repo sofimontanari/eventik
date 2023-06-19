@@ -61,7 +61,11 @@
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
-              <p style="color: rgb(50, 50, 50)">Aqui va el rating</p>
+              <p style="font-size: 15px; margin-top:-11px; margin-bottom:-11px" ></i> <strong>Total de reseñas</strong> <%= @total_reviews %> <%= @promedio%>
+                <% if @promedio != "Este proveedor aún no tiene comentarios"   %>
+                  <p>prueba</p>
+              <% end %>
+              </p>
             </div>
           </div>
           <% end %>
