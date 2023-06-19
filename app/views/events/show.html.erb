@@ -4,13 +4,8 @@
 <h6>Tus Cotizaciones para el Evento: <%= @event.name %></h6>
 <h6> Tu evento es: <%= EventType.find(@event.event_type_id).name %></h6>
 <hr>
-<% suma = 0 %>
-<% @event.estimations.each do |estimation| %>
-  <% if estimation.status == 'Aceptada' %>
-    <% suma += estimation.price %>
-  <% end %>
-<% end %>
-<%= "El gasto de tu Evento es US$ #{suma}" %>
+
+<%= "El gasto de tu Evento es US$ #{@event.total_price}" %>
 
 <br>
 
@@ -43,10 +38,14 @@
     <% if estimation.status == 'Aceptada' && !estimation.review %>
     <%= link_to "Crear Review", new_estimation_review_path(estimation)  %>
     <% end %>
-
+    <% if estimation.status == 'Aceptada'%>
+      <% if estimation.chatroom %>
+        <%= link_to "Chat", chatroom_path(estimation.chatroom) %>
+        <% else %>
+        <%= button_to "Chat", estimation_chatrooms_path(estimation.id), method: :post %>
+      <% end %>
+    <% end %>
   <% end %>
-
-
 
   <% if @event.date > Date.today %>
     <%= link_to "Agregar Servicios", users_path(event: @event) %>
