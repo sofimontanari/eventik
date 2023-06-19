@@ -24,6 +24,7 @@ class EstimationsController < ApplicationController
   end
 
   def update
+
     if current_user.supplier
       @estimation.price = params["estimation"]["price"]
       @estimation.status = 'Cotizada por Proveedor'
@@ -48,6 +49,9 @@ class EstimationsController < ApplicationController
 
   def accept
     @estimation.status = 'Aceptada'
+    evento = @estimation.event
+    evento.total_price += @estimation.price
+    evento.save
     @estimation.save
     redirect_to event_path(@estimation.event)
   end
@@ -73,4 +77,5 @@ class EstimationsController < ApplicationController
   def set_estimation_params
     params.require(:estimation).permit(:delivery_date, :comments)
   end
+
 end
