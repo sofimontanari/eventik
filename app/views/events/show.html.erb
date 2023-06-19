@@ -43,10 +43,12 @@
     <% if estimation.status == 'Aceptada' && !estimation.review %>
     <%= link_to "Crear Review", new_estimation_review_path(estimation)  %>
     <% end %>
-    <% if estimation.chatroom %>
-    <%= link_to "Chat", chatroom_path(estimation.chatroom) %>
-    <% else %>
-    <%= button_to "Chat", estimation_chatrooms_path(estimation.id), method: :post %>
+    <% if estimation.status == 'Aceptada'%>
+      <% if estimation.chatroom %>
+        <%= link_to "Chat", chatroom_path(estimation.chatroom) %>
+        <% else %>
+        <%= button_to "Chat", estimation_chatrooms_path(estimation.id), method: :post %>
+      <% end %>
     <% end %>
   <% end %>
 
