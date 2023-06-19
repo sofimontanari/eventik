@@ -22,6 +22,28 @@ class UsersController < ApplicationController
   end
 
   def show
+
+    @user = User.find(params[:id])
+    #@comments = Review.joins(:estimation).where(estimations: { user_id: @user.id }).pluck(:comment, :rating)
+    @reviews = Review.joins(:estimation).where(estimations: { user_id: @user.id })
+    @suma_rating = 0
+    @reviews.each do |review|
+    @suma_rating += review.rating
+    end
+    @total_reviews = @reviews.size
+    if @total_reviews != 0
+      @promedio = (@suma_rating / @total_reviews).ceil
+      else
+       @promedio = "Este proveedor aún no tiene comentarios"
+    end
+
+
+    @suppliers = User.where(supplier: true)
+    @users = User.all
+
+    @estimations = Estimation.all
+    @events = Event.all
+
     if params[:event]
       @event = Event.find(params[:event])
       @estimation = Estimation.new
