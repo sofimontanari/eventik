@@ -25,6 +25,7 @@
                     autofocus: true,
                     input_html: { autocomplete: "email" }%>
         <%= f.input :birth_date,
+                    html5:true,
                     required: true,
                     label: "Fecha de nacimiento"%>
         <%= f.input :avatar,
@@ -105,6 +106,7 @@
                     autofocus: true,
                     input_html: { autocomplete: "email" }%>
         <%= f.input :birth_date,
+                    html5:true,
                     required: true,
                     label: "Fecha de nacimiento"%>
         <%= f.input :avatar,
@@ -113,7 +115,7 @@
                     label: "Foto de perfil"%>
         <%= f.input :password,
                     label: "Contraseña Actual",
-                    hint: "Si no querés modificarla, dejala en balnco",
+                    hint: "Si no querés modificarla, dejala en blanco",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
@@ -138,5 +140,5 @@
     <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"text-secondary text-decoration-none border-0 bg-light" %>
   </div>
 
-  <%= link_to "Volver", :back %>
+  <%= link_to "Volver", root_path, class: "btn btn-info text-light" %>
 </div>
