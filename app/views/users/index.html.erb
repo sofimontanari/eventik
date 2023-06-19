@@ -20,26 +20,26 @@
     </ul>
     <%= link_to "Pagina principal", root_path, class:"btn btn-success" %>
   </div>
-  <div class="container">
-
-  <div class="d-flex flex-wrap justify-content-evenly">
-    <% @suppliers.each do |supplier| %>
-      <div class="card-trip me-2 mb-4" style="width: 18rem; height: 383px; overflow-y: auto;" data-service-type="<%= supplier.service_type %>">
-        <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
-        <div class="card-trip-infos">
-          <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
-          <div style="max-height: 200px; overflow-y: auto;">
-            <p><%= supplier.description %></p>
+  <div class="cards-scroll container">
+    <div class="d-flex flex-wrap justify-content-evenly">
+      <% @suppliers.each do |supplier| %>
+        <div class="card-trip me-2 mb-4" style="width: 18rem; height: 383px; overflow-y: auto;" data-service-type="<%= supplier.service_type %>">
+          <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+          <div class="card-trip-infos">
+            <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
+            <div style="max-height: 200px; overflow-y: auto;">
+              <p><%= supplier.description %></p>
+            </div>
+            <% if @event %>
+              <%= button_to "Ver información", user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-secondary mt-2" %>
+            <% else %>
+              <%= link_to "Ver información", user_path(supplier), class:"btn btn-secondary mt-2"  %>
+            <% end %>
           </div>
-          <% if @event %>
-            <%= button_to "Ver información", user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-secondary mt-2" %>
-          <% else %>
-            <%= link_to "Ver información", user_path(supplier), class:"btn btn-secondary mt-2"  %>
-          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 
