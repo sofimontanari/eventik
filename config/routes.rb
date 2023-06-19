@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: %i[index show]
   resources :estimations, except: %i[new create] do
+    resources :chatrooms, only: :create
     resources :reviews, only: %i[new create]
   end
   patch "estimations/accept/:id", to: "estimations#accept", as: "accept"

@@ -20,6 +20,13 @@
       <% if estimation.status != 'Aceptada' && estimation.status != 'Suspendida' && estimation.status != 'Cotizada por Proveedor' %>
         <%= link_to "Responder", edit_estimation_path(estimation) %>
       <% end %>
+      <% if estimation.status == 'Aceptada'%>
+        <% if estimation.chatroom %>
+          <%= link_to "Chat", chatroom_path(estimation.chatroom) %>
+          <% else %>
+          <%= button_to "Chat", estimation_chatrooms_path(estimation.id), method: :post %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 
