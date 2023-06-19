@@ -11,10 +11,12 @@ $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
-$primary:    $blue;
-$success:    rgb(255, 59, 184);
-$info:       $yellow;
+
+$body-color: $gray-strongest;
+$primary:    $pink-button;
+$success:    $pink-button;
+$info:       $yellow-button;
+
 $danger:     $red;
 $warning:    $orange;
 
@@ -24,3 +26,6 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+$text-light: $pink-text-button;
+$text-success: $pink-text;
+$bg-light: $gray-middle;

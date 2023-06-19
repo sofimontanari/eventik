@@ -1,71 +1,64 @@
-<%= link_to "Volver", root_path %>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= button_to "Cumpleaños Infantiles", new_event_path, :method => :get, params: {event_type: "Cumpleaños Infantiles"} %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
+<div class="container pb-4">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+      <li class="breadcrumb-item active" aria-current="page">Mi Evento es</li>
+    </ol>
+</nav>
 </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= button_to "Cumpleaños Adultos", new_event_path, :method => :get, params: {event_type: "Cumpleaños Adultos"} %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-  </div>
-</div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= button_to "Despedidas", new_event_path, :method => :get, params: {event_type: "Despedidas"} %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-  </div>
-</div>
+<div class="container p-4 mb-4 w-100 shadow d-flex flex-wrap justify-content-between">
+    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5><%= button_to "Cumpleaños Infantiles", new_event_path, :method => :get, params: {event_type: "Cumpleaños Infantiles"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-1" %></h5>
+      </div>
+    </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= button_to "Casamientos", new_event_path, :method => :get, params: {event_type: "Casamientos"} %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-  </div>
-</div>
+    <div class="card m-3 bg-light shadow rounded my-2 " style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5><%= button_to "Cumpleaños Adultos", new_event_path, :method => :get, params: {event_type: "Cumpleaños Adultos"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-1" %></h5>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= button_to "Bautismos", new_event_path, :method => :get, params: {event_type: "Bautismos"} %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-  </div>
-</div>
+      </div>
+    </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= button_to "Baby Showers", new_event_path, :method => :get, params: {event_type: "Baby Showers"} %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-  </div>
-</div>
+    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5><%= button_to "Despedidas", new_event_path, :method => :get, params: {event_type: "Despedidas"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+       </div>
+    </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= button_to "Empresariales", new_event_path, :method => :get, params: {event_type: "Empresariales"} %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-  </div>
-</div>
+    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5><%= button_to "Casamientos", new_event_path, :method => :get, params: {event_type: "Casamientos"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+      </div>
+    </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= button_to "15 Años", new_event_path, :method => :get, params: {event_type: "15 Años"} %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-  </div>
+    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5><%= button_to "Bautismos", new_event_path, :method => :get, params: {event_type: "Bautismos"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+
+      </div>
+    </div>
+
+    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= button_to "Baby Showers", new_event_path, :method => :get, params: {event_type: "Baby Showers"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+      </div>
+    </div>
+
+    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= button_to "Empresariales", new_event_path, :method => :get, params: {event_type: "Empresariales"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+      </div>
+    </div>
+
+    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5 class="card-title"><%= button_to "15 Años", new_event_path, :method => :get, params: {event_type: "15 Años"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+      </div>
+    </div>
+
+
+
 </div>
