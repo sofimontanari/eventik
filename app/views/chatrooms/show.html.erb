@@ -3,10 +3,10 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
       <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
-      <li class="breadcrumb-item"><%= link_to "Mis Cotizaciones", root_path, class: "text-decoration-none text-success" %></li>
+      <li class="breadcrumb-item"><%= link_to "Cotizaciones del Evento: #{Estimation.find_by(id: @chatroom.estimation_id).event.name}", event_path(Estimation.find_by(id: @chatroom.estimation_id).event), class: "text-decoration-none text-success" %></li>
       <li class="breadcrumb-item active" aria-current="page">Chat</li>
     </ol>
-</nav>
+  </nav>
 </div>
 
 <div class="container chatroom"  data-controller="chatroom-subscription"
@@ -22,7 +22,7 @@
   <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|%>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@chatroom.name}",
+      placeholder: "Mensaje ##{@chatroom.name}",
       wrapper_html: {class: "flex-grow-1"}
     %>
     <%= f.submit "Enviar", class: "btn btn-primary text-light mb-3" %>
