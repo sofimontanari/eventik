@@ -4,7 +4,7 @@
         <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
         <li class="breadcrumb-item active" aria-current="page">Mis Eventos</li>
       </ol>
-  </nav>
+    </nav>
   </div>
 
   <div class="d-flex justify-content-between container">
@@ -13,53 +13,43 @@
   </div>
 
 <div class="container mt-5">
-
-
-  <table class="table">
-
-    <thead>
-
+  <table class="table table-hover">
+    <thead class="table-light">
       <tr>
-        <th scope="col" class="ps-3">Nº Evento</th>
-        <th scope="col">Tipo de Evento</th>
+        <th scope="col" class="ps-3">Nº</th>
         <th scope="col">Nombre</th>
+        <th scope="col">Tipo de Evento</th>
         <th scope="col">Fecha del Evento</th>
         <th scope="col">Cotizaciones</th>
         <th scope="col">Estado</th>
+        <th scope="col"></th>
       </tr>
     </thead>
-
-    <tbody>
+    <tbody class="table-light">
       <% current_user.events.order(date: :asc).each_with_index do |event, index| %>
         <tr class="text-start ms-1">
-            <th scope="row", class="ps-3"><%= index + 1 %></th>
+          <th scope="row", class="ps-3"><%= index + 1 %></th>
+            <td> <%= event.name %></td>
             <td><%= EventType.find(event.event_type_id).name %></td>
-            <td>
-              <%= event.name %>
-              <%= link_to "", edit_event_path(event), class:"fa-solid fa-pencil text-decoration-none ms-2 text-muted me-1", data: {toggle:'tooltip' }, title:"Editar Evento" %>
-              <%= link_to "", event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"fa-solid fa-trash text-decoration-none text-muted me-1", data: {toggle:'tooltip' }, title:"Eliminar Evento"  %>
-              <% if event.date > Date.today %>
-                <%= link_to "", users_path(event: event), class:"fa-solid fa-square-plus text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Agregar servicios" %>
-              <% end %>
-            </td>
             <td><%= "#{event.date.day}/#{event.date.month}/#{event.date.year}" %></td>
-            <td>
-              <%= event.estimations.count%>
-              <%= link_to "", event_path(event), class:"fa-solid fa-eye text-decoration-none text-muted ms-1", data: {toggle:'tooltip' }, title:"Ver Cotizaciones" %>
-            </td>
-            <td>
-            <% if event.status == 'En proceso'%>
-              <span><%= event.status%><i class="fa-solid fa-circle ms-3" style="color: #F2FF4B;"></i><span>
+            <td><%= event.estimations.count%>
+            <%= link_to "", event_path(event), class:"fa-regular fa-eye text-decoration-none text-muted ms-1", data: {toggle:'tooltip' }, title:"Ver Cotizaciones" %> </td>
+            <td> <% if event.status == 'En proceso'%>
+              <span><%= event.status%><i class="fa-solid fa-circle ms-3 border border-dark-subtle rounded-circle border border-2" style="color: #F2FF4B"></i><span>
             <% else %>
-              <span><%= event.status%><i class="fa-solid fa-circle ms-3" style="color: #2EFF94;"></i><span>
+              <span><%= event.status%><i class="fa-solid fa-circle ms-3 border border-dark-subtle rounded-circle border border-2" style="color: #2EFF94"></i><span>
             <% end %>
             </td>
-
+            <td>
+              <%= link_to "", edit_event_path(event), class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Editar Evento"%>
+              <%= link_to "", event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"fa-regular fa-trash-can mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Eliminar Evento" %>
+              <% if event.date > Date.today %>
+              <%= link_to "", users_path(event: event), class:"fa-regular fa-square-plus text-decoration-none mx-2 text-muted", data: {toggle:'tooltip' }, title:"Agregar servicios" %>
+              <% end %>
+            </td>
         </tr>
       <% end %>
     </tbody>
-
   </table>
-
-<%= link_to "Volver", root_path, class: "btn btn-info text-light" %>
+  <%= link_to "Volver", root_path, class: "btn btn-primary text-light" %>
 </div>

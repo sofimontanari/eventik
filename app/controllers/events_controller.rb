@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
   def index
-
   end
 
   def new
@@ -41,7 +40,6 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to events_path, status: :see_other
   end
-
 
   private
 
