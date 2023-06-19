@@ -4,13 +4,8 @@
 <h6>Tus Cotizaciones para el Evento: <%= @event.name %></h6>
 <h6> Tu evento es: <%= EventType.find(@event.event_type_id).name %></h6>
 <hr>
-<%= suma = 0  %>
-    <% @event.estimations.each do |estimation|  %>
-      <% if estimation.status == 'Aceptada'  %>
-        <% @suma += estimation.price  %>
-      <% end  %>
-    <% end %>
-<%= "El gasto de tu Evento es US$ #{@suma}" %>
+
+<%= "El gasto de tu Evento es US$ #{@event.total_price}" %>
 
 <br>
 

@@ -42,7 +42,7 @@
             </td>
             <td>
               <%= link_to "", edit_event_path(event), class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Editar Evento"%>
-              <%= link_to "", event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"fa-regular fa-trash-can mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Eliminar Evento" %>
+              <%= link_to "", event_path(event), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", toggle:'tooltip'}, class:"fa-regular fa-trash-can mx-2 text-decoration-none text-muted", title:"Eliminar Evento" %>
               <% if event.date > Date.today %>
               <%= link_to "", users_path(event: event), class:"fa-regular fa-square-plus text-decoration-none mx-2 text-muted", data: {toggle:'tooltip' }, title:"Agregar servicios" %>
               <% end %>
