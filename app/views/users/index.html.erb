@@ -1,12 +1,20 @@
 <div class="user-service d-flex">
-  <div class="aside p-4" style="background-color: rgb(255, 255, 255); height: calc(100vh - 130px)">
-      <%= form_with url: users_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control rounded-pill",
-            placeholder: "Nombre"
-        %>
-      <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
+  <div class="aside p-3" style="background-color: rgb(255, 255, 255); height: calc(100vh - 130px)">
+    <div class="pb-2">
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item active" aria-current="page">Proveedores</li>
+        </ol>
+      </nav>
+    </div>
+    <%= form_with url: users_path, method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+          params[:query],
+          class: "form-control rounded-pill",
+          placeholder: "Nombre"
+      %>
+    <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
     <% end %>
     <ul class="filter-list list-unstyled">
       <li class="mb-3 mt-3 service">Filtra por tipo de servicio</li>
@@ -18,24 +26,37 @@
       <li class="filter mb-2" onclick="suppliersFilter('Disfraces & Accesorios')"><i class="fa fa-filter" style="color: rgb(255, 59, 184)"></i> Disfraces & Accesorios</li>
       <li class="filter mb-2" onclick="suppliersFilter('todos')"><i class="fas fa-th-large" style="color: rgb(255, 59, 184)"></i> Mostrar todos</li>
     </ul>
-    <%= link_to "Pagina principal", root_path, class:"btn btn-success" %>
+    <%# <%= link_to "Pagina principal", root_path, class:"btn btn-success" %>
   </div>
   <div class="cards-scroll container">
     <div class="d-flex flex-wrap justify-content-evenly">
       <% @suppliers.each do |supplier| %>
-        <div class="card-trip me-2 mb-4" style="width: 18rem; height: auto;" data-service-type="<%= supplier.service_type %>">
-          <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
-          <div class="card-trip-infos">
-            <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
-            <p>Aqui va el rating</p>
+          <%# <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
             <% if @event %>
-              <%= button_to "Ver información", user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-secondary mt-2" %>
+              <%# <%= button_to "Ver información", user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-secondary mt-2" %>
+              <%= link_to user_path(supplier), data: {turbo_method: :get}, params: {event: @event.id} do %>
+                <div class="card-trip me-2 mb-4" style="width: 18rem; height: auto;" data-service-type="<%= supplier.service_type %>">
+                <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+                  <div class="card-trip-infos">
+                  <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
+                  <p>Aqui va el rating</p>
+                </div>
+              </div>
+              <% end %>
             <% else %>
-              <%= link_to "Ver información", user_path(supplier), class:"btn btn-secondary mt-2"  %>
+              <%= link_to user_path(supplier) do %>
+                <div class="card-trip me-2 mb-4" style="width: 18rem; height: auto;" data-service-type="<%= supplier.service_type %>">
+                <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+                  <div class="card-trip-infos">
+                  <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
+                  <p>Aqui va el rating</p>
+                </div>
+              </div>
+              <% end %>
             <% end %>
-          </div>
-        </div>
+
       <% end %>
     </div>
   </div>
