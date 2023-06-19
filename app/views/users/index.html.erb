@@ -20,18 +20,20 @@
     </ul>
     <%= link_to "Pagina principal", root_path, class:"btn btn-success" %>
   </div>
-  <div class="container">
-    <div class="d-flex flex-wrap">
+  <div class="cards-scroll container">
+    <div class="d-flex flex-wrap justify-content-evenly">
       <% @suppliers.each do |supplier| %>
-        <div class="card" style="width: 18rem;" data-service-type="<%= supplier.service_type %>">
+        <div class="card-trip me-2 mb-4" style="width: 18rem; height: auto;" data-service-type="<%= supplier.service_type %>">
           <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
-          <div class="card-body">
+          <div class="card-trip-infos">
+            <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
+            <p>Aqui va el rating</p>
             <% if @event %>
-              <%= button_to supplier.business_name, user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-success" %>
+              <%= button_to "Ver información", user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-secondary mt-2" %>
             <% else %>
-              <%= link_to supplier.business_name, user_path(supplier), class:"btn btn-success"  %>
+              <%= link_to "Ver información", user_path(supplier), class:"btn btn-secondary mt-2"  %>
             <% end %>
-            <%= supplier.service_type %>
           </div>
         </div>
       <% end %>
@@ -45,14 +47,14 @@
 
 <script>
   function suppliersFilter(filter) {
-    let suppliers = document.getElementsByClassName('card');
+    let suppliers = document.getElementsByClassName('card-trip');
 
     for (let i = 0; i < suppliers.length; i++) {
       let supplier = suppliers[i];
       let serviceType = supplier.getAttribute('data-service-type');
 
       if (serviceType === filter || filter === 'todos') {
-        supplier.style.display = 'flex';
+        supplier.style.display = 'block';
       } else {
         supplier.style.display = 'none';
       }
