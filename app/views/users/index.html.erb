@@ -1,18 +1,27 @@
-<div class="d-flex">
-  <div class="aside">
-    <ul>
-      <li onclick="suppliersFilter('Espacios')">Espacios</li>
-      <li onclick="suppliersFilter('Fotografía')">Fotografía</li>
-      <li onclick="suppliersFilter('Catering')">Catering</li>
-      <li onclick="suppliersFilter('Entretenimiento')">Entretenimiento</li>
-      <li onclick="suppliersFilter('Invitaciones & Decoración')">Invitaciones & Decoración</li>
-      <li onclick="suppliersFilter('Disfraces & Accesorios')">Disfraces & Accesorios</li>
-      <li onclick="suppliersFilter('todos')">Mostrar todos</li>
+<div class="user-service d-flex">
+  <div class="aside p-4" style="background-color: rgb(255, 255, 255); height: calc(100vh - 130px)">
+      <%= form_with url: users_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control rounded-pill",
+            placeholder: "Nombre"
+        %>
+      <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
+    <% end %>
+    <ul class="filter-list list-unstyled">
+      <li class="mb-3 mt-3 service">Filtra por tipo de servicio</li>
+      <li class="filter mb-2" onclick="suppliersFilter('Espacios')"><i class="fa fa-filter" style="color: rgb(255, 59, 184)"></i> Espacios</li>
+      <li class="filter mb-2" onclick="suppliersFilter('Fotografía')"><i class="fa fa-filter" style="color: rgb(255, 59, 184)"></i> Fotografía</li>
+      <li class="filter mb-2" onclick="suppliersFilter('Catering')"><i class="fa fa-filter" style="color: rgb(255, 59, 184)"></i> Catering</li>
+      <li class="filter mb-2" onclick="suppliersFilter('Entretenimiento')"><i class="fa fa-filter" style="color: rgb(255, 59, 184)"></i> Entretenimiento</li>
+      <li class="filter mb-2" onclick="suppliersFilter('Invitaciones & Decoración')"><i class="fa fa-filter" style="color: rgb(255, 59, 184)"></i> Invitaciones & Decoración</li>
+      <li class="filter mb-2" onclick="suppliersFilter('Disfraces & Accesorios')"><i class="fa fa-filter" style="color: rgb(255, 59, 184)"></i> Disfraces & Accesorios</li>
+      <li class="filter mb-2" onclick="suppliersFilter('todos')"><i class="fas fa-th-large" style="color: rgb(255, 59, 184)"></i> Mostrar todos</li>
     </ul>
     <%= link_to "Pagina principal", root_path, class:"btn btn-success" %>
   </div>
   <div class="container">
-  <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap">
       <% @suppliers.each do |supplier| %>
         <div class="card" style="width: 18rem;" data-service-type="<%= supplier.service_type %>">
           <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
@@ -20,7 +29,7 @@
             <% if @event %>
               <%= button_to supplier.business_name, user_path(supplier), method: :get, params: {event: @event.id}, class:"btn btn-success" %>
             <% else %>
-              <%= link_to supplier.business_name, user_path(supplier) %>
+              <%= link_to supplier.business_name, user_path(supplier), class:"btn btn-success"  %>
             <% end %>
             <%= supplier.service_type %>
           </div>
@@ -43,7 +52,7 @@
       let serviceType = supplier.getAttribute('data-service-type');
 
       if (serviceType === filter || filter === 'todos') {
-        supplier.style.display = 'block';
+        supplier.style.display = 'flex';
       } else {
         supplier.style.display = 'none';
       }
