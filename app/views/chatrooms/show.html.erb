@@ -1,31 +1,47 @@
-<div class="container pb-4">
-  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
-      <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
-      <li class="breadcrumb-item"><%= link_to "Mis Cotizaciones", root_path, class: "text-decoration-none text-success" %></li>
-      <li class="breadcrumb-item active" aria-current="page">Chat</li>
-    </ol>
-</nav>
-</div>
 
-<div class="container chatroom"  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1>#<%= @chatroom.name %></h1>
-
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+  <div class="container pb-4">
+    <% if current_user.supplier %>
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Mis Cotizaciones", estimations_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%="Cotizaciones del Evento: #{Estimation.find_by(id: @chatroom.estimation_id).event.name}"%></li>
+          <li class="breadcrumb-item active" aria-current="page">Chat</li>
+        </ol>
+      </nav>
+    <% else %>
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Cotizaciones del Evento: #{Estimation.find_by(id: @chatroom.estimation_id).event.name}", event_path(Estimation.find_by(id: @chatroom.estimation_id).event), class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item active" aria-current="page">Chat</li>
+        </ol>
+      </nav>
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|%>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message ##{@chatroom.name}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Enviar", class: "btn btn-primary text-light mb-3" %>
-  <% end %>
+  <div class="container chatroom shadow bg-light mb-5"  data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+    <div class= "d-flex justify-content-start">
+    <h1><i class="fa-regular fa-message "></i></h1>
+    <h1><%= @chatroom.name %></h1>
+    </div>
 
-</div>
+
+    <div class="messages bg-white" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+
+    <%= simple_form_for [@chatroom, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|%>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Mensaje ##{@chatroom.name}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Enviar", class: "btn btn-primary text-light mb-3" %>
+    <% end %>
+
+  </div>
