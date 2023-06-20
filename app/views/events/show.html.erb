@@ -1,56 +1,208 @@
 <div class="container">
+  <div class="container pb-4 mt-3">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+        <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
+        <li class="breadcrumb-item active" aria-current="page">Cotizaciones</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="d-flex justify-content-between container">
+    <h5 class="flex-grow-1"><%= current_user.name %>, estas son todas tus cotizaciones para el evento <strong><%= @event.name %></strong> de fecha <strong><%= @event.date %></strong></h5>
+  </div>
+
+  <div class="container mt-5">
+
+    <ul class="nav nav-tabs" id="myTabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Pendiente de cotización</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Cotizada por el proveedor</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab3-tab" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false">En negociación</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab4-tab" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false">Aceptadas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="tab5-tab" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="false">Canceladas</a>
+      </li>
+
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active table-responsive" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+        <table class="table align-middle table-hover">
+          <thead>
+            <tr class="align-middle">
+            <th scope="col" class="ps-3">Nº</th>
+            <th scope="col">Proveedor</th>
+            <th scope="col">Tipo de servicio</th>
+            <th scope="col">Fecha de entrega</th>
+            <th scope="col">Precio</th>
+            <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="table-light table align-middle">
+            <% @estimations.where(status:"Pendiente").order(delivery_date: :asc).each_with_index do |estimation, index| %>
+              <tr class="text-start ms-1">
+                <th scope="row", class="ps-3"><%= index + 1 %></th>
+                  <td><%= estimation.user.business_name %></td>
+                  <td><%= estimation.user.service_type %></td>
+                  <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
+                  <td><%= estimation.price ? estimation.price : "En proceso de cotización" %></td>
+                  <td><%= button_to "", cancel_path(estimation), method: :patch, class:"fa-solid fa-ban text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane fade table-responsive" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+        <table class="table align-middle table-hover">
+          <thead>
+            <tr class="align-middle">
+            <th scope="col" class="ps-3">Nº</th>
+            <th scope="col">Proveedor</th>
+            <th scope="col">Tipo de servicio</th>
+            <th scope="col">Fecha de entrega</th>
+            <th scope="col">Comentario del proveedor</th>
+            <th scope="col">Precio</th>
+            <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="table-light table align-middle">
+            <% @estimations.where(status:"Cotizada por Proveedor").order(delivery_date: :asc).each_with_index do |estimation, index| %>
+              <tr class="text-start ms-1">
+                <th scope="row", class="ps-3"><%= index + 1 %></th>
+                  <td><%= estimation.user.business_name %></td>
+                  <td><%= estimation.user.service_type %></td>
+                  <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
+                  <td><%= estimation.feedback %></td>
+                  <td><%= estimation.price %></td>
+                  <td class="d-flex">
+                  <%= button_to "", accept_path(estimation), method: :patch, class:"fa-solid fa-check text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip'}, title:"Aceptar Cotización" %>
+                  <%= link_to "", edit_estimation_path(estimation), class:"fa-regular fa-pen-to-square text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Negociar Cotización"%>
+                  <%= button_to "", cancel_path(estimation), method: :patch, class:"fa-solid fa-ban text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  </td>
+
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane fade table-responsive" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
+        <table class="table align-middle table-hover">
+          <thead>
+            <tr class="align-middle">
+            <th scope="col" class="ps-3">Nº</th>
+            <th scope="col">Proveedor</th>
+            <th scope="col">Tipo de servicio</th>
+            <th scope="col">Fecha de entrega</th>
+            <th scope="col">Comentario</th>
+            <th scope="col">Precio</th>
+            <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="table-light table align-middle">
+            <% @estimations.where(status:"En Negociación").order(delivery_date: :asc).each_with_index do |estimation, index| %>
+              <tr class="text-start ms-1">
+                <th scope="row", class="ps-3"><%= index + 1 %></th>
+                  <td><%= estimation.user.business_name %></td>
+                  <td><%= estimation.user.service_type %></td>
+                  <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
+                  <td><%= estimation.feedback %></td>
+                  <td><%= estimation.price ? estimation.price : "Esperando respuesta del proveedor" %></td>
+                  <td class="d-flex">
+                  <%= button_to "", cancel_path(estimation), method: :patch, class:"fa-solid fa-ban text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane fade table-responsive" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
+        <table class="table align-middle table-hover">
+          <thead>
+            <tr class="align-middle">
+            <th scope="col" class="ps-3">Nº</th>
+            <th scope="col">Proveedor</th>
+            <th scope="col">Tipo de servicio</th>
+            <th scope="col">Fecha de entrega</th>
+            <th scope="col">Comentario</th>
+            <th scope="col">Precio</th>
+            <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody class="table-light table align-middle">
+            <% @estimations.where(status:"Aceptada").order(delivery_date: :asc).each_with_index do |estimation, index| %>
+              <tr class="text-start ms-1">
+                <th scope="row", class="ps-3"><%= index + 1 %></th>
+                  <td><%= estimation.user.business_name %></td>
+                  <td><%= estimation.user.service_type %></td>
+                  <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
+                  <td><%= estimation.feedback %></td>
+                  <td><%= estimation.price %></td>
+                  <td class="d-flex">
+                    <% if estimation.chatroom %>
+                      <%= link_to "", chatroom_path(estimation.chatroom), class:"fa-regular fa-message mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Chatear"%>
+                    <% else %>
+                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
+                    <% end %>
+                    <%= link_to "", new_estimation_review_path(estimation), class:"fa-solid fa-star text-decoration-none text-muted", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane fade table-responsive" id="tab5" role="tabpanel" aria-labelledby="tab4-tab">
+        <table class="table align-middle table-hover">
+          <thead>
+            <tr class="align-middle">
+            <th scope="col" class="ps-3">Nº</th>
+            <th scope="col">Proveedor</th>
+            <th scope="col">Tipo de servicio</th>
+            <th scope="col">Fecha de entrega</th>
+            <th scope="col">Comentario</th>
+            <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody class="table-light table align-middle">
+            <% @estimations.where(status:"Suspendida").order(delivery_date: :asc).each_with_index do |estimation, index| %>
+              <tr class="text-start ms-1">
+                <th scope="row", class="ps-3"><%= index + 1 %></th>
+                  <td><%= estimation.user.business_name %></td>
+                  <td><%= estimation.user.service_type %></td>
+                  <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
+                  <td><%= estimation.feedback %></td>
+                  <td><%= estimation.price ? estimation.price : "No se cotizó" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
 
-<h6>Tus Cotizaciones para el Evento: <%= @event.name %></h6>
-<h6> Tu evento es: <%= EventType.find(@event.event_type_id).name %></h6>
-<hr>
-
-<%= "El gasto de tu Evento es US$ #{@event.total_price}" %>
-
-<br>
 
 
-<% @event.estimations.each do |estimation| %>
-<div class="card w-50 mb-5 h-100">
-  <p>Proveedor:<%= User.find(estimation.user_id).business_name %></p>
-  <p>Tipo de servicio:<%= User.find(estimation.user_id).service_type %></p>
-  <p>Estado de la cotización: <%= estimation.status %></p>
-  <p>Precio cotizado: <%= estimation.price %></p>
-  <p>Fecha de entrega solicitada: <%= estimation.delivery_date %></p>
-  <p>Estado del servicio:
-      <% if estimation.delivery_date <= Date.today %>
-        <%= "En proceso de entrega" %>
-      <% else %>
-        <%= "Entregado" %>
-      <% end %>
-    </p>
+    </div>
 
-  <%#= != 'Pendiente' && estimation.status != 'Aceptada' && estimation.status != 'Suspendida'     %>
-    <% if estimation.status == "Cotizada por Proveedor"%>
-      <%= button_to "Aceptar", accept_path(estimation), method: :patch  %>
-      <%#= button_to "Negociar una rebaja", negotiate_path(estimation), method: :patch %>
-      <%= link_to "Negociar", edit_estimation_path(estimation) %>
-      <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
-    <% elsif estimation.status == 'Pendiente' || estimation.status == "En Negociación" %>
-      <%= button_to "Cancelar", cancel_path(estimation), method: :patch %>
-    <% end %>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <% if estimation.status == 'Aceptada' && !estimation.review %>
-    <%= link_to "Crear Review", new_estimation_review_path(estimation)  %>
-    <% end %>
-    <% if estimation.status == 'Aceptada'%>
-      <% if estimation.chatroom %>
-        <%= link_to "Chat", chatroom_path(estimation.chatroom) %>
-        <% else %>
-        <%= button_to "Chat", estimation_chatrooms_path(estimation.id), method: :post %>
-      <% end %>
-    <% end %>
-  <% end %>
+    <div class="container mt-5 pt-5 d-flex justify-content-between">
+      <%= link_to "Volver", root_path, class: "btn btn-primary text-light" %>
+      <h3>Gastos totales: USD <%= @event.total_price  %></h3>
+    </div>
 
-  <% if @event.date > Date.today %>
-    <%= link_to "Agregar Servicios", users_path(event: @event) %>
-  <% end %>
-</div>
-
-<%= link_to "Mis Eventos", events_path(current_user) %>
+  </div>
 </div>

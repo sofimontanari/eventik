@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    
+    @estimations = @event.estimations
   end
 
   def edit
