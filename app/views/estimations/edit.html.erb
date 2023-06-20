@@ -1,16 +1,16 @@
-<div class="container shadow mt-3 p-3 w-50">
-    <h5 class="text-center">Cotización de <%=@estimation.event.name %> </h5>
+<div class="container shadow mt-5 p-3 w-50">
+    <h4 class="text-center">Cotización de: <strong> <%=@estimation.event.name %></strong> </h4>
 
   <% if current_user.supplier %>
         <%= simple_form_for @estimation do |f| %>
         <%# <%= f.label :delivery_date, label: "Fecha de Entrega: #{@estimation.delivery_date}" %>
-        <p><%="Fecha de Entrega: #{@estimation.delivery_date}" %></p>
-        <p><%="Comentarios del Cliente: #{@estimation.comments}" %></p>
+        <p> Fecha del servicio: <strong><%="#{@estimation.delivery_date}" %></strong></p>
+        <p>Comentarios del Cliente: <strong><%="#{@estimation.comments}" %></strong></p>
         <%= f.input :feedback, label: "Dale tu respuesta al cliente" %>
         <%= f.input :price, label: "Precio cotizado:", required: true %>
         <div class="row d-flex justify-content-center">
           <div class="col-2">
-            <%= f.submit "Responder", class:"btn btn-success"%>
+            <%= f.submit "Responder", class:"btn btn-success text-grey"%>
           </div>
           <div class="col-2">
               <%= link_to "Volver", estimations_path, class:"btn btn-primary" %>
@@ -24,7 +24,7 @@
         <p><%="Comentario del proveedor #{@estimation.feedback}" %></p>
         <%= f.label :feedback, label: "Comentario del proveedor #{@estimation.feedback}" %>
         <%= f.label :price, label: "Precio cotizado: #{@estimation.price}" %>
-         <%= f.label :feedback, label: "Tu consulta inicial #{@estimation.comments}" %>
+        <%= f.label :feedback, label: "Tu consulta inicial #{@estimation.comments}" %>
         <%= f.input :comments, input_html:{value: ""}, label: "Tu nueva consulta al proveedor", placeholder: "¿Cuál es tu consulta?" %>
         <div class="row d-flex justify-content-center">
           <div class="col-2">
