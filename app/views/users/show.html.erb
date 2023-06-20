@@ -2,7 +2,7 @@
 <%#= link_to "Crear Evento", pages_events_path  %>
 <div class="container">
 
-    <h1><%= @supplier.business_name %></h1>
+    <h1><strong><%= @supplier.business_name %></strong></h1>
 
     <p style="font-size: 15px; margin-top:-11px; margin-bottom:-11px" ></i> <strong>Total de reseñas</strong> <%= @total_reviews %> <strong> Evaluación promedio</strong> <%= @promedio%>
      <% if @promedio != "Este proveedor aún no tiene comentarios"   %>
@@ -26,13 +26,13 @@
             </div>
               <div class="carousel-inner">
                 <div class="carousel-item CarouselImg active">
-                  <%= cl_image_tag @supplier.photos.third.key, class:"d-block ", width:600, height:500, crop: :fill %>
+                  <%= cl_image_tag @supplier.photos.first.key, class:"d-block ", width:600, height:500, crop: :fill %>
                 </div>
                 <div class="carousel-item CarouselImg">
                   <%= cl_image_tag @supplier.photos.last.key, class:"d-block w-100", width:600, height:500, crop: :fill %>
                 </div>
                 <div class="carousel-item CarouselImg">
-                  <%= cl_image_tag @supplier.photos.first.key, class:"d-block w-100", width:600, height:500, crop: :fill %>
+                  <%= cl_image_tag @supplier.photos.second.key, class:"d-block w-100", width:600, height:500, crop: :fill %>
                 </div>
 
             </div>
@@ -50,8 +50,12 @@
       <div class="col-6">
         <div class="m-3">
           <h5 class="card-title mb-1"><strong>Acera de nosotros: </strong> </h5>
-          <p class=" card-text"><%= @supplier.description %></p>
-          <p class=" .mb-3 card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          <p class="card-text mb-1"><%= @supplier.description %></p>
+          <p class="card-text mb-1"><i class="fa-regular fa-clock" style="color: #919191;"></i> <small class="text-body-secondary">Servicio minimo 3 horas.</small> </p>
+          <p class="card-text mb-1"><i class="fa-solid fa-check" style="color: #919191;"></i> <small class="text-body-secondary">Servicio inicial considera 30 personas. </small> </p>
+          <p class="card-text mb-1"><i class="fa-regular fa-envelope" style="color: #919191;"></i> <small class="text-body-secondary"><%="Respuesta promedio  #{(2..6).to_a.sample} horas."%></small> </p>
+          <p class="card-text mb-1"><i class="fa-regular fa-circle-xmark" style="color: #919191;"></i> <small class="text-body-secondary">Servicios adicionales no incluidos.</small> </p>
+
               <hr>
           <% if params["event"] %>
               <div class="container border shadow " style="background-color: #f0f0f0; border-radius: 20px;">
@@ -72,13 +76,16 @@
                 <% end %>
               </div>
             <% else %>
-              <div class="container border shadow p-2" style="background-color: #f0f0f0; border-radius: 20px;">
-                  <h1 class="text-center"> ¿Quieres crear un evento? </h1>
+              <div class="container border shadow p-5" style="background-color: #f0f0f0; border-radius: 20px;">
+                  <h1 class="text-center"> ¿Te gustó este servicio? </h1>
+                  <br>
                         <div class="row d-flex justify-content-center">
-                    <div class="col-12">
-                      <h3> registrate</h3>
+                    <div class="col-12 mb-3">
+                      <h3> Organizá tu evento con Eventik</h3>
+                      <p>Accedé a cientos de proveedores exclusivos y creá un evento sin preocupaciones.</p>
                     </div>
-                    <div class="col-6">
+                    <br>
+                    <div class="col-6" >
                         <%= link_to "Crear Evento", pages_events_path, class:"btn btn-primary" %>
                         <%= link_to "Volver", users_path, class:"btn btn-primary" %>
                     </div>
