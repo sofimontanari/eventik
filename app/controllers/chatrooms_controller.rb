@@ -2,7 +2,7 @@ class ChatroomsController < ApplicationController
 
   def create
     @estimation = Estimation.find(params["estimation_id"])
-    @chatroom = Chatroom.new(name: "Consultas")
+    @chatroom = Chatroom.new(name: "Hablemos...")
     @estimation.chatroom = @chatroom
     @event = Event.find_by(params["id"])
 
