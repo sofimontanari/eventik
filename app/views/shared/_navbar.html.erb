@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="d-flex dropdown-item align-items-center me-1 text-muted">
+          <li class="d-flex dropdown-item align-items-center me-3 text-muted">
             <% if current_user.supplier %>
               <%=current_user.business_name %>
             <% else %>
