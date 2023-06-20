@@ -1,5 +1,5 @@
-<%= link_to "Volver", root_path %>
-<%= link_to "Crear Evento", pages_events_path  %>
+<%#= link_to "Volver", users_path %>
+<%#= link_to "Crear Evento", pages_events_path  %>
 <div class="container">
 
     <h1><%= @supplier.business_name %></h1>
@@ -13,11 +13,11 @@
     </p>
 
 <hr>
-<div class="border shadow rounded">
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <div class="banner" style="margin-top: -120px; margin-bottom: -120px ">
+<div class=" border shadow  " style=" border-radius: 20px;">
+
+    <div class="row">
+      <div class="col-6">
+        <div class="m-3" >
           <div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -26,13 +26,13 @@
             </div>
               <div class="carousel-inner">
                 <div class="carousel-item CarouselImg active">
-                  <%= cl_image_tag @supplier.photos.third.key, class:"d-block w-100 CarouselImg" %>
+                  <%= cl_image_tag @supplier.photos.third.key, class:"d-block ", width:600, height:500, crop: :fill %>
                 </div>
                 <div class="carousel-item CarouselImg">
-                  <%= cl_image_tag @supplier.photos.last.key, class:"d-block w-100"%>
+                  <%= cl_image_tag @supplier.photos.last.key, class:"d-block w-100", width:600, height:500, crop: :fill %>
                 </div>
                 <div class="carousel-item CarouselImg">
-                  <%= cl_image_tag @supplier.photos.first.key, class:"d-block w-100"%>
+                  <%= cl_image_tag @supplier.photos.first.key, class:"d-block w-100", width:600, height:500, crop: :fill %>
                 </div>
 
             </div>
@@ -47,29 +47,53 @@
           </div>
         </div>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      <div class="col-6">
+        <div class="m-3">
+          <h5 class="card-title mb-1"><strong>Acera de nosotros: </strong> </h5>
+          <p class=" card-text"><%= @supplier.description %></p>
+          <p class=" .mb-3 card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+              <hr>
+          <% if params["event"] %>
+              <div class="container border shadow " style="background-color: #f0f0f0; border-radius: 20px;">
+                  <h5 class="text-center">Mensaje al proveedor</h5> <h6><%= params[:event_type] %></h6>
+                <%= simple_form_for [@event, @estimation] do |f| %>
+                  <%= f.input :delivery_date, input_html:{min: Date.today, max: @event.date} ,html5:true, label: "¿Cuál es la fecha de Entrega?"%>
+                  <%= f.input :comments, label: "Contale al proveedor lo que necesitás:"  %>
+                  <%= f.hidden_field :event, value: @event %>
+                  <%= f.hidden_field :user_id, value: params[:id] %>
+                        <div class="row d-flex justify-content-center">
+                    <div class="col-2 p-2">
+                      <%= f.submit "Cotizar", class:"btn btn-success"%>
+                    </div>
+                    <div class="col-2 p-2">
+                        <%= link_to "Volver", users_path(event: @event), class:"btn btn-primary" %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="container border shadow p-2" style="background-color: #f0f0f0; border-radius: 20px;">
+                  <h1 class="text-center"> ¿Quieres crear un evento? </h1>
+                        <div class="row d-flex justify-content-center">
+                    <div class="col-12">
+                      <h3> registrate</h3>
+                    </div>
+                    <div class="col-6">
+                        <%= link_to "Crear Evento", pages_events_path, class:"btn btn-primary" %>
+                        <%= link_to "Volver", users_path, class:"btn btn-primary" %>
+                    </div>
+                  </div>
+              </div>
+          <% end %>
+              </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+
 </div>
-<hr>
-
-
-    <h2>Nuestro trabajo:</h2>
-
 
 
 <hr>
-  <h2>Acera de nosotros:</h2>
-    <%= @supplier.description %>
-
-<hr>
-      <h1 class="font-$headers-font ">Eventikers felices</h1>
+      <h1 class="font-$headers-font ">Comentarios para este proveedor</h1>
       <div class= "d-flex justify-content-start align-items-center pt-4 mb-4 pb-5">
         <% @reviews.each do |review| %>
           <div class="card border-0 my-2" style="width: 18rem;">
@@ -85,24 +109,5 @@
 
 
 
-    <hr>
-    <% if params["event"] %>
-    <div class="container shadow mt-3 p-3 w-50">
-        <h5 class="text-center">Mensaje al proveedor</h5> <h6><%= params[:event_type] %></h6>
-      <%= simple_form_for [@event, @estimation] do |f| %>
-        <%= f.input :delivery_date, input_html:{min: Date.today, max: @event.date} ,html5:true, label: "¿Cuál es la fecha de Entrega?"%>
-        <%= f.input :comments, label: "Contale al proveedor lo que necesitás:"  %>
-        <%= f.hidden_field :event, value: @event %>
-        <%= f.hidden_field :user_id, value: params[:id] %>
-              <div class="row d-flex justify-content-center">
-          <div class="col-2">
-            <%= f.submit "Cotizar", class:"btn btn-success"%>
-          </div>
-          <div class="col-2">
-              <%= link_to "Volver", users_path(event: @event), class:"btn btn-primary" %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <% end %>
+
 </div>
