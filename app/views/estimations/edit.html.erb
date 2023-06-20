@@ -10,7 +10,7 @@
         <%= f.input :price, label: "Cotizale un precio:", required: true %>
         <div class="row d-flex justify-content-center">
           <div class="col-2">
-            <%= f.submit "Responder", class:"btn btn-success"%>
+            <%= f.submit "Responder", class:"btn btn-success text-grey"%>
           </div>
           <div class="col-2">
               <%= link_to "Volver", estimations_path, class:"btn btn-primary" %>
@@ -24,7 +24,7 @@
         <p><%="Comentario del proveedor #{@estimation.feedback}" %></p>
         <%= f.label :feedback, label: "Comentario del proveedor #{@estimation.feedback}" %>
         <%= f.label :price, label: "Precio cotizado: #{@estimation.price}" %>
-         <%= f.label :feedback, label: "Tu consulta inicial #{@estimation.comments}" %>
+        <%= f.label :feedback, label: "Tu consulta inicial #{@estimation.comments}" %>
         <%= f.input :comments, input_html:{value: ""}, label: "Tu nueva consulta al proveedor", placeholder: "¿Cuál es tu consulta?" %>
         <div class="row d-flex justify-content-center">
           <div class="col-2">
