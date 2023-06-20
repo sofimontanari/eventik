@@ -20,14 +20,17 @@
       </nav>
     </div>
   <% end %>
-    <%= form_with url: users_path, method: :get, class: "d-flex" do %>
+  <%= form_with url: users_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
-          params[:query],
-          class: "form-control rounded-pill",
-          placeholder: "Nombre"
-      %>
-    <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
+      params[:query],
+      class: "form-control rounded-pill",
+      placeholder: "Nombre"
+    %>
+    <%# <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
+    <%= button_tag type: "submit", class: "btn btn-flat" do %>
+      <i class="fas fa-search  me-4"></i>
     <% end %>
+  <% end %>
     <ul class="filter-list list-unstyled">
       <li class="mb-3 mt-3 service">Filtra por tipo de servicio</li>
       <li class="filter mb-2" onclick="suppliersFilter('Espacios')"><i class="fa-solid fa-caret-right"></i></i> Espacios</li>
@@ -38,6 +41,9 @@
       <li class="filter mb-2" onclick="suppliersFilter('Disfraces & Accesorios')"><i class="fa-solid fa-caret-right"></i></i> Disfraces & Accesorios</li>
       <li class="filter mb-2" onclick="suppliersFilter('todos')"><i class="fa-solid fa-caret-right"></i></i> Mostrar todos</li>
     </ul>
+    <% if params[:query] %>
+      <%= button_to "limpiar", users_path, method: :get, class:"btn btn-light" %>
+    <% end %>
   </div>
 
   <div class="cards-scroll container">
@@ -45,27 +51,32 @@
       <% @suppliers.each do |supplier| %>
         <% if @event %>
           <%= link_to user_path(supplier, event: @event.id), class: "text-decoration-none" do %>
-            <div class="card-trip me-2 mb-4" style="width: 18rem; height: auto;" data-service-type="<%= supplier.service_type %>">
+            <div class="card-trip me-2 mb-4" style="width: 18rem; height: 300px;" data-service-type="<%= supplier.service_type %>">
               <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
-              <p style="color: rgb(50, 50, 50)">Aqui va el rating</p>
+              <p style="color: rgb(50, 50, 50)"><%= supplier.get_average %></p>
+              <% if supplier.get_average == "Este proveedor aún no tiene comentarios" %>
+                <p style="color: #000000;"> </p>
+              <% else %>
+                <h6><i class="fa-sharp fa-solid fa-star pink-button"></i> <%= supplier.get_average %></h6>
+              <% end %>
             </div>
           </div>
           <% end %>
         <% else %>
           <%= link_to user_path(supplier), class: "text-decoration-none" do %>
-            <div class="card-trip me-2 mb-4" style="width: 18rem; height: auto;" data-service-type="<%= supplier.service_type %>">
+            <div class="card-trip me-2 mb-4" style="width: 18rem; height: 300px;" data-service-type="<%= supplier.service_type %>">
             <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
-              <p style="font-size: 15px; margin-top:-11px; margin-bottom:-11px" ></i> <strong>Total de reseñas</strong> <%= @total_reviews %> <%= @promedio%>
-                <% if @promedio != "Este proveedor aún no tiene comentarios"   %>
-                  <p>prueba</p>
+              <% if supplier.get_average == "Este proveedor aún no tiene comentarios" %>
+                <p style="color: #000000;"> </p>
+              <% else %>
+                <h6><i class="fa-sharp fa-solid fa-star pink-button"></i> <%= supplier.get_average %></h6>
               <% end %>
-              </p>
             </div>
           </div>
           <% end %>
