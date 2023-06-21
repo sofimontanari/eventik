@@ -159,9 +159,11 @@
                     <% if estimation.chatroom %>
                       <%= link_to "", chatroom_path(estimation.chatroom), class:"fa-regular fa-message mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Chatear"%>
                     <% else %>
-                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-message mx-2 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
+                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-message mx-1 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
                     <% end %>
-                    <%= link_to "", new_estimation_review_path(estimation), class:"fa-solid fa-star text-decoration-none text-muted", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
+                    <% if estimation.event.date < Date.today %>
+                      <%= link_to "", new_estimation_review_path(estimation), class:"fa-solid fa-star text-decoration-none text-muted", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
+                    <% end %>
                   </td>
               </tr>
             <% end %>
