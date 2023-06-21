@@ -86,7 +86,6 @@ despedidas3.save!
 casamientos3 = EventType.new(name: "Casamientos")
 casamientos3.user_id = user3.id
 casamientos3.save!
-5
 
 empresariales3 = EventType.new(name: "Empresariales")
 empresariales3.user_id = user3.id

@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many_attached :photos
   has_many :event_types, dependent: :destroy
   has_many :events, dependent: :destroy
-  has_many :estimations
+  has_many :estimations, dependent: :destroy
   has_many :reviews, through: :estimations
   validates :business_name, :address, :description, :service_type, presence: true, if: :supplier_true?
   has_many_attached :photos

@@ -1,15 +1,11 @@
 <div class="container shadow mt-3 p-3 w-50">
-    <h5 class="text-center">Dejá tu Review para el proveedor</h5>
+  <h5 class="text-center fw-bold mt-3 mb-4">Dejá tu Review para el proveedor: <%= User.find(@estimation.user_id).business_name %></h5>
   <%= simple_form_for [@estimation, @review] do |f| %>
     <%= f.input :comment, label: "¿Cómo fue tu experiencia con este Proveedor?"%>
     <%= f.input :rating, label: "Dejá tu puntaje:"  %>
-   <div class="row d-flex justify-content-center">
-      <div class="col-2">
-        <%= f.submit "Confirmar", class:"btn btn-success"%>
+      <div class="d-flex justify-content-evenly mb-2 pe-5 ps-5 pt-3 pb-3">
+        <%= f.submit "Confirmar", class:"btn btn-success text-light"%>
+        <%= link_to "Volver", event_path(@estimation.event_id), class:"btn btn-ghost" %>
       </div>
-      <div class="col-2">
-          <%= link_to "Volver", event_path(@estimation.event_id), class:"btn btn-primary" %>
-      </div>
-    </div>
   <% end %>
 </div>

@@ -3,13 +3,19 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
-        <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
+        <li class="breadcrumb-item"><%= link_to "Mis Eventos", events_path, class: "text-decoration-none text-success" %></li>
         <li class="breadcrumb-item active" aria-current="page">Cotizaciones</li>
       </ol>
     </nav>
   </div>
   <div class="d-flex justify-content-between container">
-    <h5 class="flex-grow-1"><%= current_user.name %>, estas son todas tus cotizaciones para el evento <strong><%= @event.name %></strong> de fecha <strong><%= @event.date %></strong></h5>
+    <h5 class="flex-grow-1 fw-bold"><%= current_user.name %>, estas son todas tus cotizaciones para el evento: <strong> </h5>
+    <div>
+      <span> <%= @event.name %></strong></span>
+      <span class="ms-1"><i class="ms-2 fa-regular fa-calendar"></i> <%= "#{@event.date.day}/#{@event.date.month}/#{@event.date.year}" %></span>
+    <hr>
+    </div>
+
   </div>
 
   <div class="container mt-5">
@@ -36,8 +42,8 @@
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active table-responsive" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -48,7 +54,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Pendiente").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -64,8 +70,8 @@
 
       <div class="tab-pane fade table-responsive" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -77,7 +83,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Cotizada por Proveedor").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -98,8 +104,8 @@
 
       <div class="tab-pane fade table-responsive" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -111,7 +117,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"En Negociación").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -129,8 +135,8 @@
 
       <div class="tab-pane fade table-responsive" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -142,7 +148,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Aceptada").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -153,9 +159,11 @@
                     <% if estimation.chatroom %>
                       <%= link_to "", chatroom_path(estimation.chatroom), class:"fa-regular fa-message mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Chatear"%>
                     <% else %>
-                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
+                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-message mx-1 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
                     <% end %>
-                    <%= link_to "", new_estimation_review_path(estimation), class:"fa-solid fa-star text-decoration-none text-muted", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
+                    <% if estimation.event.date < Date.today && estimation.review == nil %>
+                      <%= link_to "", new_estimation_review_path(estimation), class:"fa-solid fa-star text-decoration-none text-muted", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
+                    <% end %>
                   </td>
               </tr>
             <% end %>
@@ -165,8 +173,8 @@
 
       <div class="tab-pane fade table-responsive" id="tab5" role="tabpanel" aria-labelledby="tab4-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -177,7 +185,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Suspendida").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -199,9 +207,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <div class="container mt-5 pt-5 d-flex justify-content-between">
-      <%= link_to "Volver", root_path, class: "btn btn-primary text-light" %>
-      <h3>Gastos totales: USD <%= @event.total_price  %></h3>
+    <div class="mt-4 d-flex justify-content-end">
+      <h3 class="fw-bold bg-light p-2 text-end">Gastos totales: USD <%= @event.total_price  %></h3>
+    </div>
+     <div class="container mt-1 pt-2 mb-3 d-flex justify-content-start">
+      <%= link_to "Volver", root_path, class: "btn btn-ghost" %>
     </div>
 
   </div>
