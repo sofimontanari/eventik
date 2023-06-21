@@ -16,11 +16,12 @@
       </div>
 
     </div>
-  <div class="mt-4 pt-3">
-    <div class="d-flex justify-content-start">
+
+    <div class="d-flex justify-content-between">
       <p class="me-2"><strong>Fecha: </strong><i class="ms-2 fa-regular fa-calendar"></i> <%="#{@event.date.day}/#{@event.date.month}/#{@event.date.year}" %> </p>
       <p class="ms-4"><strong>Lugar: </strong><i class="fa-solid fa-location-crosshairs me-1"></i><%=@event.address.capitalize%> </p>
     </div>
+  <div class="mt-4 pt-3">
     <%= simple_form_for @event do |f| %>
       <div class="fw-bold mt-3">
         <%= f.input :name, label:"Cambiale el Nombre:" %>
