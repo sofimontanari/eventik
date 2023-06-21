@@ -1,4 +1,13 @@
-<div class="container shadow mt-5 p-3 w-50">
+<div class="container pb-1 mt-3">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+        <li class="breadcrumb-item active" aria-current="page">Creá tu Evento </li>
+      </ol>
+    </nav>
+</div>
+
+<div class="container shadow mt-1  mb-5 pb-2 p-3 w-50">
     <h5 class="text-center pt-2 fw-bold">Creá tu Evento</h5>
     <p class="pt-3 text-center"><strong>Tipo de Evento: </strong> <%= params[:event_type] %></p>
     <hr>
