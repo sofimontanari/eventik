@@ -1,4 +1,4 @@
-  <div class="container pb-4">
+  <div class="container pb-4 mt-3">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
@@ -11,7 +11,7 @@
     <h4 class="flex-grow-1"><%= current_user.name %>, estos son tus Eventos:</h4>
     <%= link_to "Nuevo Evento", pages_events_path, class: "btn btn-success text-light" %>
   </div>
-  
+
 <div class="container mt-5">
   <table class="table table-hover">
     <thead class="table-light">
@@ -51,7 +51,7 @@
       <% end %>
     </tbody>
   </table>
-  <div class= "d-flex justify-content-center mt-5 pt-1 mb-3">
+  <div class= "d-flex justify-content-start mt-5 pt-1 mb-3">
     <%= link_to "Volver", root_path, class: "btn btn-ghost" %>
   </div>
 

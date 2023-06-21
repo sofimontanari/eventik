@@ -3,13 +3,19 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
-        <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
+        <li class="breadcrumb-item"><%= link_to "Mis Eventos", events_path, class: "text-decoration-none text-success" %></li>
         <li class="breadcrumb-item active" aria-current="page">Cotizaciones</li>
       </ol>
     </nav>
   </div>
   <div class="d-flex justify-content-between container">
-    <h5 class="flex-grow-1"><%= current_user.name %>, estas son todas tus cotizaciones para el evento <strong><%= @event.name %></strong> de fecha <strong><%= @event.date %></strong></h5>
+    <h5 class="flex-grow-1 fw-bold"><%= current_user.name %>, estas son todas tus cotizaciones para el evento: <strong> </h5>
+    <div>
+      <span> <%= @event.name %></strong></span>
+      <span class="ms-1"><i class="ms-2 fa-regular fa-calendar"></i> <%= "#{@event.date.day}/#{@event.date.month}/#{@event.date.year}" %></span>
+    <hr>
+    </div>
+
   </div>
 
   <div class="container mt-5">
@@ -199,9 +205,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <div class="container mt-5 pt-5 d-flex justify-content-between">
-      <%= link_to "Volver", root_path, class: "btn btn-primary text-light" %>
-      <h3>Gastos totales: USD <%= @event.total_price  %></h3>
+    <div class="mt-4 d-flex justify-content-end">
+      <h3 class="fw-bold bg-light p-2 text-end">Gastos totales: USD <%= @event.total_price  %></h3>
+    </div>
+     <div class="container mt-1 pt-2 mb-3 d-flex justify-content-start">
+      <%= link_to "Volver", root_path, class: "btn btn-ghost" %>
     </div>
 
   </div>

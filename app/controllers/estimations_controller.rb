@@ -53,7 +53,7 @@ class EstimationsController < ApplicationController
     evento.total_price += @estimation.price
     evento.save
     @estimation.save
-    redirect_to event_path(@estimation.event)
+    redirect_to event_path(@estimation.event), notice: "¡Ahora podés chatear con el proveedor desde tu cotización!"
   end
 
   # def negotiate
