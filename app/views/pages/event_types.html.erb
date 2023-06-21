@@ -9,53 +9,52 @@
 
 
 <div class="container p-4 mb-4 w-100 shadow d-flex flex-wrap justify-content-between">
-    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+    <div class="events infantil card m-3 shadow rounded my-2" style="width: 15rem;">
       <div class="card-body text-center">
-        <h5><%= button_to "Cumpleaños Infantiles", new_event_path, :method => :get, params: {event_type: "Cumpleaños Infantiles"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-1" %></h5>
+        <h5><%= button_to "Cumpleaños Infantiles", new_event_path, :method => :get, params: {event_type: "Cumpleaños Infantiles"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>
       </div>
     </div>
 
-    <div class="card m-3 bg-light shadow rounded my-2 " style="width: 15rem;">
+    <div class="events adulto card m-3 shadow rounded my-2 " style="width: 15rem;">
       <div class="card-body text-center">
-        <h5><%= button_to "Cumpleaños Adultos", new_event_path, :method => :get, params: {event_type: "Cumpleaños Adultos"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-1" %></h5>
+        <h5><%= button_to "Cumpleaños Adultos", new_event_path, :method => :get, params: {event_type: "Cumpleaños Adultos"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>
+      </div>
+    </div>
+
+    <div class="events despedida card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5><%= button_to "Despedidas", new_event_path, :method => :get, params: {event_type: "Despedidas"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>
+      </div>
+    </div>
+
+    <div class="events casamiento card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5><%= button_to "Casamientos", new_event_path, :method => :get, params: {event_type: "Casamientos"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>
+      </div>
+    </div>
+
+    <div class="events bautizo card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+      <div class="card-body text-center">
+        <h5><%= button_to "Bautismos", new_event_path, :method => :get, params: {event_type: "Bautismos"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>
 
       </div>
     </div>
 
-    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+    <div class="events baby card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
       <div class="card-body text-center">
-        <h5><%= button_to "Despedidas", new_event_path, :method => :get, params: {event_type: "Despedidas"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+        <h5 class="card-title"><%= button_to "Baby Showers", new_event_path, :method => :get, params: {event_type: "Baby Showers"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>
       </div>
     </div>
 
-    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+    <div class="events empresa card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
       <div class="card-body text-center">
-        <h5><%= button_to "Casamientos", new_event_path, :method => :get, params: {event_type: "Casamientos"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+        <h5 class="card-title"><%= button_to "Empresariales", new_event_path, :method => :get, params: {event_type: "Empresariales"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>
       </div>
     </div>
 
-    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
+    <div class="events quince card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
       <div class="card-body text-center">
-        <h5><%= button_to "Bautismos", new_event_path, :method => :get, params: {event_type: "Bautismos"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
-
-      </div>
-    </div>
-
-    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
-      <div class="card-body text-center">
-        <h5 class="card-title"><%= button_to "Baby Showers", new_event_path, :method => :get, params: {event_type: "Baby Showers"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
-      </div>
-    </div>
-
-    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
-      <div class="card-body text-center">
-        <h5 class="card-title"><%= button_to "Empresariales", new_event_path, :method => :get, params: {event_type: "Empresariales"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
-      </div>
-    </div>
-
-    <div class="card m-3 bg-light shadow rounded my-2" style="width: 15rem;">
-      <div class="card-body text-center">
-        <h5 class="card-title"><%= button_to "15 Años", new_event_path, :method => :get, params: {event_type: "15 Años"}, class: "card-title text-success text-decoration-none fw-bold border-0 bg-light mt-5 pt-3" %></h5>
+        <h5 class="card-title"><%= button_to "15 Años", new_event_path, :method => :get, params: {event_type: "15 Años"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>
       </div>
     </div>
 

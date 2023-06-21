@@ -56,7 +56,6 @@
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
-              <p style="color: rgb(50, 50, 50)"><%= supplier.get_average %></p>
               <% if supplier.get_average == "Este proveedor aún no tiene comentarios" %>
                 <p style="color: #000000;"> </p>
               <% else %>
@@ -68,7 +67,7 @@
         <% else %>
           <%= link_to user_path(supplier), class: "text-decoration-none" do %>
             <div class="card-trip me-2 mb-4" style="width: 18rem; height: 300px;" data-service-type="<%= supplier.service_type %>">
-            <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+              <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
