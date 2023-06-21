@@ -138,7 +138,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Aceptada").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= User.find(Event.find(estimation.event_id).user_id).name %></td>
                   <td><%= Event.find(estimation.event_id).name %></td>
@@ -182,7 +182,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Suspendida").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= User.find(Event.find(estimation.event_id).user_id).name %></td>
                   <td><%= Event.find(estimation.event_id).name %></td>
@@ -196,16 +196,13 @@
         </table>
       </div>
 
-
-
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-    <div class="d-flex justify-content-center mt-5 mb-4 pt-5 me-0">
+    <div class="d-flex justify-content-start mt-5 mb-4 pt-5 me-0">
     <%= link_to "Volver", root_path, class: "btn btn-ghost" %>
     </div>
 
