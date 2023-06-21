@@ -42,8 +42,8 @@
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active table-responsive" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -54,7 +54,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Pendiente").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -70,8 +70,8 @@
 
       <div class="tab-pane fade table-responsive" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -83,7 +83,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Cotizada por Proveedor").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -104,8 +104,8 @@
 
       <div class="tab-pane fade table-responsive" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -117,7 +117,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"En Negociación").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -135,8 +135,8 @@
 
       <div class="tab-pane fade table-responsive" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -148,7 +148,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Aceptada").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
@@ -159,7 +159,7 @@
                     <% if estimation.chatroom %>
                       <%= link_to "", chatroom_path(estimation.chatroom), class:"fa-regular fa-message mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Chatear"%>
                     <% else %>
-                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
+                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-message mx-2 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
                     <% end %>
                     <%= link_to "", new_estimation_review_path(estimation), class:"fa-solid fa-star text-decoration-none text-muted", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
                   </td>
@@ -171,8 +171,8 @@
 
       <div class="tab-pane fade table-responsive" id="tab5" role="tabpanel" aria-labelledby="tab4-tab">
         <table class="table align-middle table-hover">
-          <thead>
-            <tr class="align-middle">
+          <thead class="text-center">
+            <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
             <th scope="col">Proveedor</th>
             <th scope="col">Tipo de servicio</th>
@@ -183,7 +183,7 @@
           </thead>
           <tbody class="table-light table align-middle">
             <% @estimations.where(status:"Suspendida").order(delivery_date: :asc).each_with_index do |estimation, index| %>
-              <tr class="text-start ms-1">
+              <tr class="text-center ms-1">
                 <th scope="row", class="ps-3"><%= index + 1 %></th>
                   <td><%= estimation.user.business_name %></td>
                   <td><%= estimation.user.service_type %></td>
