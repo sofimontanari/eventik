@@ -1,0 +1,67 @@
+.buton {
+  background-color: rgba(0, 0, 0, 0);
+  // color: white;
+}
+
+.infantil {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('infantil.jpg');
+  background-position: center center;
+}
+
+.bautizo {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('bautizs.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.baby {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('baby.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.empresa {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('empresariales.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.quince {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('quince.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.despedida {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('despedida.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.casamiento {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('bodas.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.adulto {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('adultos.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+.despedida {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), image-url('despedida.jpg');
+  background-position: center center;
+  background-size: cover;
+}
+
+
+.events:hover {
+  transform: scale(1.1);
+  transition: .3s;
+}
+
+.events {
+  transition: 0.3s;
+}

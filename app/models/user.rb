@@ -2,7 +2,7 @@ class User < ApplicationRecord
   #geocoder config
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :avatar
@@ -10,9 +10,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   SERVICES = ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"]
   has_many_attached :photos
-  has_many :event_types
-  has_many :events
-  has_many :estimations
+  has_many :event_types, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :estimations, dependent: :destroy
   has_many :reviews, through: :estimations
   validates :business_name, :address, :description, :service_type, presence: true, if: :supplier_true?
   has_many_attached :photos

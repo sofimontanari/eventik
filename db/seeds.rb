@@ -7,11 +7,13 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require "open-uri"
+Message.destroy_all
+Chatroom.destroy_all
 Review.destroy_all
-Estimation.destroy_all
-Event.destroy_all
-EventType.destroy_all
 User.destroy_all
+Estimation.destroy_all
+EventType.destroy_all
+Event.destroy_all
 
 puts "Creando Usuarios"
 
@@ -84,7 +86,6 @@ despedidas3.save!
 casamientos3 = EventType.new(name: "Casamientos")
 casamientos3.user_id = user3.id
 casamientos3.save!
-5
 
 empresariales3 = EventType.new(name: "Empresariales")
 empresariales3.user_id = user3.id
