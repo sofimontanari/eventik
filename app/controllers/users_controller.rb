@@ -27,6 +27,16 @@ class UsersController < ApplicationController
 
   def show
 
+    @users = User.all
+    @suppliers = User.where(supplier: true)
+    @markers = @suppliers.geocoded.map do |sup|
+      {
+        lat: sup.latitude,
+        lng: sup.longitude
+      }
+    end
+
+
     @user = User.find(params[:id])
     #@comments = Review.joins(:estimation).where(estimations: { user_id: @user.id }).pluck(:comment, :rating)
     @reviews = Review.joins(:estimation).where(estimations: { user_id: @user.id })
@@ -42,8 +52,7 @@ class UsersController < ApplicationController
     end
 
 
-    @suppliers = User.where(supplier: true)
-    @users = User.all
+
 
     @estimations = Estimation.all
     @events = Event.all
