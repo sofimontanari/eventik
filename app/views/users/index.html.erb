@@ -4,9 +4,9 @@
     <div class="ruta pb-2">
       <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><%= link_to "Inicio", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
           <li class="breadcrumb-item"><%= link_to "Eventos", pages_events_path, class: "text-decoration-none text-success" %></li>
-          <li class="breadcrumb-item active" aria-current="page">Sevicios</li>
+          <li class="breadcrumb-item active" aria-current="page">Servicios</li>
         </ol>
       </nav>
     </div>
@@ -14,8 +14,8 @@
     <div class="ruta pb-2">
       <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><%= link_to "Inicio", root_path, class: "text-decoration-none text-success" %></li>
-          <li class="breadcrumb-item active" aria-current="page">Sevicios</li>
+          <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item active" aria-current="page">Servicios</li>
         </ol>
       </nav>
     </div>
@@ -23,12 +23,12 @@
   <%= form_with url: users_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control rounded-pill",
+      class: "form-control border-top border-start border-botton",
       placeholder: "Nombre"
     %>
     <%# <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
-    <%= button_tag type: "submit", class: "btn btn-flat" do %>
-      <i class="fas fa-search  me-4"></i>
+    <%= button_tag type: "submit", class: "btn btn-success text-light" do %>
+      <i class="fas fa-search"></i>
     <% end %>
   <% end %>
     <ul class="filter-list list-unstyled">
@@ -56,7 +56,6 @@
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
-              <p style="color: rgb(50, 50, 50)"><%= supplier.get_average %></p>
               <% if supplier.get_average == "Este proveedor aún no tiene comentarios" %>
                 <p style="color: #000000;"> </p>
               <% else %>
@@ -68,7 +67,7 @@
         <% else %>
           <%= link_to user_path(supplier), class: "text-decoration-none" do %>
             <div class="card-trip me-2 mb-4" style="width: 18rem; height: 300px;" data-service-type="<%= supplier.service_type %>">
-            <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+              <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>

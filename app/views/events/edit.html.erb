@@ -8,32 +8,30 @@
     </nav>
 </div>
 <div class="container shadow mt-3 p-3 w-50">
-    <div class="d-flex justify-content-between align-items-center">
-      <h4><%="#{current_user.name}, vas a editar el evento:" %> </h4>
-      <div class="mt-1">
-        <span class="d-block text-end pt-1 fw-bold"><%=@event.name%></span>
-        <span class="text-muted text-end" style="font-size:14px"><%=@event.event_type.name %></span>
-      </div>
 
+    <div class="d-flex justify-content-center align-items-center">
+      <h4><%="#{current_user.name}, vas a editar el evento:" %> </h4>
     </div>
-  <div class="mt-4 pt-3">
-    <div class="d-flex justify-content-start">
+      <div class="mt-1 text-start">
+        <span class="d-block text-start fw-bold"><%=@event.name.capitalize%></span>
+        <span class="text-muted text-start" style="font-size:14px"><%=@event.event_type.name %></span>
+        <hr>
+      </div>
+    <div class="d-flex justify-content-evenly border-bottom align-items-center">
       <p class="me-2"><strong>Fecha: </strong><i class="ms-2 fa-regular fa-calendar"></i> <%="#{@event.date.day}/#{@event.date.month}/#{@event.date.year}" %> </p>
       <p class="ms-4"><strong>Lugar: </strong><i class="fa-solid fa-location-crosshairs me-1"></i><%=@event.address.capitalize%> </p>
+      <hr>
     </div>
+  <div class="mt-4 pt-3">
     <%= simple_form_for @event do |f| %>
       <div class="fw-bold mt-3">
         <%= f.input :name, label:"Cambiale el Nombre:" %>
       </div>
-      <div class="row d-flex justify-content-center mb-2 pt-3">
-        <div class="col-2">
-          <%= f.submit "Confirmar", class:"btn btn-success text-light"%>
-        </div>
-        <div class="col-2">
-            <%= link_to "Volver", events_path, class:"btn btn-primary text-light" %>
-        </div>
-
+      <div class="d-flex justify-content-evenly mb-2 pe-5 ps-5 pt-3 pb-3">
+        <%= f.submit "Confirmar", class:"btn btn-success text-light"%>
+        <%= link_to "Volver", events_path, class:"btn btn-ghost" %>
       </div>
+
     <% end %>
 
   </div>

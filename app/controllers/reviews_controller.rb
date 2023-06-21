@@ -3,6 +3,7 @@ before_action :set_estimation, only: %i[new create]
 
   def new
     @review = Review.new
+    @users = User.all
   end
 
   def create
