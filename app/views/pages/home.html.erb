@@ -73,8 +73,7 @@
 
 
     <div class="d-flex justify-content-between flex-wrap">
-
-
+      <%= link_to user_path(@user1), class: "text-decoration-none text-secondary" do %>
           <div class="card-trip me-2 mb-4">
             <img src="https://res.cloudinary.com/dqwouraji/image/upload/v1686950629/t6a4xi2nmqvxwod0sxvzhsm1qjuq.png", style="linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8))" />
             <div class="card-trip-infos">
@@ -84,8 +83,9 @@
               </div>
             </div>
           </div>
+      <% end %>
 
-
+      <%= link_to user_path(@user2), class: "text-decoration-none text-secondary" do %>
           <div class="card-trip me-2 mb-4">
             <img src="https://res.cloudinary.com/dqwouraji/image/upload/v1687025834/que_cualidades_necesitas_para_ser_un_buen_fotografo_profesional1_r2kful.jpg" />
             <div class="card-trip-infos">
@@ -95,19 +95,19 @@
               </div>
             </div>
           </div>
+      <% end %>
 
-
-
+      <%= link_to user_path(@user3), class: "text-decoration-none text-secondary" do %>
           <div class="card-trip mb-4">
             <img src="https://res.cloudinary.com/dqwouraji/image/upload/v1687026446/covertirme-bartender-profesional-1200x720_nyhd0m.jpg" />
             <div class="card-trip-infos">
               <div>
-                <h2>WhisBar</h2>
+                <h2>Dashing Drink</h2>
                 <p class= "lh-base mt-1" >Disfrutá una experiencia única de coctelería para todo tipo de ocasiones especiales. Tenemos una barra móvil totalmente equipada adaptable a cualquier espacio.</p>
               </div>
             </div>
           </div>
-
+      <% end %>
 
     </div>
 
