@@ -1,5 +1,5 @@
 <div class="container shadow mt-3 p-3 w-50">
-  <h5 class="text-center fw-bold mt-3 mb-4">Dejá tu Review para el proveedor</h5>
+  <h5 class="text-center fw-bold mt-3 mb-4">Dejá tu Review para el proveedor: <%= User.find(@estimation.user_id).business_name %></h5>
   <%= simple_form_for [@estimation, @review] do |f| %>
     <%= f.input :comment, label: "¿Cómo fue tu experiencia con este Proveedor?"%>
     <%= f.input :rating, label: "Dejá tu puntaje:"  %>
