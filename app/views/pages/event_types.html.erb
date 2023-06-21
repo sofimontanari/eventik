@@ -1,4 +1,4 @@
-<div class="container pb-4">
+<div class="container pb-4 mt-4">
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><%= link_to "Inicio", root_path, class: "text-decoration-none text-success" %></li>
@@ -8,7 +8,7 @@
 </div>
 
 
-<div class="container p-4 mb-4 w-100 shadow d-flex flex-wrap justify-content-between">
+<div class="container p-4 mb-4 w-100 borderless d-flex flex-wrap justify-content-between">
     <div class="events infantil card m-3 shadow rounded my-2" style="width: 15rem;">
       <div class="card-body text-center">
         <h5><%= button_to "Cumpleaños Infantiles", new_event_path, :method => :get, params: {event_type: "Cumpleaños Infantiles"}, class: "buton border-0 card-title text-light text-decoration-none fw-bold mt-5 pt-1" %></h5>

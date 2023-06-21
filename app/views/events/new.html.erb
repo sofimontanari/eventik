@@ -1,4 +1,4 @@
-<div class="container shadow mt-3 p-3 w-50">
+<div class="container shadow mt-5 p-3 w-50">
     <h5 class="text-center">Creá tu Evento</h5> <h6><%= params[:event_type] %></h6>
   <%= simple_form_for @event do |f| %>
     <%= f.input :name, label: "¿Cómo lo vas a llamar?"  %>
@@ -15,6 +15,3 @@
     </div>
   <% end %>
 </div>
-
-
-
