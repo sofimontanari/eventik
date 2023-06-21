@@ -45,3 +45,10 @@
     <% end %>
 
   </div>
+    <div class="container mt-1 pt-2 mb-5 pb-5 d-flex justify-content-start">
+    <% if current_user.supplier %>
+      <%= link_to "Volver", estimations_path, class: "btn btn-ghost" %>
+    <% else %>
+      <%= link_to "Volver", event_path(Estimation.find_by(id: @chatroom.estimation_id).event), class: "btn btn-ghost" %>
+    <% end %>
+    </div>
