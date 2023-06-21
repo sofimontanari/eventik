@@ -1,39 +1,65 @@
+  <div class="container pb-4 mt-3">
+    <% if current_user.supplier %>
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Mis Cotizaciones", estimations_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item active" aria-current="page"><%="Cotización del Evento: #{@estimation.event.name}"%></li>
+        </ol>
+      </nav>
+    <% else %>
+      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Cotizaciones del Evento: #{@estimation.event.name}", event_path(@estimation.event), class: "text-decoration-none text-success" %></li>
+         <li class="breadcrumb-item active" aria-current="page"><%="Cotización del Evento: #{@estimation.event.name}"%></li>
+        </ol>
+      </nav>
+    <% end %>
+  </div>
+
 <div class="container shadow mt-3 p-3 w-50">
-    <h5 class="text-center mb-5 mt-3">Cotización de <%=@estimation.event.name %> </h5>
+  <h4 class="text-center fw-bold mb-2 mt-3">Cotización</h4>
+  <div class="text-center mt-2 pt-3">
+    <span class="text-center d-block fw-bold mt-3"><%=@estimation.event.name.capitalize%></span>
+    <span class="text-muted text-center ms-1" style="font-size:14px"><%=@estimation.event.event_type.name %></span>
+    <hr>
+  </div>
+
+    <div class="d-flex justify-content-evenly border-bottom align-items-center">
+      <p class="me-2"><strong>Fecha: </strong><i class="ms-2 fa-regular fa-calendar"></i> <%="#{@estimation.event.date.day}/#{@estimation.event.date.month}/#{@estimation.event.date.year}" %> </p>
+      <p class="ms-4"><strong>Lugar: </strong><i class="fa-solid fa-location-crosshairs me-1"></i><%=@estimation.event.address.capitalize%> </p>
+    </div>
+ <hr>
+<h6 class="text-center fw-bold mb-2 mt-4 mb-3">Datos de la Cotización</h6>
 
   <% if current_user.supplier %>
         <%= simple_form_for @estimation do |f| %>
         <%# <%= f.label :delivery_date, label: "Fecha de Entrega: #{@estimation.delivery_date}" %>
-        <p class="mt-2">Fecha de Entrega: <i class="ms-2 fa-regular fa-calendar"></i> <%="#{@estimation.delivery_date.day}/#{@estimation.delivery_date.month}/#{@estimation.delivery_date.year}" %></p>
-        <p class="mt-3 mb-3"><%="Comentarios del Cliente: #{@estimation.comments}" %></p>
+        <p class="mt-2"><strong>Fecha de Entrega:</strong> <i class="ms-2 fa-regular fa-calendar"></i> <%="#{@estimation.delivery_date.day}/#{@estimation.delivery_date.month}/#{@estimation.delivery_date.year}" %></p>
+        <p class="mt-3 mb-3 pb-2"><strong> Comentarios del Cliente:</strong> <%=@estimation.comments.capitalize%></p>
         <%= f.input :feedback, label: "Dale tu respuesta al cliente:" %>
         <%= f.input :price, label: "Cotizale un precio:", required: true %>
-        <div class="row d-flex justify-content-center">
-          <div class="col-2">
-            <%= f.submit "Responder", class:"btn btn-success text-grey"%>
-          </div>
-          <div class="col-2">
-              <%= link_to "Volver", estimations_path, class:"btn btn-primary" %>
-          </div>
-        </div>
+      <div class="d-flex justify-content-evenly mb-2 pe-5 ps-5 pt-3 pb-3">
+          <%= f.submit "Confirmar", class:"btn btn-success text-light"%>
+          <%= link_to "Volver", estimations_path, class:"btn btn-ghost" %>
+       </div>
       <% end %>
 
   <% else %>
         <%= simple_form_for @estimation do |f| %>
-        <p><%="Fecha de Entrega: #{@estimation.delivery_date}" %></p>
-        <p><%="Comentario del proveedor #{@estimation.feedback}" %></p>
-        <%= f.label :feedback, label: "Comentario del proveedor #{@estimation.feedback}" %>
-        <%= f.label :price, label: "Precio cotizado: #{@estimation.price}" %>
-        <%= f.label :feedback, label: "Tu consulta inicial #{@estimation.comments}" %>
+        <p><strong>Servicio: </strong> <%=@estimation.user.business_name %></p>
+        <p> <strong>Fecha de Entrega:</strong> <i class="ms-2 fa-regular fa-calendar"></i> <%="#{@estimation.delivery_date}" %></p>
+        <p><strong>Comentario del proveedor: </strong> <%=@estimation.feedback.capitalize %></p>
+        <p><strong>Precio cotizado: </strong> <%=@estimation.price%></p>
+        <p class="pb-2"><strong>Tu consulta inicial: </strong> <%=@estimation.comments.capitalize%></p>
         <%= f.input :comments, input_html:{value: ""}, label: "Tu nueva consulta al proveedor", placeholder: "¿Cuál es tu consulta?" %>
-        <div class="row d-flex justify-content-center">
-          <div class="col-2">
-            <%= f.submit "Negociar", class:"btn btn-success"%>
-          </div>
-          <div class="col-2">
-              <%= link_to "Volver", events_path, class:"btn btn-primary" %>
-          </div>
-        </div>
+        <div class="d-flex justify-content-evenly mb-2 pe-5 ps-5 pt-3 pb-3">
+          <%= f.submit "Confirmar", class:"btn btn-success text-light"%>
+          <%= link_to "Volver", event_path(@estimation.event), class:"btn btn-ghost" %>
+       </div>
+
         <% end %>
 
   <% end%>
