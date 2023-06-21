@@ -15,7 +15,7 @@
       <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
-          <li class="breadcrumb-item active" aria-current="page">Sevicios</li>
+          <li class="breadcrumb-item active" aria-current="page">Servicios</li>
         </ol>
       </nav>
     </div>
@@ -27,8 +27,8 @@
       placeholder: "Nombre"
     %>
     <%# <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
-    <%= button_tag type: "submit", class: "btn btn-flat" do %>
-      <i class="fas fa-search  me-4"></i>
+    <%= button_tag type: "submit", class: "btn btn-success text-light" do %>
+      <i class="fas fa-search me-4"></i>
     <% end %>
   <% end %>
     <ul class="filter-list list-unstyled">
