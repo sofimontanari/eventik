@@ -23,12 +23,12 @@
   <%= form_with url: users_path, method: :get, class: "d-flex" do %>
     <%= text_field_tag :query,
       params[:query],
-      class: "form-control rounded-pill",
+      class: "form-control border-top border-start border-botton",
       placeholder: "Nombre"
     %>
     <%# <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
     <%= button_tag type: "submit", class: "btn btn-success text-light" do %>
-      <i class="fas fa-search me-4"></i>
+      <i class="fas fa-search"></i>
     <% end %>
   <% end %>
     <ul class="filter-list list-unstyled">
