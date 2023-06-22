@@ -35,9 +35,9 @@
             <td><%= event.estimations.count%>
             <%= link_to "", event_path(event), class:"fa-regular fa-eye text-decoration-none text-success ms-1", data: {toggle:'tooltip' }, title:"Ver Cotizaciones" %> </td>
             <td> <% if event.status == 'En proceso'%>
-              <span class="fa-solid fa-circle border border-dark-subtle rounded-circle border border-2" style="color: #F2FF4B" data-toggle='tooltip' title="En Proceso"> </span>
+              <span> <%= event.status%><i class= "fa-solid fa-circle ms-1 border border-dark-subtle rounded-circle border border-2" style="color: #F2FF4B"></i> </span>
             <% else %>
-              <span><%= event.status%><i class="fa-solid fa-circle ms-3 border border-dark-subtle rounded-circle border border-2" style="color: #2EFF94"></i><span>
+              <span><%= event.status%><i class="fa-solid fa-circle ms-1 border border-dark-subtle rounded-circle border border-2" style="color: #2EFF94"></i><span>
             <% end %>
             </td>
             <td>

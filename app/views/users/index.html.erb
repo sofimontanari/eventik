@@ -59,9 +59,13 @@
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
               <% if supplier.get_average == "Este proveedor aún no tiene comentarios" %>
-                <p style="color: #000000;"> </p>
+                <p style="color: #000000;">Sin reseñas</p>
               <% else %>
-                <h6><i class="fa-sharp fa-solid fa-star pink-button"></i> <%= supplier.get_average %></h6>
+                <div class="d-flex">
+                  <% supplier.get_average.times do  %>
+                    <i class="fa-sharp fa-solid fa-star pb-1" style="color: #FF3BB8;"></i>
+                  <% end %>
+                </div>
               <% end %>
             </div>
           </div>
@@ -74,9 +78,13 @@
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
               <% if supplier.get_average == "Este proveedor aún no tiene comentarios" %>
-                <p style="color: #000000;"> </p>
+                <p style="color: #000000;">Sin reseñas</p>
               <% else %>
-                <h6><i class="fa-sharp fa-solid fa-star pink-button"></i> <%= supplier.get_average %></h6>
+                <div class="d-flex">
+                  <% supplier.get_average.times do  %>
+                  <i class="fa-sharp fa-solid fa-star pb-1" style="color: #FF3BB8;"></i>
+                  <% end %>
+                </div>
               <% end %>
             </div>
           </div>

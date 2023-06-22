@@ -112,20 +112,22 @@
 
   <h1 class="font-$headers-font mt-5 pt-2">Eventikers felices</h1>
   <div class= "d-flex justify-content-start align-items-center pt-4 mb-5 pb-5">
-    <% @reviews.take(3).each do |review| %>
+    <% @reviews.take(4).each do |review| %>
       <div class="card border-0 my-2" style="width: 18rem;">
         <% if review.estimation.event.user.avatar.attached? %>
-          <%= cl_image_tag review.estimation.event.user.avatar.key, height: 180, width: 180, crop: :fill, class:"img-fluid rounded-start ms-0" %>
-        <% else %>
-          <%= image_tag "no_image.png", class:"img-fluid rounded-start ms-0" %>
-        <% end %>
+          <%= cl_image_tag current_user.avatar.key, class: "avatar", style: "width: 60px; height: 60px;" %>
+        <% elsif review.estimation.event.user.user_name == "sofimontanari" || review.estimation.event.user.user_name == "dvaron2099" || review.estimation.event.user.user_name == "chriscoding23" || review.estimation.event.user.user_name == "bertints"%>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/#{review.estimation.event.user.user_name}", class: "avatar", style: "width: 60px; height: auto;" %>
+        <% else  %>
+          <%= image_tag "no_image.png", class: "avatar", style: "width: 60px; height: auto;" %>
+        <% end  %>
         <div class="card-body ms-1">
         <h5 class="card-title pb-1"><%= review.estimation.event.user.name %></h5>
-        <d-flex>
+        <div class="d-flex">
               <% review.rating.to_i.times do  %>
                 <i class="fa-sharp fa-solid fa-star pb-1" style="color: #FF3BB8;"></i>
               <% end %>
-          </d-flex>
+          </div>
           <p class="card-text pt-1"><%= review.comment %></p>
         </div>
       </div>
