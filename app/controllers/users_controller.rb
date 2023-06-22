@@ -32,7 +32,9 @@ class UsersController < ApplicationController
     @markers = @suppliers.geocoded.map do |sup|
       {
         lat: sup.latitude,
-        lng: sup.longitude
+        lng: sup.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {data: sup})
+
       }
     end
 
