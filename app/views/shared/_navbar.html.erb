@@ -22,7 +22,7 @@
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <% if current_user.avatar.attached? %>
                 <%= cl_image_tag current_user.avatar.key, class: "avatar", style: "width: 60px; height: 60px;" %>
-              <% elsif current_user.user_name == "sofimontanari" || current_user.user_name == "varon@gmail.com" || current_user.user_name == "chriscoding23" || current_user.user_name == "bert08"%>
+              <% elsif current_user.user_name == "sofimontanari" || current_user.user_name == "dvaron2099" || current_user.user_name == "chriscoding23" || current_user.user_name == "bertints"%>
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/#{current_user.user_name}", class: "avatar", style: "width: 60px; height: auto;" %>
               <% else  %>
                 <%= image_tag "no_image.png", class: "avatar", style: "width: 60px; height: auto;" %>
