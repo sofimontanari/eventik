@@ -64,6 +64,24 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def set
+    @user = User.find(params["id"])
+    @event_types = EventType.all
+  end
+
+  def type
+    @event_type = EventType.new()
+    @event_type.name = params["event_type"]
+    @event_type.user_id = params["id"].to_i
+
+    if @event_type.save
+      redirect_to set_path(@event_type.user_id), notice: "Agregaste la categoría con éxito"
+    else
+      redirect_to set_path(@event_type.user_id), status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_supplier

@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <h5 class="fw-bold"> Categorías de Eventos de <%= @user.business_name %> : </h5>
+    <% if @user.event_types.find_by(name:"Cumpleaños Infantiles") %>
+      <p>Cumpleaños Infantiles</p>
+    <% else %>
+      <%= button_to "Cumpleaños Infantiles", type_path(@user), method: :patch, class: "btn btn-success text-light", params: {event_type: "Cumpleaños Infantiles"}%>
+    <% end %>
+
+    <% if @user.event_types.find_by(name:"Cumpleaños Adultos") %>
+    <p>Cumpleaños Adultos</p>
+      <% else %>
+      <%= button_to "Cumpleaños Adultos", type_path(@user), method: :patch, class: "btn btn-success text-light", params: {event_type: "Cumpleaños Adultos"}%>
+    <% end %>
+
+    <% if @user.event_types.find_by(name:"Despedidas") %>
+    <p>Despedidas</p>
+    <% else %>
+      <%= button_to "Despedidas", type_path(@user), method: :patch, class: "btn btn-success text-light", params: {event_type: "Despedidas"}%>
+    <% end %>
+
+    <% if @user.event_types.find_by(name:"Casamientos") %>
+      <p>Casamientos</p>
+    <% else %>
+      <%= button_to "Casamientos", type_path(@user), method: :patch, class: "btn btn-success text-light", params: {event_type: "Casamientos"}%>
+    <% end %>
+
+    <% if @user.event_types.find_by(name:"Bautismos") %>
+      <p>Bautismos</p>
+    <% else %>
+      <%= button_to "Bautismos", type_path(@user), method: :patch, class: "btn btn-success text-light", params: {event_type: "Bautismos"}%>
+    <% end %>
+
+    <% if @user.event_types.find_by(name:"Baby Showers") %>
+      <p>Baby Showers</p>
+    <% else %>
+      <%= button_to "Baby Showers", type_path(@user), method: :patch, class: "btn btn-success text-light", params: {event_type: "Baby Showers"}%>
+    <% end %>
+
+    <% if @user.event_types.find_by(name:"15 Años") %>
+      <p>15 Años</p>
+    <% else %>
+      <%= button_to "15 Años", type_path(@user), method: :patch, class: "btn btn-success text-light", params: {event_type: "15 Años"}%>
+    <% end %>
+
+</div>

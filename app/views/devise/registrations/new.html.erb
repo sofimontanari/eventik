@@ -56,21 +56,9 @@
                   label: "Registro Único Tributario",
                   required: false,
                   wrapper_html: { class: "prove" } %>
-      <%= f.input :service_type,
-                  :collection => ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"],
-                  label: "Elegí la categoría que representa tu servicio",
-                  required: true,
-                  wrapper_html: { class: "prove" } %>
       <%= f.input :description,
                   label: "Descripccion de la empresa",
                   required: true,
-                  wrapper_html: { class: "prove" } %>
-      <%= f.input :event_types,
-                  as: :check_boxes,
-                  input_html: {multiple: true} ,
-                  :collection => ["Cumpleaños Infantiles", "Cumpleaños Adultos", "Despedidas", "Casamientos", "Bautismos", "Baby Showers", "Empresariales", "15 Años"],
-                  label: "Seleccioná el/los tipo/s de Evento/s en el/los que prestás servicio",
-                  required: false,
                   wrapper_html: { class: "prove" } %>
     </div>
 

@@ -58,13 +58,6 @@
                   label: "Descripccion de la empresa",
                   required: true,
                   wrapper_html: { class: "prove" } %>
-      <%= f.input :event_types,
-                  as: :check_boxes,
-                  input_html: {multiple: true} ,
-                  :collection => ["Cumpleaños Infantiles", "Cumpleaños Adultos", "Despedidas", "Casamientos", "Bautismos", "Baby Showers", "Empresariales", "15 Años"],
-                  label: "Seleccioná el/los tipo/s de Evento/s en el/los que prestás servicio",
-                  required: false,
-                  wrapper_html: { class: "prove" } %>
         <%= f.input :password,
                     label: "Contraseña Actual",
                     hint: "Si no querés modificarla, dejala en blanco",

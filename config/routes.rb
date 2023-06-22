@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
+  get "users/set/:id", to: "users#set", as: "set"
+  patch "users/type/:id", to: "users#type", as: "type"
 end
