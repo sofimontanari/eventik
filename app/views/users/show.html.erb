@@ -147,8 +147,9 @@
             <div class="card border-0 my-2" style="width: 18rem;">
               <%= image_tag "no_image", class:"img-fluid rounded-start ms-0" %>
               <div class="card-body ms-1">
-              <h5 class="card-title pb-1"><li><%= review.comment %> </li></h5>
-              <h5 class="fa-sharp fa-solid fa-star pb-1" class="card-title pb-1"> <%=  review.rating %> </h5>
+              <h5 class="card-title pb-1"><%= review.estimation.event.user.name %></h5>
+              <p class="card-title pb-1"><%= review.comment %> </p>
+              <h5 class="fa-sharp fa-solid fa-star pb-1", style="color: #FF3BB8;" class="card-title pb-1"> <%=  review.rating %> </h5>
               </div>
             </div>
           <% end %>
