@@ -808,7 +808,7 @@ estimation2 = Estimation.create(
 event2 = Event.create(
   name: "Despedida batch 1248",
   address: "Humboldt 1967, Palermo, Buenos Aires, Argentina",
-  date: Date.new(2023, 6, 22),
+  date: Date.new(2023, 6, 23),
   status: 'Finalizado',
   user_id: user2.id,
   event_type_id: empresariales15.id
@@ -816,7 +816,7 @@ event2 = Event.create(
 
 estimation3 = Estimation.create(
   price: 100.00,
-  delivery_date: Date.new(2023, 6, 22),
+  delivery_date: Date.new(2023, 6, 23),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para un evento de 20 personas.',
   event_id: event2.id,
@@ -825,7 +825,7 @@ estimation3 = Estimation.create(
 
 estimation4 = Estimation.create(
   price: 150.00,
-  delivery_date: Date.new(2023, 6, 22),
+  delivery_date: Date.new(2023, 6, 23),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para una sesión fotografica de mi evento',
   event_id: event2.id,
@@ -841,7 +841,7 @@ review1 = Review.create(
 event3 = Event.create(
   name: "Cumpleaños Javier",
   address: "Fitz Roy 325, Palermo, Buenos Aires, Argentina",
-  date: Date.new(2023, 6, 22),
+  date: Date.new(2023, 6, 23),
   status: 'Finalizado',
   user_id: user4.id,
   event_type_id: cumpleanos_adultos15.id
@@ -849,7 +849,7 @@ event3 = Event.create(
 
 estimation5 = Estimation.create(
   price: 80.00,
-  delivery_date: Date.new(2023, 6, 22),
+  delivery_date: Date.new(2023, 6, 23),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para festejar un cumpleaños con 15 personas.',
   event_id: event3.id,
@@ -858,7 +858,7 @@ estimation5 = Estimation.create(
 
 estimation6 = Estimation.create(
   price: 70.00,
-  delivery_date: Date.new(2023, 6, 22),
+  delivery_date: Date.new(2023, 6, 23),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para una sesión fotografica de mi evento',
   event_id: event3.id,
