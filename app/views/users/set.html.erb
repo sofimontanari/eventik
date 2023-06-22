@@ -1,4 +1,11 @@
-<div class="container mt-4">
+<div class="container pb-4 mt-4">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Inicio", root_path, class: "text-decoration-none text-success" %></li>
+      <li class="breadcrumb-item active" aria-current="page">Categorías de Eventos</li>
+    </ol>
+</nav>
+
   <h5 class="fw-bold"> Categorías de Eventos de <%= @user.business_name %> : </h5>
     <% if @user.event_types.find_by(name:"Cumpleaños Infantiles") %>
       <p>Cumpleaños Infantiles</p>
@@ -41,5 +48,4 @@
     <% else %>
       <%= button_to "15 Años", type_path(@user), method: :patch, class: "btn btn-success text-light", params: {event_type: "15 Años"}%>
     <% end %>
-
 </div>
