@@ -13,7 +13,7 @@
       <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
-          <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Mis Eventos", events_path, class: "text-decoration-none text-success" %></li>
           <li class="breadcrumb-item"><%= link_to "Cotizaciones del Evento: #{Estimation.find_by(id: @chatroom.estimation_id).event.name}", event_path(Estimation.find_by(id: @chatroom.estimation_id).event), class: "text-decoration-none text-success" %></li>
           <li class="breadcrumb-item active" aria-current="page">Chat</li>
         </ol>
