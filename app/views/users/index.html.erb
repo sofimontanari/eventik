@@ -20,17 +20,19 @@
       </nav>
     </div>
   <% end %>
-  <%= form_with url: users_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control border-top border-start border-botton",
-      placeholder: "Nombre"
-    %>
-    <%# <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
-    <%= button_tag type: "submit", class: "btn btn-success text-light" do %>
-      <i class="fas fa-search"></i>
+  <div class="me-4">
+    <%= form_with url: users_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control border-top border-start border-botton",
+        placeholder: "Nombre"
+      %>
+      <%# <%= submit_tag "Buscar", name: "", class: "btn btn-flat" %>
+      <%= button_tag type: "submit", class: "btn btn-success text-light" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
     <ul class="filter-list list-unstyled">
       <li class="mb-3 mt-3 service">Filtra por tipo de servicio</li>
       <li class="filter mb-2" onclick="suppliersFilter('Espacios')"><i class="fa-solid fa-caret-right"></i></i> Espacios</li>
@@ -46,7 +48,7 @@
     <% end %>
   </div>
 
-  <div class="cards-scroll container">
+  <div class="services-container cards-scroll container">
     <div class="d-flex flex-wrap justify-content-evenly">
       <% @suppliers.each do |supplier| %>
         <% if @event %>
