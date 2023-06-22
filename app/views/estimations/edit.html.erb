@@ -11,7 +11,7 @@
       <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><%= link_to "Home", root_path, class: "text-decoration-none text-success" %></li>
-          <li class="breadcrumb-item"><%= link_to "Mis Eventos", root_path, class: "text-decoration-none text-success" %></li>
+          <li class="breadcrumb-item"><%= link_to "Mis Eventos", events_path, class: "text-decoration-none text-success" %></li>
           <li class="breadcrumb-item"><%= link_to "Cotizaciones del Evento: #{@estimation.event.name}", event_path(@estimation.event), class: "text-decoration-none text-success" %></li>
          <li class="breadcrumb-item active" aria-current="page"><%="Cotización del Evento: #{@estimation.event.name}"%></li>
         </ol>

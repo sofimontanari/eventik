@@ -54,7 +54,7 @@
                   <td><%= Event.find(estimation.event_id).name %></td>
                   <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
                   <td><%= estimation.comments %></td>
-                  <td><%= link_to "", edit_estimation_path(estimation), class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Cotizar Evento"%></td>
+                  <td><%= link_to "", edit_estimation_path(estimation), class:"fa-solid fa-repeat text-decoration-none text-success", data: {toggle:'tooltip' }, title:"Cotizar Evento"%></td>
               </tr>
             <% end %>
           </tbody>
@@ -114,7 +114,7 @@
                   <td><%= estimation.comments %></td>
                   <td><%= estimation.price %></td>
                   <td><%= estimation.feedback %></td>
-                  <td><%= link_to "", edit_estimation_path(estimation), class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Negociar"%></td>
+                  <td><%= link_to "", edit_estimation_path(estimation), class:"fa-solid fa-repeat text-decoration-none text-success", data: {toggle:'tooltip' }, title:"Negociar"%></td>
               </tr>
             <% end %>
           </tbody>
@@ -155,9 +155,9 @@
                   </td>
                   <td>
                     <% if estimation.chatroom %>
-                      <%= link_to "", chatroom_path(estimation.chatroom), class:"fa-regular fa-message mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Chatear"%>
+                      <%= link_to "Chatear", chatroom_path(estimation.chatroom), class:"btn btn-success btn-sm text-light", data: {toggle:'tooltip' }, title:"Chatear"%>
                     <% else %>
-                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-pen-to-square mx-2 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
+                      <%= button_to "Chatear", estimation_chatrooms_path(estimation.id), method: :post, class:"btn btn-success btn-sm text-light", data: {toggle:'tooltip' }, title:"Chatear" %>
                     <% end %>
                   </td>
               </tr>

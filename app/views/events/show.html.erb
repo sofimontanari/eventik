@@ -60,7 +60,7 @@
                   <td><%= estimation.user.service_type %></td>
                   <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
                   <td><%= estimation.price ? estimation.price : "En proceso de cotización" %></td>
-                  <td><%= button_to "", cancel_path(estimation), method: :patch, class:"fa-solid fa-ban text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  <td><%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
                   </td>
               </tr>
             <% end %>
@@ -90,12 +90,11 @@
                   <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
                   <td><%= estimation.feedback %></td>
                   <td><%= estimation.price %></td>
-                  <td class="d-flex">
-                  <%= button_to "", accept_path(estimation), method: :patch, class:"fa-solid fa-check text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip'}, title:"Aceptar Cotización" %>
-                  <%= link_to "", edit_estimation_path(estimation), class:"fa-regular fa-pen-to-square text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Negociar Cotización"%>
-                  <%= button_to "", cancel_path(estimation), method: :patch, class:"fa-solid fa-ban text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  <td class="d-flex align-items-center">
+                  <%= button_to "", accept_path(estimation), method: :patch, class:"fa-solid fa-check text-decoration-none text-success border-0 bg-light", data: {toggle:'tooltip'}, title:"Aceptar Cotización" %>
+                  <%= link_to "", edit_estimation_path(estimation), class:"fa-solid fa-repeat text-decoration-none text-success", data: {toggle:'tooltip' }, title:"Negociar Cotización"%>
+                  <%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
                   </td>
-
               </tr>
             <% end %>
           </tbody>
@@ -125,7 +124,7 @@
                   <td><%= estimation.feedback %></td>
                   <td><%= estimation.price ? estimation.price : "Esperando respuesta del proveedor" %></td>
                   <td class="d-flex">
-                  <%= button_to "", cancel_path(estimation), method: :patch, class:"fa-solid fa-ban text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  <%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
                   </td>
               </tr>
             <% end %>
@@ -155,14 +154,14 @@
                   <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
                   <td><%= estimation.feedback %></td>
                   <td><%= estimation.price %></td>
-                  <td class="d-flex">
+                  <td class="d-flex align-items-center justify-conten-evenly">
                     <% if estimation.chatroom %>
-                      <%= link_to "", chatroom_path(estimation.chatroom), class:"fa-regular fa-message mx-2 text-decoration-none text-muted", data: {toggle:'tooltip' }, title:"Chatear"%>
+                      <%= link_to "Chatear", chatroom_path(estimation.chatroom), class:"btn btn-success btn-sm text-light", data: {toggle:'tooltip' }, title:"Chatear"%>
                     <% else %>
-                      <%= button_to "", estimation_chatrooms_path(estimation.id), method: :post, class:"fa-regular fa-message mx-1 text-decoration-none text-muted border-0 bg-light", data: {toggle:'tooltip' }, title:"Chatear" %>
+                      <%= button_to "Chatear", estimation_chatrooms_path(estimation.id), method: :post, class:"btn btn-success btn-sm text-light", data: {toggle:'tooltip' }, title:"Chatear" %>
                     <% end %>
-                    <% if estimation.event.date < Date.today && estimation.review == nil %>
-                      <%= link_to "", new_estimation_review_path(estimation), class:"fa-solid fa-star text-decoration-none text-muted", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
+                    <% if estimation.event.date > Date.today && estimation.review == nil %>
+                      <%= link_to "", new_estimation_review_path(estimation), class:"fa-regular fa-star text-success", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
                     <% end %>
                   </td>
               </tr>
