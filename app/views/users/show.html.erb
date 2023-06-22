@@ -42,7 +42,7 @@
 
 
 <hr>
-<div class=" border shadow p-4" style=" border-radius: 20px;">
+<div class=" border shadow " style=" border-radius: 20px;">
 
   <div class="row">
       <div class="col-6 mt-2">
@@ -78,8 +78,8 @@
       </div>
      <div class="col-6">
         <div class="m-3">
-          <h5 class="card-title mb-3"><strong>Acerca de nosotros: </strong> </h5>
-          <p class="card-text mb-4"><%= @supplier.description %></p>
+          <h5 class="card-title mb-1"><strong>Acerca de nosotros: </strong> </h5>
+          <p class="card-text mb-2"><%= @supplier.description %></p>
           <p class="card-text mb-1"><i class="fa-regular fa-clock me-2" style="color: #919191;"></i> <small class="text-body-secondary"><%= @supplier.duration %></small> </p>
           <% if @supplier.capacity != nil %>
             <p class="card-text mb-1"><i class="fa-solid fa-users-viewfinder me-2" style="color: #919191;"></i></i><small class="text-body-secondary"><%= @supplier.capacity %> personas.</small> </p>
@@ -92,16 +92,17 @@
           <p class="card-text mb-1"><i class="fa-regular fa-circle-xmark me-2" style="color: #919191;"></i> <small class="text-body-secondary">Servicios adicionales no incluidos.</small> </p>
           <hr class="card-text mt-1">
 
+
           <% if params["event"] %>
               <div class="container border shadow" style="background-color: #f0f0f0; border-radius: 20px;">
-                  <h5 class="text-center fw-bold mt-4 mb-4">Mensaje al proveedor</h5> <h6><%= params[:event_type] %></h6>
+                  <h5 class="text-center fw-bold mt-2 mb-">Mensaje al proveedor</h5> <h6><%= params[:event_type] %></h6>
                 <%= simple_form_for [@event, @estimation] do |f| %>
                   <%= f.input :comments, label: "Contale al proveedor lo que necesitás:" %>
                   <%= f.input :delivery_date, input_html:{min: Date.today, max: @event.date} ,html5:true, label: "Especificale la fecha de entrega:"%>
                   <%= f.hidden_field :event, value: @event %>
                   <%= f.hidden_field :user_id, value: params[:id] %>
                         <div class="row d-flex justify-content-center">
-                    <div class="d-flex justify-content-evenly mt-2 mb-3">
+                    <div class="d-flex justify-content-evenly mt- mb-2">
                       <%= f.submit "Cotizar", class:"btn btn-success text-light flex-grow-1"%>
                     </div>
                   </div>
@@ -124,14 +125,14 @@
         </div>
       </div>
      </div>
-  <div class= "d-flex justify-content-start ms-3 mt-2">
+      <div class= "d-flex justify-content-start ms-3 ">
     <% if params["event"] %>
-      <div class="mb-5">
+      <div class="mb-2", style="margin-top: -25px;">
         <%= link_to "Volver", users_path(event: @event), class:"btn btn-ghost" %>
       </div>
 
     <% else %>
-      <%= link_to "Volver", users_path, class:"btn btn-ghost" %>
+      <%= link_to "Volver", users_path, class:"btn btn-ghost mb-2", style:"margin-top: -10px;" %>
     <% end %>
   </div>
 </div>
@@ -140,7 +141,7 @@
 <hr>
   <div class="row">
     <div class="col-6 mt-2">
-        <h1 class="font-$headers-font ">Comentarios para este proveedor</h1>
+        <h2 class="font-$headers-font text-center">Comentarios para este proveedor</h2>
         <div class= "d-flex justify-content-start align-items-center pt-4 mb-4 pb-5">
           <% @reviews.take(3).each do |review| %>
             <div class="card border-0 my-2" style="width: 18rem;">
@@ -154,7 +155,7 @@
         </div>
     </div>
     <div class="col-6 mt-2 mb-3">
-      <h1 class="font-$headers-font ">Ubicación de este proveedor</h1>
+      <h2 class="font-$headers-font text-center">Ubicación de nuestros proveedores</h2>
       <div id='map' style='width: 100%; height: 300px;'
       data-controller="map"
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY']  %> "
