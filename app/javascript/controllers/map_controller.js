@@ -35,7 +35,7 @@ export default class extends Controller {
 
   #addMarkerToMap () {
     const popup = new mapboxgl.Popup().setHTML(this.markerValue[0].info_window)
-    var marker = new mapboxgl.Marker({color:"red"})
+    var marker = new mapboxgl.Marker({color:"#FF3BB8"})
       .setLngLat([this.markerValue[0].lng, this.markerValue[0].lat])
       .setPopup(popup)
       .addTo(this.map)
