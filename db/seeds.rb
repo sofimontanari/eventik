@@ -811,7 +811,8 @@ event2 = Event.create(
   date: Date.new(2023, 6, 23),
   status: 'Finalizado',
   user_id: user2.id,
-  event_type_id: empresariales15.id
+  event_type_id: empresariales15.id,
+  total_price: 250
 )
 
 estimation3 = Estimation.create(
@@ -846,7 +847,8 @@ event3 = Event.create(
   date: Date.new(2023, 6, 23),
   status: 'Finalizado',
   user_id: user4.id,
-  event_type_id: cumpleanos_adultos15.id
+  event_type_id: cumpleanos_adultos15.id,
+  total_price: 150
 )
 
 estimation5 = Estimation.create(
@@ -880,7 +882,8 @@ event4 = Event.create(
   date: Date.new(2023, 6, 23),
   status: 'Finalizado',
   user_id: user6.id,
-  event_type_id: despedidas16.id
+  event_type_id: despedidas16.id,
+  total_price: 270
 )
 
 estimation7 = Estimation.create(
@@ -914,7 +917,8 @@ event5 = Event.create(
   date: Date.new(2023, 6, 23),
   status: 'Finalizado',
   user_id: user20.id,
-  event_type_id: cumpleanos_infantiles15.id
+  event_type_id: cumpleanos_infantiles15.id,
+  total_price: 170
 )
 
 estimation9 = Estimation.create(
