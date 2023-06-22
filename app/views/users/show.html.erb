@@ -145,7 +145,15 @@
         <div class= "d-flex justify-content-start align-items-center pt-4 mb-4 pb-5">
           <% @reviews.take(3).each do |review| %>
             <div class="card border-0 my-2" style="width: 18rem;">
-              <%= image_tag "no_image.png", class:"img-fluid rounded-start ms-0" %>
+
+              <% if review.estimation.event.user.avatar.attached? %>
+                <%= cl_image_tag current_user.avatar.key, class: "avatar", style: "width: 60px; height: 60px;" %>
+              <% elsif review.estimation.event.user.user_name == "sofimontanari" || review.estimation.event.user.user_name == "dvaron2099" || review.estimation.event.user.user_name == "chriscoding23" || review.estimation.event.user.user_name == "bertints"%>
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/#{review.estimation.event.user.user_name}", class: "avatar", style: "width: 60px; height: auto;" %>
+              <% else  %>
+                <%= image_tag "no_image.png", class: "avatar", style: "width: 60px; height: auto;" %>
+              <% end  %>
+
               <div class="card-body ms-1">
                 <h5 class="card-title pb-1"><%= review.estimation.event.user.name %></h5>
                 <p class="card-title pb-1"><%= review.comment %> </p>
