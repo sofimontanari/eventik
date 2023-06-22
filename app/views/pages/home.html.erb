@@ -121,11 +121,11 @@
         <% end %>
         <div class="card-body ms-1">
         <h5 class="card-title pb-1"><%= review.estimation.event.user.name %></h5>
-        <d-flex>
+        <div class="d-flex">
               <% review.rating.to_i.times do  %>
                 <i class="fa-sharp fa-solid fa-star pb-1" style="color: #FF3BB8;"></i>
               <% end %>
-          </d-flex>
+          </div>
           <p class="card-text pt-1"><%= review.comment %></p>
         </div>
       </div>
