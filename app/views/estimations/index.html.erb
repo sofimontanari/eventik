@@ -35,7 +35,7 @@
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active table-responsive" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="align-middle">
             <th scope="col" class="ps-3">Nº</th>
@@ -62,7 +62,7 @@
       </div>
 
       <div class="tab-pane fade table-responsive" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="align-middle">
             <th scope="col" class="ps-3">Nº</th>
@@ -91,7 +91,7 @@
       </div>
 
       <div class="tab-pane fade table-responsive" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="align-middle">
             <th scope="col" class="ps-3">Nº</th>
@@ -122,7 +122,7 @@
       </div>
 
       <div class="tab-pane fade table-responsive" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle">
           <thead class="text-center">
             <tr class="align-middle">
             <th scope="col" class="ps-3">Nº</th>
@@ -155,9 +155,9 @@
                   </td>
                   <td>
                     <% if estimation.chatroom %>
-                      <%= link_to "Chatear", chatroom_path(estimation.chatroom), class:"btn btn-success btn-sm text-light", data: {toggle:'tooltip' }, title:"Chatear"%>
+                      <%= link_to "Chatear", chatroom_path(estimation.chatroom), class:"btn btn-success btn-sm text-light bg-success "%>
                     <% else %>
-                      <%= button_to "Chatear", estimation_chatrooms_path(estimation.id), method: :post, class:"btn btn-success btn-sm text-light", data: {toggle:'tooltip' }, title:"Chatear" %>
+                      <%= button_to "Chatear", estimation_chatrooms_path(estimation.id), method: :post, class:"btn btn-success btn-sm text-light" %>
                     <% end %>
                   </td>
               </tr>
@@ -167,7 +167,7 @@
       </div>
 
       <div class="tab-pane fade table-responsive" id="tab5" role="tabpanel" aria-labelledby="tab4-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="align-middle">
             <th scope="col" class="ps-3">Nº</th>

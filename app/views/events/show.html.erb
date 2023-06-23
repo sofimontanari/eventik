@@ -41,7 +41,7 @@
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active table-responsive" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
@@ -60,7 +60,7 @@
                   <td><%= estimation.user.service_type %></td>
                   <td><%= "#{estimation.delivery_date.day}/#{estimation.delivery_date.month}/#{estimation.delivery_date.year} " %></td>
                   <td><%= estimation.price ? estimation.price : "En proceso de cotización" %></td>
-                  <td><%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  <td><%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-white", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
                   </td>
               </tr>
             <% end %>
@@ -69,7 +69,7 @@
       </div>
 
       <div class="tab-pane fade table-responsive" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
@@ -91,9 +91,9 @@
                   <td><%= estimation.feedback %></td>
                   <td><%= estimation.price %></td>
                   <td class="d-flex align-items-center">
-                  <%= button_to "", accept_path(estimation), method: :patch, class:"fa-solid fa-check text-decoration-none text-success border-0 bg-light", data: {toggle:'tooltip'}, title:"Aceptar Cotización" %>
+                  <%= button_to "", accept_path(estimation), method: :patch, class:"fa-solid fa-check text-decoration-none text-success border-0 bg-white", data: {toggle:'tooltip'}, title:"Aceptar Cotización" %>
                   <%= link_to "", edit_estimation_path(estimation), class:"fa-solid fa-repeat text-decoration-none text-success", data: {toggle:'tooltip' }, title:"Negociar Cotización"%>
-                  <%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  <%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-white", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
                   </td>
               </tr>
             <% end %>
@@ -102,7 +102,7 @@
       </div>
 
       <div class="tab-pane fade table-responsive" id="tab3" role="tabpanel" aria-labelledby="tab3-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
@@ -124,7 +124,7 @@
                   <td><%= estimation.feedback %></td>
                   <td><%= estimation.price ? estimation.price : "Esperando respuesta del proveedor" %></td>
                   <td class="d-flex">
-                  <%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-light", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
+                  <%= button_to "", cancel_path(estimation), method: :patch, class:"border-0 fa-regular fa-rectangle-xmark text-success bg-white", data: {toggle:'tooltip'}, title:"Cancelar Cotización"%>
                   </td>
               </tr>
             <% end %>
@@ -133,7 +133,7 @@
       </div>
 
       <div class="tab-pane fade table-responsive" id="tab4" role="tabpanel" aria-labelledby="tab4-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
@@ -156,12 +156,12 @@
                   <td><%= estimation.price %></td>
                   <td class="d-flex align-items-center justify-conten-evenly">
                     <% if estimation.chatroom %>
-                      <%= link_to "Chatear", chatroom_path(estimation.chatroom), class:"btn btn-success btn-sm text-light", data: {toggle:'tooltip' }, title:"Chatear"%>
+                      <%= link_to "Chatear", chatroom_path(estimation.chatroom), class:"btn btn-success btn-sm text-light bg-success" %>
                     <% else %>
-                      <%= button_to "Chatear", estimation_chatrooms_path(estimation.id), method: :post, class:"btn btn-success btn-sm text-light", data: {toggle:'tooltip' }, title:"Chatear" %>
+                      <%= button_to "Chatear", estimation_chatrooms_path(estimation.id), method: :post, class:"btn btn-success btn-sm text-light" %>
                     <% end %>
-                    <% if estimation.event.date > Date.today && estimation.review == nil %>
-                      <%= link_to "", new_estimation_review_path(estimation), class:"fa-regular fa-star text-success", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
+                    <% if estimation.event.date <= Date.today && estimation.review == nil %>
+                      <%= link_to "", new_estimation_review_path(estimation), class:"fa-regular fa-star text-success ms-3", data: {toggle:'tooltip'}, title:"Review del Proveedor"%>
                     <% end %>
                   </td>
               </tr>
@@ -171,7 +171,7 @@
       </div>
 
       <div class="tab-pane fade table-responsive" id="tab5" role="tabpanel" aria-labelledby="tab4-tab">
-        <table class="table align-middle table-hover">
+        <table class="table align-middle ">
           <thead class="text-center">
             <tr class="text-center">
             <th scope="col" class="ps-3">Nº</th>
@@ -207,9 +207,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <div class="mt-4 d-flex justify-content-end">
-      <h3 class="fw-bold bg-light p-2 text-end">Gastos totales: USD <%= @event.total_price  %></h3>
+      <h3 class="fw-bold bg-white p-2 text-end">Gastos totales: USD <%= @event.total_price  %></h3>
     </div>
-     <div class="container mt-1 pt-2 mb-3 d-flex justify-content-start">
+      <div class="container mt-1 pt-2 mb-3 d-flex justify-content-start">
       <%= link_to "Volver", root_path, class: "btn btn-ghost" %>
     </div>
 

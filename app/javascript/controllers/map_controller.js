@@ -5,7 +5,8 @@ export default class extends Controller {
 
   static values ={
     apiKey: String,
-    markers: Array
+    markers: Array,
+    marker: Array,
   }
 
   connect() {
@@ -19,6 +20,7 @@ export default class extends Controller {
 
     this.#addMarkersToMap();
     this.#fitMarkersToMap();
+    this.#addMarkerToMap();
   }
 
   #addMarkersToMap() {
@@ -29,6 +31,17 @@ export default class extends Controller {
         .setPopup(popup)
         .addTo(this.map)
     })
+  }
+
+  #addMarkerToMap () {
+    const popup = new mapboxgl.Popup().setHTML(this.markerValue[0].info_window)
+    var marker = new mapboxgl.Marker({color:"#FF3BB8"})
+      .setLngLat([this.markerValue[0].lng, this.markerValue[0].lat])
+      .setPopup(popup)
+      .addTo(this.map)
+
+    //marker.getElement().style.color = 'red'
+    //console.log(marker)
   }
 
   #fitMarkersToMap() {

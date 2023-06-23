@@ -231,41 +231,15 @@ user7.photos.attach(io: file, filename: "WORLD_CLASS_FINAL_2023_16-700x428.jpg" 
 file = URI.open("https://gobaruae.com/mt-content/uploads/2015/12/go-bar-gallery-barman-show-dubai-uae-4.jpg")
 user7.photos.attach(io: file, filename: "go-bar-gallery-barman-show-dubai-uae-4.jpg" , content_type: "image/jpg")
 
-User8 = User.create(
+user20 = User.create(
   email: "bertintraverso@gmail.com",
   password: "123456",
   name: "Bertín",
   user_name: "bertints",
   supplier: false)
 
-  puts "Se crearon 8 usuarios"
-  puts "creando evento"
-event1 = Event.create(
-  name: "Cumpleaños Manu",
-  address: "Buenos Aires, Argentina",
-  date: Date.new(2023, 7, 18),
-  status: 'En proceso',
-  user_id: user2.id,
-  event_type_id: cumpleanos_infantiles1.id
-)
-puts "creando estimaciones"
-estimation1 = Estimation.create(
-  price: 30.00,
-  delivery_date: Date.new(2023, 7, 18),
-  status: 'En Negociación',
-  comments: 'Quiero negociar el precio',
-  event_id: event1.id,
-  user_id: user1.id
-)
+  puts "Se crearon usuarios"
 
-estimation2 = Estimation.create(
-  delivery_date: Date.new(2023, 7, 18),
-  status: 'Pendiente',
-  event_id: event1.id,
-  user_id: user5.id
-)
-
-puts "seed creada"
 
 # event1.event_type = "Cumpleaños Infantiles"
 # event1.user = user1
@@ -800,5 +774,176 @@ user17.photos.attach(io: file, filename: "360_F_271963483_tJYIqsd4RvUgODqV3IbX3E
 
 file = URI.open("https://img.freepik.com/foto-gratis/comida-canapes_624325-2035.jpg")
 user17.photos.attach(io: file, filename: "comida-canapes_624325-2035.jpg", content_type: "image/jpg")
+
+
+puts "creando evento"
+
+event1 = Event.create(
+  name: "Cumpleaños Manu",
+  address: "Buenos Aires, Argentina",
+  date: Date.new(2023, 7, 18),
+  status: 'En proceso',
+  user_id: user2.id,
+  event_type_id: cumpleanos_infantiles1.id
+)
+
+
+puts "creando estimaciones"
+estimation1 = Estimation.create(
+  price: 30.00,
+  delivery_date: Date.new(2023, 7, 18),
+  status: 'En Negociación',
+  comments: 'Quiero negociar el precio',
+  event_id: event1.id,
+  user_id: user1.id
+)
+
+estimation2 = Estimation.create(
+  delivery_date: Date.new(2023, 7, 18),
+  status: 'Pendiente',
+  event_id: event1.id,
+  user_id: user5.id
+)
+
+event2 = Event.create(
+  name: "Despedida batch 1248",
+  address: "Humboldt 1967, Palermo, Buenos Aires, Argentina",
+  date: Date.new(2023, 6, 23),
+  status: 'Finalizado',
+  user_id: user2.id,
+  event_type_id: empresariales15.id,
+  total_price: 250
+)
+
+estimation3 = Estimation.create(
+  price: 100.00,
+  delivery_date: Date.new(2023, 6, 23),
+  status: 'Aceptada',
+  comments: 'Quiero un presupuesto para un evento de 20 personas.',
+  feedback: 'Te paso el mejor precio que puedo cerrarte.',
+  event_id: event2.id,
+  user_id: user13.id
+)
+
+estimation4 = Estimation.create(
+  price: 150.00,
+  delivery_date: Date.new(2023, 6, 23),
+  status: 'Aceptada',
+  comments: 'Quiero un presupuesto para una sesión fotografica de mi evento',
+  feedback: 'Te paso el precio, incluye sólo material digital.',
+  event_id: event2.id,
+  user_id: user16.id
+)
+review1 = Review.create(
+  comment: "Excelente servicio, super profesional, lo volvería a contratar para un próximo evento.",
+  rating: 5,
+  estimation_id: estimation2.id
+)
+
+
+event3 = Event.create(
+  name: "Cumpleaños Javier",
+  address: "Fitz Roy 325, Palermo, Buenos Aires, Argentina",
+  date: Date.new(2023, 6, 23),
+  status: 'Finalizado',
+  user_id: user4.id,
+  event_type_id: cumpleanos_adultos15.id,
+  total_price: 150
+)
+
+estimation5 = Estimation.create(
+  price: 80.00,
+  delivery_date: Date.new(2023, 6, 23),
+  status: 'Aceptada',
+  comments: 'Quiero un presupuesto para festejar un cumpleaños con 15 personas.',
+  feedback: 'Te paso un precio pero podemos charlarlo.',
+  event_id: event3.id,
+  user_id: user3.id
+)
+
+estimation6 = Estimation.create(
+  price: 70.00,
+  delivery_date: Date.new(2023, 6, 23),
+  status: 'Aceptada',
+  comments: 'Quiero un presupuesto para una sesión fotografica de mi evento',
+  feedback: 'Te paso un precio por la sesión de 3 hs.',
+  event_id: event3.id,
+  user_id: user5.id
+)
+review2 = Review.create(
+  comment: "El lugar es muy bonito, la atención fue excelente",
+  rating: 5,
+  estimation_id: estimation5.id
+)
+
+event4 = Event.create(
+  name: "Celebración equipo",
+  address: "Fitz Roy 233, Palermo, Buenos Aires, Argentina",
+  date: Date.new(2023, 6, 23),
+  status: 'Finalizado',
+  user_id: user6.id,
+  event_type_id: despedidas16.id,
+  total_price: 270
+)
+
+estimation7 = Estimation.create(
+  price: 200.00,
+  delivery_date: Date.new(2023, 6, 23),
+  status: 'Aceptada',
+  comments: 'Quiero evaluar servicios para despedidas todo incluido, barra abierta.',
+  feedback: 'Somos la mejor opción, te pasé el precio.',
+  event_id: event4.id,
+  user_id: user7.id
+)
+
+estimation8 = Estimation.create(
+  price: 70.00,
+  delivery_date: Date.new(2023, 6, 23),
+  status: 'Aceptada',
+  comments: 'Quiero un presupuesto para una sesión fotografica de mi evento',
+  feedback: 'Te paso un precio por una sesión de 3hs.',
+  event_id: event4.id,
+  user_id: user16.id
+)
+review3 = Review.create(
+  comment: "Un maravillosa experiencia para un gran evento.",
+  rating: 5,
+  estimation_id: estimation7.id
+)
+
+event5 = Event.create(
+  name: "Cumpleaños Martincito",
+  address: "Fitz Roy 433, Palermo, Buenos Aires, Argentina",
+  date: Date.new(2023, 6, 23),
+  status: 'Finalizado',
+  user_id: user20.id,
+  event_type_id: cumpleanos_infantiles15.id,
+  total_price: 170
+)
+
+estimation9 = Estimation.create(
+  price: 80.00,
+  delivery_date: Date.new(2023, 6, 23),
+  status: 'Aceptada',
+  comments: 'Quisiera un show de magia de 2 horas.',
+  feedback: 'Te paso un precio, puede extenderse un poco más.',
+  event_id: event5.id,
+  user_id: user15.id
+)
+
+estimation10 = Estimation.create(
+  price: 90.00,
+  delivery_date: Date.new(2023, 6, 23),
+  status: 'Aceptada',
+  comments: 'Quiero un presupuesto para 30 disfraces.',
+  feedback: 'Te paso un precio, al alquiler es por 24 hs.',
+  event_id: event5.id,
+  user_id: user10.id
+)
+review4 = Review.create(
+  comment: "Salió todo muy bien, buena experiencia.",
+  rating: 4,
+  estimation_id: estimation9.id
+)
 
 puts "Seed finalizada"
