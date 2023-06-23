@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   private
 
   def check_date
-    if date <= Date.today
+    if date < Date.today
       errors.add(:date, "La fecha de tu evento debe ser superior a la actual")
     end
   end
