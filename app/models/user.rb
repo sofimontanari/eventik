@@ -6,17 +6,16 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_one_attached :avatar
+  has_many_attached :photos
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   SERVICES = ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"]
-  has_many_attached :photos
   has_many :event_types, dependent: :destroy
   has_many :events, dependent: :destroy
   has_many :estimations, dependent: :destroy
   has_many :reviews, through: :estimations
   validates :business_name, :address, :description, :service_type, presence: true, if: :supplier_true?
-  has_many_attached :photos
-  has_one_attached :avatar
+
   # validates_inclusion_of :service_type, in: SERVICES, if: :supplier_true?
 
   def get_average
