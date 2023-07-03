@@ -43,6 +43,12 @@
                   label: "Nombre de tu Empresa",
                   required: true,
                   wrapper_html: { class: "prove" } %>
+      <%= f.input :service_type,
+                  label: "Tipo de Servicio",
+                  required: true,
+                  :collection => ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"],
+                  :prompt => "Elegí la categoría que representa a tu servicio",
+                  wrapper_html: { class: "prove" } %>
       <%= f.input :address,
                   label: "Dirección",
                   required: true,
