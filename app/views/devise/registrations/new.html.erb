@@ -1,7 +1,7 @@
 <div class="container p-5 w-50 bg-light shadow rounded my-2">
   <h2 class= "text-center mb-3">Bienvenido a Eventik <i class="fa-solid fa-face-smile" style="color: #5C5C5C;"></i></h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false, controller: "disable-form"}) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs lh-lg">
@@ -35,37 +35,50 @@
                   label: "Confirmá tu contraseña",
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+
+
       <%= f.input :supplier,
-                  label: "¿Querés ofrecer un Servicio?",
+                  as: :boolean,
+                  label: "Quiero ofrecer un servicio",
                   required: false,
-                  wrapper_html: { class: "prove" } %>
+                  input_html: { data: {action: "click->disable_form#hide", disable_form_target:"checkbox"}},
+                  wrapper_html: { id: "checkbox", type:"checkbox"}%>
+
+
       <%= f.input :business_name,
                   label: "Nombre de tu Empresa",
                   required: true,
-                  wrapper_html: { class: "prove" } %>
+                  input_html: { data: {disable_form_target:"fields"}},
+                  wrapper_html: { class: 'hidden' } %>
+
       <%= f.input :service_type,
                   label: "Tipo de Servicio",
                   required: true,
+                  input_html: { data: {disable_form_target:"fields"}},
                   :collection => ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"],
                   :prompt => "Elegí la categoría que representa a tu servicio",
-                  wrapper_html: { class: "prove" } %>
+                  wrapper_html: { class: 'hidden' } %>
       <%= f.input :address,
                   label: "Dirección",
                   required: true,
-                  wrapper_html: { class: "prove" } %>
+                  input_html: { data: {disable_form_target:"fields"}},
+                  wrapper_html: { class: 'hidden' } %>
       <%= f.input :photos,
                   as: :file,
-                  input_html: {multiple: true},
+                  input_html: {multiple: true, data: {disable_form_target:"fields"}},
+                  wrapper_html: { class: 'hidden' },
                   required: false,
                   label: "Fotos del servicio"%>
       <%= f.input :rut,
                   label: "Registro Único Tributario",
                   required: false,
-                  wrapper_html: { class: "prove" } %>
+                  input_html: { data: {disable_form_target:"fields"}},
+                  wrapper_html: { class: 'hidden' } %>
       <%= f.input :description,
                   label: "Descripccion de la empresa",
+                  input_html: { data: {disable_form_target:"fields"}},
                   required: true,
-                  wrapper_html: { class: "prove" } %>
+                  wrapper_html: { class: 'hidden' } %>
     </div>
 
     <div class="form-actions d-flex mb-3">
