@@ -41,44 +41,47 @@
                   as: :boolean,
                   label: "Quiero ofrecer un servicio",
                   required: false,
-                  input_html: { data: {action: "click->disable_form#hide", disable_form_target:"checkbox"}},
+                  input_html: { data: {disable_form_target:"checkbox", action: "click->disable-form#show" }},
                   wrapper_html: { id: "checkbox", type:"checkbox"}%>
 
 
       <%= f.input :business_name,
-                  label: "Nombre de tu Empresa",
-                  required: true,
-                  input_html: { data: {disable_form_target:"fields"}},
-                  wrapper_html: { class: 'hidden' } %>
+            label: "Nombre de tu Empresa",
+            label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+            required: true,
+            input_html: { data: {disable_form_target:"fields"}, class: 'hidden'} %>
+
+
 
       <%= f.input :service_type,
                   label: "Tipo de Servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
                   required: true,
-                  input_html: { data: {disable_form_target:"fields"}},
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'},
+                  label_html_options: {class: 'hidden'},
                   :collection => ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"],
-                  :prompt => "Elegí la categoría que representa a tu servicio",
-                  wrapper_html: { class: 'hidden' } %>
+                  :prompt => "Elegí la categoría que representa a tu servicio" %>
       <%= f.input :address,
                   label: "Dirección",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
                   required: true,
-                  input_html: { data: {disable_form_target:"fields"}},
-                  wrapper_html: { class: 'hidden' } %>
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'} %>
       <%= f.input :photos,
                   as: :file,
-                  input_html: {multiple: true, data: {disable_form_target:"fields"}},
-                  wrapper_html: { class: 'hidden' },
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: {multiple: true, data: {disable_form_target:"fields"}, class: 'hidden'},
                   required: false,
                   label: "Fotos del servicio"%>
       <%= f.input :rut,
                   label: "Registro Único Tributario",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
                   required: false,
-                  input_html: { data: {disable_form_target:"fields"}},
-                  wrapper_html: { class: 'hidden' } %>
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'} %>
       <%= f.input :description,
                   label: "Descripccion de la empresa",
-                  input_html: { data: {disable_form_target:"fields"}},
-                  required: true,
-                  wrapper_html: { class: 'hidden' } %>
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'},
+                  required: true %>
     </div>
 
     <div class="form-actions d-flex mb-3">
