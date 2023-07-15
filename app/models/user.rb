@@ -10,7 +10,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   SERVICES = ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"]
-  has_many :event_types, dependent: :destroy
+  has_many :event_types
   has_many :events, dependent: :destroy
   has_many :estimations, dependent: :destroy
   has_many :reviews, through: :estimations
