@@ -7,12 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require "open-uri"
+EventType.destroy_all
 Message.destroy_all
 Chatroom.destroy_all
 Review.destroy_all
 User.destroy_all
 Estimation.destroy_all
-EventType.destroy_all
 Event.destroy_all
 
 puts "Creando Usuarios"
@@ -808,7 +808,7 @@ estimation2 = Estimation.create(
 event2 = Event.create(
   name: "Despedida batch 1248",
   address: "Humboldt 1967, Palermo, Buenos Aires, Argentina",
-  date: Date.new(2023, 6, 23),
+  date: Date.new(2023, 7, 15),
   status: 'Finalizado',
   user_id: user2.id,
   event_type_id: empresariales15.id,
@@ -817,7 +817,7 @@ event2 = Event.create(
 
 estimation3 = Estimation.create(
   price: 100.00,
-  delivery_date: Date.new(2023, 6, 23),
+  delivery_date: Date.new(2023, 7, 15),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para un evento de 20 personas.',
   feedback: 'Te paso el mejor precio que puedo cerrarte.',
@@ -827,7 +827,7 @@ estimation3 = Estimation.create(
 
 estimation4 = Estimation.create(
   price: 150.00,
-  delivery_date: Date.new(2023, 6, 23),
+  delivery_date: Date.new(2023, 7, 15),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para una sesión fotografica de mi evento',
   feedback: 'Te paso el precio, incluye sólo material digital.',
@@ -844,7 +844,7 @@ review1 = Review.create(
 event3 = Event.create(
   name: "Cumpleaños Javier",
   address: "Fitz Roy 325, Palermo, Buenos Aires, Argentina",
-  date: Date.new(2023, 6, 23),
+  date: Date.new(2023, 7, 15),
   status: 'Finalizado',
   user_id: user4.id,
   event_type_id: cumpleanos_adultos15.id,
@@ -853,7 +853,7 @@ event3 = Event.create(
 
 estimation5 = Estimation.create(
   price: 80.00,
-  delivery_date: Date.new(2023, 6, 23),
+  delivery_date: Date.new(2023, 7, 15),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para festejar un cumpleaños con 15 personas.',
   feedback: 'Te paso un precio pero podemos charlarlo.',
@@ -863,7 +863,7 @@ estimation5 = Estimation.create(
 
 estimation6 = Estimation.create(
   price: 70.00,
-  delivery_date: Date.new(2023, 6, 23),
+  delivery_date: Date.new(2023, 7, 15),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para una sesión fotografica de mi evento',
   feedback: 'Te paso un precio por la sesión de 3 hs.',
@@ -879,7 +879,7 @@ review2 = Review.create(
 event4 = Event.create(
   name: "Celebración equipo",
   address: "Fitz Roy 233, Palermo, Buenos Aires, Argentina",
-  date: Date.new(2023, 6, 23),
+  date: Date.new(2023, 7, 15),
   status: 'Finalizado',
   user_id: user6.id,
   event_type_id: despedidas16.id,
@@ -888,7 +888,7 @@ event4 = Event.create(
 
 estimation7 = Estimation.create(
   price: 200.00,
-  delivery_date: Date.new(2023, 6, 23),
+  delivery_date: Date.new(2023, 7, 15),
   status: 'Aceptada',
   comments: 'Quiero evaluar servicios para despedidas todo incluido, barra abierta.',
   feedback: 'Somos la mejor opción, te pasé el precio.',
@@ -898,7 +898,7 @@ estimation7 = Estimation.create(
 
 estimation8 = Estimation.create(
   price: 70.00,
-  delivery_date: Date.new(2023, 6, 23),
+  delivery_date: Date.new(2023, 7, 15),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para una sesión fotografica de mi evento',
   feedback: 'Te paso un precio por una sesión de 3hs.',
@@ -914,7 +914,7 @@ review3 = Review.create(
 event5 = Event.create(
   name: "Cumpleaños Martincito",
   address: "Fitz Roy 433, Palermo, Buenos Aires, Argentina",
-  date: Date.new(2023, 6, 23),
+  date: Date.new(2023, 7, 15),
   status: 'Finalizado',
   user_id: user20.id,
   event_type_id: cumpleanos_infantiles15.id,
@@ -923,7 +923,7 @@ event5 = Event.create(
 
 estimation9 = Estimation.create(
   price: 80.00,
-  delivery_date: Date.new(2023, 6, 23),
+  delivery_date: Date.new(2023, 7, 15),
   status: 'Aceptada',
   comments: 'Quisiera un show de magia de 2 horas.',
   feedback: 'Te paso un precio, puede extenderse un poco más.',
@@ -933,7 +933,7 @@ estimation9 = Estimation.create(
 
 estimation10 = Estimation.create(
   price: 90.00,
-  delivery_date: Date.new(2023, 6, 23),
+  delivery_date: Date.new(2023, 7, 15),
   status: 'Aceptada',
   comments: 'Quiero un presupuesto para 30 disfraces.',
   feedback: 'Te paso un precio, al alquiler es por 24 hs.',
