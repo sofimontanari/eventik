@@ -54,7 +54,7 @@
         <% if @event %>
           <%= link_to user_path(supplier, event: @event.id), class: "text-decoration-none" do %>
             <div class="card-trip me-2 mb-4" style="width: 18rem; height: 300px;" data-service-type="<%= supplier.service_type %>">
-              <% if !cl_image_tag supplier.photos.empty? %>
+              <% if supplier.photos.present? && supplier.photos.first.key? %>
                 <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
               <% else %>
                 <%= image_tag "https://www.bicifan.uy/wp-content/uploads/2016/09/producto-sin-imagen.png", class:"card-img-top", crop: :fill  %>
@@ -77,7 +77,7 @@
         <% else %>
           <%= link_to user_path(supplier), class: "text-decoration-none" do %>
             <div class="card-trip me-2 mb-4" style="width: 18rem; height: 300px;" data-service-type="<%= supplier.service_type %>">
-              <% if !cl_image_tag supplier.photos.empty? %>
+              <% if supplier.photos.present? && supplier.photos.first.key? %>
                 <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
               <% else %>
                 <%= image_tag "https://www.bicifan.uy/wp-content/uploads/2016/09/producto-sin-imagen.png", class:"card-img-top", crop: :fill  %>
