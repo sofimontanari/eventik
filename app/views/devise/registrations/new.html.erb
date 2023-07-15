@@ -1,7 +1,7 @@
 <div class="container p-5 w-50 bg-light shadow rounded my-2">
   <h2 class= "text-center mb-3">Bienvenido a Eventik <i class="fa-solid fa-face-smile" style="color: #5C5C5C;"></i></h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo: :false, controller: "disable-form"}) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs lh-lg">
@@ -35,43 +35,53 @@
                   label: "Confirmá tu contraseña",
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+
+
       <%= f.input :supplier,
-                  label: "¿Querés ofrecer un Servicio?",
+                  as: :boolean,
+                  label: "Quiero ofrecer un servicio",
                   required: false,
-                  wrapper_html: { class: "prove" } %>
+                  input_html: { data: {disable_form_target:"checkbox", action: "click->disable-form#show" }},
+                  wrapper_html: { id: "checkbox", type:"checkbox"}%>
+
+
       <%= f.input :business_name,
-                  label: "Nombre de tu Empresa",
+            label: "Nombre de tu Empresa",
+            label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+            required: true,
+            input_html: { data: {disable_form_target:"fields"}, class: 'hidden'} %>
+
+
+
+      <%= f.input :service_type,
+                  label: "Tipo de Servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
                   required: true,
-                  wrapper_html: { class: "prove" } %>
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'},
+                  label_html_options: {class: 'hidden'},
+                  :collection => ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"],
+                  :prompt => "Elegí la categoría que representa a tu servicio" %>
       <%= f.input :address,
                   label: "Dirección",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
                   required: true,
-                  wrapper_html: { class: "prove" } %>
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'} %>
       <%= f.input :photos,
                   as: :file,
-                  input_html: {multiple: true},
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: {multiple: true, data: {disable_form_target:"fields"}, class: 'hidden'},
                   required: false,
                   label: "Fotos del servicio"%>
       <%= f.input :rut,
                   label: "Registro Único Tributario",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
                   required: false,
-                  wrapper_html: { class: "prove" } %>
-      <%= f.input :service_type,
-                  :collection => ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"],
-                  label: "Elegí la categoría que representa tu servicio",
-                  required: true,
-                  wrapper_html: { class: "prove" } %>
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'} %>
       <%= f.input :description,
                   label: "Descripccion de la empresa",
-                  required: true,
-                  wrapper_html: { class: "prove" } %>
-      <%= f.input :event_types,
-                  as: :check_boxes,
-                  input_html: {multiple: true} ,
-                  :collection => ["Cumpleaños Infantiles", "Cumpleaños Adultos", "Despedidas", "Casamientos", "Bautismos", "Baby Showers", "Empresariales", "15 Años"],
-                  label: "Seleccioná el/los tipo/s de Evento/s en el/los que prestás servicio",
-                  required: false,
-                  wrapper_html: { class: "prove" } %>
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'},
+                  required: true %>
     </div>
 
     <div class="form-actions d-flex mb-3">

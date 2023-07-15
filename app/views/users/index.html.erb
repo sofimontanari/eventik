@@ -54,7 +54,11 @@
         <% if @event %>
           <%= link_to user_path(supplier, event: @event.id), class: "text-decoration-none" do %>
             <div class="card-trip me-2 mb-4" style="width: 18rem; height: 300px;" data-service-type="<%= supplier.service_type %>">
-              <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+              <% if supplier.photos.present? && supplier.photos.first.key? %>
+                <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+              <% else %>
+                <%= image_tag "https://www.bicifan.uy/wp-content/uploads/2016/09/producto-sin-imagen.png", class:"card-img-top", crop: :fill  %>
+              <% end %>
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
@@ -73,7 +77,11 @@
         <% else %>
           <%= link_to user_path(supplier), class: "text-decoration-none" do %>
             <div class="card-trip me-2 mb-4" style="width: 18rem; height: 300px;" data-service-type="<%= supplier.service_type %>">
-              <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+              <% if supplier.photos.present? && supplier.photos.first.key? %>
+                <%= cl_image_tag supplier.photos.first.key, class:"card-img-top" %>
+              <% else %>
+                <%= image_tag "https://www.bicifan.uy/wp-content/uploads/2016/09/producto-sin-imagen.png", class:"card-img-top", crop: :fill  %>
+              <% end %>
               <div class="card-trip-infos">
               <h5 class="card-title" style="color: rgb(50, 50, 50)"><%= supplier.business_name %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= supplier.service_type %></h6>
