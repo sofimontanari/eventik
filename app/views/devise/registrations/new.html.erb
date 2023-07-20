@@ -82,6 +82,31 @@
                   label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
                   input_html: { data: {disable_form_target:"fields"}, class: 'hidden'},
                   required: true %>
+      <%= f.input :duration,
+                  label: "Duración del servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden', autocomplete: "El servicio se brinda por x horas"},
+                  required: true %>
+      <%= f.input :capacity,
+                  label: "Capacidad del servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden', autocomplete: "Indicá el número de personas"},
+                  required: true %>
+      <%= f.input :includes,
+                  label: "¿Qué está incluido en el servicio?",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'},
+                  required: true %>
+      <%= f.input :benefits,
+                  label: "Beneficios adicionales del servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden', autocomplete: "De regalo con el servicio..."},
+                  required: true %>
+      <%= f.input :notes,
+                  label: "Notas adicionales del servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden', autocomplete: "Documentación para el ingreso..."},
+                  required: true %>
     </div>
 
     <div class="form-actions d-flex mb-3">
