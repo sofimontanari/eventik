@@ -2,7 +2,7 @@
   <h2 class="text-center mb-3">Hola <%= current_user.name %>, editá tus datos acá:</h2>
 
   <% if current_user.supplier %>
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put}) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
@@ -88,7 +88,7 @@
 
   <% else %>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
       <%= f.error_notification %>
 
       <div class="form-inputs">
