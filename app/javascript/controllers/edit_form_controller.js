@@ -19,12 +19,10 @@ export default class extends Controller {
 
     if (checkpass) {
       passwords.forEach((password) => {password.classList.remove('hidden')});
-      label.innerHTML = 'Confirmar contraseña*';
-      hint.textContent = "Confrimá tu nueva contraseña";
+      label.innerHTML = 'Contraseña actual*';
+      hint.textContent = "Ingresá tu contraseña actual";
     } else {
       passwords.forEach((password) => {password.classList.add('hidden')});
-      label.innerHTML = 'Contraseña*';
-      hint.textContent = "Ingresá tu contraseña para confirmar los cambios";
     }
   }
 }
