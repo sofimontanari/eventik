@@ -14,10 +14,6 @@
       <%= f.input :user_name,
                   required: true,
                   label: "Nombre de usuario"%>
-      <%= f.input :birth_date,
-                  html5:true,
-                  required: true,
-                  label: "Fecha de nacimiento"%>
       <%= f.input :avatar,
                   as: :file,
                   required: false,
@@ -82,6 +78,31 @@
                   label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
                   input_html: { data: {disable_form_target:"fields"}, class: 'hidden'},
                   required: true %>
+      <%= f.input :duration,
+                  label: "Duración del servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden', autocomplete: "El servicio se brinda por x horas"},
+                  required: false %>
+      <%= f.input :capacity,
+                  label: "Capacidad del servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden', autocomplete: "Indicá el número de personas"},
+                  required: false %>
+      <%= f.input :includes,
+                  label: "¿Qué está incluido en el servicio?",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden'},
+                  required: false %>
+      <%= f.input :benefits,
+                  label: "Beneficios adicionales del servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden', autocomplete: "De regalo con el servicio..."},
+                  required: false %>
+      <%= f.input :notes,
+                  label: "Notas adicionales del servicio",
+                  label_html: { data: {disable_form_target:"fields"}, class: 'hidden' },
+                  input_html: { data: {disable_form_target:"fields"}, class: 'hidden', autocomplete: "Documentación para el ingreso..."},
+                  required: false %>
     </div>
 
     <div class="form-actions d-flex mb-3">

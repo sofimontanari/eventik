@@ -85,13 +85,20 @@
         <div class="m-3">
           <h5 class="card-title mb-1"><strong>Acerca de nosotros: </strong> </h5>
           <p class="card-text mb-2"><%= @supplier.description %></p>
-          <p class="card-text mb-1"><i class="fa-regular fa-clock me-2" style="color: #919191;"></i> <small class="text-body-secondary"><%= @supplier.duration %></small> </p>
+          <% if @supplier.duration != nil %>
+            <p class="card-text mb-1"><i class="fa-regular fa-clock me-2" style="color: #919191;"></i> <small class="text-body-secondary"><%= @supplier.duration %></small> </p>
+          <% end %>
           <% if @supplier.capacity != nil %>
             <p class="card-text mb-1"><i class="fa-solid fa-users-viewfinder me-2" style="color: #919191;"></i></i><small class="text-body-secondary"><%= @supplier.capacity %> personas.</small> </p>
           <% end %>
-          <p class="card-text mb-1"><i class="fa-solid fa-check me-2" style="color: #919191;"></i> <small class="text-body-secondary"><%= @supplier.includes %></small> </p>
+          <% if @supplier.includes != nil %>
+            <p class="card-text mb-1"><i class="fa-solid fa-check me-2" style="color: #919191;"></i> <small class="text-body-secondary"><%= @supplier.includes %></small> </p>
+          <% end %>
           <% if @supplier.benefits != nil %>
             <p class="card-text mb-1"><i class="fa-regular fa-face-grin-wink me-2" style="color: #919191;"></i></i> <small class="text-body-secondary"><%= @supplier.benefits %></small> </p>
+          <% end %>
+          <% if @supplier.notes != nil %>
+            <p class="card-text mb-1"><i class="fa-regular fa-note-sticky me-2" style="color: #919191;"></i></i> <small class="text-body-secondary"><%= @supplier.benefits %></small> </p>
           <% end %>
           <p class="card-text mb-1"><i class="fa-regular fa-envelope me-2" style="color: #919191;"></i> <small class="text-body-secondary"><%="Respuesta promedio  #{(2..6).to_a.sample} horas."%></small> </p>
           <p class="card-text mb-1"><i class="fa-regular fa-circle-xmark me-2" style="color: #919191;"></i> <small class="text-body-secondary">Servicios adicionales no incluidos.</small> </p>
