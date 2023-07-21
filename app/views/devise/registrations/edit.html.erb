@@ -24,40 +24,46 @@
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "email" }%>
-        <%= f.input :birth_date,
-                    html5:true,
-                    required: true,
-                    label: "Fecha de nacimiento"%>
         <%= f.input :avatar,
                     as: :file,
                     required: false,
                     label: "Foto de perfil"%>
         <%= f.input :business_name,
-                  label: "Nombre de tu Empresa",
-                  required: true,
-                  wrapper_html: { class: "prove" } %>
-      <%= f.input :address,
-                  label: "Dirección",
-                  required: true,
-                  wrapper_html: { class: "prove" } %>
-      <%= f.input :photos,
-                  as: :file,
-                  input_html: {multiple: true},
-                  required: false,
-                  label: "Fotos del servicio"%>
-      <%= f.input :rut,
-                  label: "Registro Único Tributario",
-                  required: false,
-                  wrapper_html: { class: "prove" } %>
-      <%= f.input :service_type,
-                  :collection => ["Fotografía", "Catering", "Espacios", "Entretenimiento", "Invitaciones & Decoración", "Disfraces & Accesorios"],
-                  label: "Elegí la categoría que representa tu servicio",
-                  required: true,
-                  wrapper_html: { class: "prove" } %>
-      <%= f.input :description,
-                  label: "Descripccion de la empresa",
-                  required: true,
-                  wrapper_html: { class: "prove" } %>
+                    label: "Nombre de tu Empresa",
+                    required: true,
+                    wrapper_html: { class: "prove" } %>
+        <%= f.input :address,
+                    label: "Dirección",
+                    required: true,
+                    wrapper_html: { class: "prove" } %>
+        <%= f.input :photos,
+                    as: :file,
+                    input_html: {multiple: true},
+                    required: false,
+                    label: "Fotos del servicio"%>
+        <%= f.input :rut,
+                    label: "Registro Único Tributario",
+                    required: false,
+                    wrapper_html: { class: "prove" } %>
+        <%= f.input :description,
+                    label: "Descripccion de la empresa",
+                    required: true,
+                    wrapper_html: { class: "prove" } %>
+        <%= f.input :duration,
+                    label: "Duración del servicio",
+                    required: false %>
+        <%= f.input :capacity,
+                    label: "Capacidad del servicio",
+                    required: false %>
+        <%= f.input :includes,
+                    label: "¿Qué está incluido en el servicio?",
+                    required: false %>
+        <%= f.input :benefits,
+                    label: "Beneficios adicionales del servicio",
+                    required: false %>
+        <%= f.input :notes,
+                    label: "Notas adicionales del servicio",
+                    required: false %>
         <%= f.input :password,
                     label: "Contraseña Actual",
                     hint: "Si no querés modificarla, dejala en blanco",
@@ -65,11 +71,12 @@
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
                     label: "Nueva contraseña",
+                    hint: "Si no modificaste tu contraseña, dejala en blanco",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :current_password,
-                    label: "Confirmá tu nueva contraseña",
-                    hint: "Confirmá tu nueva contraseña",
+                    label: "Confirmá tu contraseña",
+                    hint: "Ingresá tu constraseña actual o confirmá tu nueva contraseña",
                     required: true,
                     input_html: { autocomplete: "current-password" } %>
       </div>
@@ -118,11 +125,12 @@
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
                     label: "Nueva contraseña",
+                    hint: "Si no modificaste tu contraseña, dejala en blanco",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :current_password,
                     label: "Confirmá tu nueva contraseña",
-                    hint: "Confirmá tu nueva contraseña",
+                    hint: "Ingresá tu constraseña actual o confirmá tu nueva contraseña",
                     required: true,
                     input_html: { autocomplete: "current-password" } %>
       </div>
@@ -138,5 +146,5 @@
     <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"text-secondary text-decoration-none border-0 bg-light" %>
   </div>
 
-  <%= link_to "Volver", root_path, class: "btn btn-info text-light" %>
+  <%= link_to "Volver", root_path, class: "btn btn-ghost text-light" %>
 </div>
